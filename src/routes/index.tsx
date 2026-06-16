@@ -9,6 +9,8 @@ import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { SERVICES, TESTIMONIALS, FAQS, SITE } from "@/components/site/site-data";
 import { Phone, ShieldCheck, MonitorSmartphone, Sparkles } from "lucide-react";
+import heroImage from "@/assets/kenny-injection.jpg.asset.json";
+import teamImage from "@/assets/team.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,6 +19,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, MS. In-person and telehealth across MS and TN." },
       { property: "og:title", content: "Uplift Medical | Concierge Hormone & Wellness Care" },
       { property: "og:description", content: "Restore energy, confidence, and vitality with concierge medical care designed around you." },
+      { property: "og:image", content: heroImage.url },
+      { name: "twitter:image", content: heroImage.url },
+    ],
+    links: [
+      { rel: "preload", as: "image", href: heroImage.url, fetchpriority: "high" } as unknown as { rel: string; href: string },
     ],
   }),
   component: Index,
@@ -65,9 +72,14 @@ function Index() {
                 {/* IMAGE SLOT: hero portrait */}
                 <div className="relative overflow-hidden rounded-[28px] border border-hairline shadow-[0_40px_80px_-40px_rgba(14,42,71,0.45)]">
                   <img
-                    src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=900&q=80"
-                    alt="A confident woman in soft natural light"
+                    src={heroImage.url}
+                    alt="Provider at Uplift Medical preparing a precision injection"
                     className="h-[560px] w-full object-cover md:h-[640px]"
+                    width={1440}
+                    height={1800}
+                    loading="eager"
+                    decoding="async"
+                    {...({ fetchpriority: "high" } as { fetchpriority: "high" })}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
                 </div>
@@ -162,6 +174,32 @@ function Index() {
       </section>
 
       <HowItWorks />
+
+      {/* TEAM BAND */}
+      <section className="bg-background py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl border border-hairline shadow-[0_40px_80px_-40px_rgba(14,42,71,0.45)]">
+              <img
+                src={teamImage.url}
+                alt="The Uplift Medical care team in their Tupelo, Mississippi office"
+                className="h-[360px] w-full object-cover md:h-[520px]"
+                width={1920}
+                height={960}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/10 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-8 text-cream md:p-12">
+                <span className="eyebrow text-gold">The Team</span>
+                <p className="mt-3 max-w-2xl font-display text-2xl leading-snug md:text-4xl">
+                  Experienced providers who listen first, then build a plan around you.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* WHY UPLIFT */}
       <section className="bg-white py-24 md:py-32">

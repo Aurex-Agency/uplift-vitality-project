@@ -4,6 +4,8 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { CTABand } from "@/components/site/CTABand";
 import { TestimonialCard } from "@/components/site/TestimonialCard";
 import { TESTIMONIALS } from "@/components/site/site-data";
+import portrait from "@/assets/kenny-portrait.png.asset.json";
+import teamPhoto from "@/assets/team.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -49,14 +51,15 @@ function About() {
               {/* IMAGE SLOT: owner headshot. Replace with real photo. */}
               <div className="relative overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)]">
                 <img
-                  src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80"
-                  alt="Portrait of Kenneth Goolsby, owner of Uplift Medical"
+                  src={portrait.url}
+                  alt="Kenneth Goolsby, owner of Uplift Medical, in a tailored white shirt"
                   className="h-[560px] w-full object-cover"
+                  width={1080}
+                  height={1280}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
-              <p className="mt-4 text-xs tracking-wider text-muted-foreground">
-                Image slot. Real photo to be added.
-              </p>
             </Reveal>
           </div>
           <div className="md:col-span-7">
@@ -90,22 +93,22 @@ function About() {
             <SectionHeading
               eyebrow="Our Team"
               title="Experienced providers, attentive care."
-              subhead="Our team includes nurse practitioners and support staff dedicated to your journey. Real team photos coming soon."
+              subhead="Our team includes nurse practitioners and support staff dedicated to every step of your journey."
             />
           </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <Reveal key={i} delay={i * 80}>
-                <div className="rounded-2xl border border-hairline bg-white p-8 text-center">
-                  <div className="mx-auto h-28 w-28 rounded-full border border-hairline bg-secondary" />
-                  <p className="mt-6 font-display text-xl text-primary">Team Member</p>
-                  <p className="mt-1 text-xs tracking-widest text-muted-foreground">
-                    PROVIDER
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={120}>
+            <div className="mt-14 overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)]">
+              <img
+                src={teamPhoto.url}
+                alt="The Uplift Medical providers and staff together in the Tupelo office"
+                className="h-auto w-full object-cover"
+                width={1920}
+                height={960}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import hero from "@/assets/kenny-injection.jpg.asset.json";
 
 export const Route = createFileRoute("/services/hormone-therapy-men")({
   head: () => ({
@@ -8,7 +9,7 @@ export const Route = createFileRoute("/services/hormone-therapy-men")({
       { name: "description", content: "Physician-guided TRT in Tupelo, MS. Restore energy, strength, focus, libido, and mood. In-person and telehealth." },
       { property: "og:title", content: "Testosterone Therapy for Men | Uplift Medical" },
       { property: "og:description", content: "Restore strength, energy, and vitality. Feel stronger. Think sharper. Live with more confidence." },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80" },
+      { property: "og:image", content: hero.url },
     ],
   }),
   component: () => (
@@ -17,9 +18,8 @@ export const Route = createFileRoute("/services/hormone-therapy-men")({
         eyebrow: "Testosterone Therapy for Men",
         headline: "Restore strength, energy, and vitality.",
         subhead: "Feel stronger. Think sharper. Live with more confidence.",
-        heroImage:
-          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
-        heroAlt: "Man training in natural light",
+        heroImage: hero.url,
+        heroAlt: "Uplift Medical provider preparing a testosterone injection",
         intro:
           "Testosterone plays a critical role in a man's overall health, affecting energy, muscle mass, libido, mood, and focus. As men age, testosterone naturally declines, leading to fatigue, weight gain, low motivation, and reduced performance. Our testosterone replacement therapy is designed to restore your levels so you feel like the best version of yourself again.",
         signs: {

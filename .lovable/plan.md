@@ -1,85 +1,49 @@
-# Uplift Medical Marketing Site
+## Goal
+Replace Unsplash placeholders with the real Uplift Medical photos and logos the user uploaded, and ensure they load fast.
 
-A production-quality, editorial marketing site for a concierge hormone and wellness clinic in Tupelo, MS. Navy and gold luxe-clinical aesthetic, serif display + clean sans, generous whitespace, tasteful scroll-reveal motion.
+## Assets to upload (via `lovable-assets` CLI → CDN, not bundled)
+1. `kenny-portrait.png` — solo headshot of owner (couch, white shirt)
+2. `kenny-injection.jpg` — close-up holding syringe
+3. `team.jpg` — full team group photo
+4. `logo-primary.svg` — first SVG (primary brand logo)
+5. `logo-secondary.svg` — second SVG (alt/monogram)
 
-## Brand & design system
+Each gets a `src/assets/<name>.asset.json` pointer. Imported via ES6 and referenced by `.url`. CDN-served, cached, fast.
 
-Set up in `src/styles.css` as Tailwind v4 `@theme` tokens (no `tailwind.config.js`):
-- Colors (oklch-converted from the supplied hex): navy `#0E2A47`, gold `#C8A45C`, cream `#FAF7F1`, white, charcoal `#1F2933`, slate `#5B6B7B`, border `#E7E1D6`. Mapped to shadcn semantic tokens (`--background` = cream, `--primary` = navy, `--accent` = gold, etc.) so existing shadcn components inherit the palette.
-- Fonts: Cormorant Garamond (display) + Inter (body), loaded via `<link>` tags in `__root.tsx` head (never `@import` URLs in CSS). Tokens `--font-display`, `--font-sans`.
-- Reusable utilities: `.eyebrow` (uppercase tracked small caps label), `.gold-divider` (1px gold rule), soft layered shadow token, 12–16px radii.
-- Motion: a small `Reveal` wrapper using IntersectionObserver for fade-and-rise on section entrance (no extra deps; tasteful, fast, no bounce).
+## Where each photo goes
 
-## Routes (TanStack Start file-based)
+**Owner headshot (`kenny-portrait`)**
+- `src/routes/about.tsx` → "Meet the Owner" image slot (replaces current Unsplash portrait, removes "Image slot" caption)
+- `src/routes/index.tsx` → small framed inset in an "About the Founder" teaser block on the home page (if not already present, add a compact 2-col band linking to /about)
 
-Each route gets its own `head()` with unique title, description, og:title, og:description. Replace the placeholder home immediately.
+**Injection close-up (`kenny-injection`)**
+- `src/routes/index.tsx` → hero image (replace current hero placeholder) — sets the editorial tone immediately
+- `src/routes/services.hormone-therapy-men.tsx` → hero image
+- `src/routes/services.peptide-therapy.tsx` → secondary/in-body image
 
-- `src/routes/index.tsx` – Home
-- `src/routes/about.tsx`
-- `src/routes/contact.tsx`
-- `src/routes/book.tsx`
-- `src/routes/qualify.tsx`
-- `src/routes/services.index.tsx` (Services overview; also reachable from nav dropdown)
-- `src/routes/services.hormone-therapy-men.tsx`
-- `src/routes/services.hormone-therapy-women.tsx`
-- `src/routes/services.progesterone-estrogen.tsx`
-- `src/routes/services.peptide-therapy.tsx`
-- `src/routes/services.iv-therapy.tsx`
-- `src/routes/services.weight-loss.tsx`
-- `src/routes/privacy.tsx`, `src/routes/terms.tsx` (simple styled placeholders)
-- 404 styled via existing `__root.tsx` `notFoundComponent` (restyled to match brand)
+**Team photo (`team.jpg`)**
+- `src/routes/about.tsx` → replace the 3-circle "Team Member" placeholder grid with a single full-width editorial team photo + short caption
+- `src/routes/index.tsx` → "Why Uplift" or testimonials adjacent band as a wide image strip
 
-`__root.tsx` keeps the QueryClient provider and `<Outlet />`, adds the font `<link>` tags, top utility bar, sticky `Navbar`, and `Footer` wrapping `<Outlet />`.
+**Logos**
+- `src/components/site/Logo.tsx` → use `logo-primary.svg` (currently text/SVG mark). Keep responsive sizing; navy version for light bg, ensure footer variant works on dark navy (use secondary logo if it's a light/mono variant; otherwise apply CSS `filter: brightness(0) invert(1)` for footer).
+- `src/components/site/Footer.tsx` → wire footer logo through the same component.
+- Favicon: update `<link rel="icon">` in `__root.tsx` to point at the primary logo asset URL.
 
-## Shared components (`src/components/site/`)
+## Performance
+- Lovable Assets are served via Cloudflare R2 with aggressive CDN caching — fast by default.
+- Hero image on `/` gets `loading="eager"` + `fetchpriority="high"` and a `<link rel="preload" as="image">` in that route's `head().links`.
+- All other photos: `loading="lazy"` + `decoding="async"`.
+- Add explicit `width`/`height` attributes to prevent CLS.
+- Provide descriptive alt text on every image (no em dashes).
 
-- `Navbar.tsx` – sticky, transparent → solid on scroll (scroll listener + boolean state), serif "UPLIFT MEDICAL" wordmark with a small gold accent mark, Services dropdown (desktop hover/click, mobile accordion), primary "Book Appointment" CTA, secondary "See If You Qualify" link, hamburger drawer (Sheet) on mobile.
-- `Footer.tsx` – logo + positioning line, quick links, services list, contact block (address, click-to-call, hours), Facebook link, small-print row (© Uplift Medical, Privacy, Terms), medical disclaimer line.
-- `TopUtilityBar.tsx` – thin navy/gold bar with click-to-call.
-- `Logo.tsx` – swappable wordmark component.
-- `Button.tsx` – primary (navy/white, hover lift), secondary (gold outline), ghost; pill/rounded. Built as a shadcn Button variant extension so existing UI still works.
-- `SectionHeading.tsx` – eyebrow + serif headline + optional subhead.
-- `ServiceCard.tsx`, `BenefitCard.tsx`, `StepItem.tsx`, `TestimonialCard.tsx`, `FAQAccordion.tsx` (wraps shadcn Accordion), `CTABand.tsx`, `Reveal.tsx`.
-- `FormField.tsx` – label + input/textarea + inline validation state.
-- Service page template `ServicePageLayout.tsx` consumed by all six service routes with a typed content object (hero, intro, signs[], benefits[], includeQualifyLink).
+## OG/social
+- Update `og:image` in `__root.tsx` and per-route heads to use the hero injection photo URL (currently points to a stale preview screenshot).
 
-## Qualify quiz (`/qualify`)
-
-Custom polished multi-step funnel, one question per screen.
-
-- `QuizContainer` manages state with `useState` (no localStorage): `step`, `answers` keyed by step id, `contact` object, `errors`.
-- `ProgressBar` (thin gold fill on cream track) + step count.
-- `QuizStep` wrapper with fade-and-slide transition (CSS keyframes, ~200ms).
-- Question components: single-select card grid, multi-select card grid, contact capture form.
-- Steps exactly as specified (concern, symptoms multi, hormones-checked, goal, age range, contact + consents).
-- Required-field validation with inline errors; full keyboard accessibility (role=button cards, Enter/Space toggle, focus rings).
-- `submitLead(payload)` placeholder function in `src/lib/leads.ts` with a clear TODO comment for the GHL webhook; for now logs to console and advances to the results screen.
-- Results screen: encouraging copy + "Book an Appointment" CTA + click-to-call.
-
-## Page content
-
-All copy used verbatim from the brief. Voice: confident, warm, premium. **Hard rule enforced site-wide: no em dashes** in copy, headings, buttons, alt text, or JSX. A final grep for the em-dash character before sign-off.
-
-- Home: hero, welcome, telehealth navy band, services grid (6 cards linking to service pages), 4-step How It Works, Why Uplift benefits, qualify quiz teaser band, testimonials (3 supplied quotes with 5-star marks), FAQ accordion (7 supplied Q&As), final CTA band.
-- Service pages: shared layout, all supplied copy (intro, signs where applicable, benefits), shared How It Works, closing CTA, qualify link on hormone pages.
-- About: hero, Our Story, Meet the Owner with headshot slot + Kenny's full quote, optional team grid placeholder, testimonials, CTA band.
-- Contact: two-column form + details, Google Maps iframe for 144 S Thomas St, Suite 102, Tupelo, MS 38801, `submitContact(payload)` placeholder.
-- Book: hero, primary click-to-call, clearly labeled placeholder container for the scheduler embed (with code comment), hours + address reinforcement.
-- Privacy / Terms: clean typographic placeholders styled to match.
-
-## Imagery
-
-Use Unsplash URLs for tall editorial hero crops and lifestyle/wellness imagery (calm, natural light, 30–60s). Every `<img>` gets descriptive alt text and a comment marker like `{/* IMAGE SLOT: hero portrait */}` so real photos can be swapped in. No image generation needed for this build.
-
-## Accessibility & responsive
-
-Semantic HTML (`header`, `nav`, `main`, `section`, `footer`), single H1 per page, ordered headings, visible focus rings on all interactive elements, AA contrast checked against the palette (gold used for accents/borders/large text, not small body text on cream). Mobile-first layouts, hamburger drawer, tap targets ≥44px, fluid type with `clamp()` for display headings.
+## Out of scope
+No layout/typography rework, no copy changes, no new sections beyond the small founder teaser on home if needed to feature the portrait.
 
 ## Technical notes
-
-- Stack: TanStack Start + Tailwind v4 + shadcn (already present). No new heavy deps; reuse existing `Accordion`, `Sheet`, `Input`, `Textarea`, `Checkbox`, `Button`.
-- Fonts loaded via `<link>` in `__root.tsx` head with preconnect to fonts.gstatic.com.
-- Scroll-reveal via a tiny IntersectionObserver hook, no Framer Motion install.
-- All forms are client-side only with placeholder submit functions; no backend wiring this pass (Lovable Cloud not enabled — none of the supplied features require persistence yet).
-- 404 page restyled in `__root.tsx`'s `notFoundComponent` to match the brand.
-- Final self-check pass: em-dash grep, single-Tupelo-location grep (no Oxford/Southaven/Memphis), responsive spot-checks at mobile/tablet/desktop, all six service routes reachable from nav dropdown and services index.
+- Uploads use `lovable-assets create --file /mnt/user-uploads/<file> --filename <name>` written to `src/assets/<name>.asset.json`.
+- Import pattern: `import portrait from "@/assets/kenny-portrait.png.asset.json"` then `<img src={portrait.url} … />`.
+- Logo SVGs: import the `.asset.json` and render via `<img>` (keeps SVG features, still cached). If precise color control is needed later we can inline.
