@@ -15,7 +15,7 @@ import { TopUtilityBar } from "@/components/site/TopUtilityBar";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { Link as TLink } from "@tanstack/react-router";
-import logoPrimary from "@/assets/logo-primary.svg.asset.json";
+import logoPrimary from "@/assets/logo-primary.png.asset.json";
 import heroImage from "@/assets/kenny-injection.jpg.asset.json";
 
 function NotFoundComponent() {
@@ -100,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: logoPrimary.url, type: "image/svg+xml" },
+      { rel: "icon", href: logoPrimary.url, type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
