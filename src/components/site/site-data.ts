@@ -17,32 +17,54 @@ export const SERVICES = [
     slug: "hormone-therapy-men",
     title: "Testosterone Therapy for Men",
     short: "Restore energy, strength, focus, and drive with physician-guided TRT.",
+    icon: "Dumbbell",
   },
   {
     slug: "hormone-therapy-women",
     title: "Testosterone Therapy for Women",
     short: "Rebalance energy, mood, and libido with therapy designed for women.",
+    icon: "Flower2",
   },
   {
     slug: "progesterone-estrogen",
     title: "Progesterone and Estrogen Therapy",
     short: "Ease menopause and perimenopause symptoms and restore balance.",
+    icon: "HeartPulse",
   },
   {
     slug: "peptide-therapy",
     title: "Peptide Therapy",
     short: "Support recovery, performance, and anti-aging at the cellular level.",
+    icon: "Dna",
   },
   {
     slug: "iv-therapy",
     title: "IV Therapy",
     short: "Rehydrate and replenish with vitamins delivered straight to your bloodstream.",
+    icon: "Droplets",
   },
   {
     slug: "weight-loss",
     title: "Medical Weight Loss",
     short: "Burn fat and boost metabolism with a science-backed, guided plan.",
+    icon: "Flame",
   },
+] as const;
+
+export const STATS = [
+  { value: "5.0★", label: "Google rating" },
+  { value: "500+", label: "Patients uplifted" },
+  { value: "MS & TN", label: "In-person + telehealth" },
+  { value: "Same week", label: "Appointments available" },
+] as const;
+
+export const TRUST_POINTS = [
+  "No insurance needed",
+  "Board-guided protocols",
+  "Personalized lab work",
+  "Concierge communication",
+  "In-person & telehealth",
+  "Ongoing monitoring",
 ] as const;
 
 export const TESTIMONIALS = [

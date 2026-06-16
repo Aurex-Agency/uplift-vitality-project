@@ -9,7 +9,11 @@ export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services | Uplift Medical, Tupelo MS" },
-      { name: "description", content: "Hormone therapy, peptides, IV therapy, and medical weight loss in Tupelo, MS. Six concierge services tailored to you." },
+      {
+        name: "description",
+        content:
+          "Hormone therapy, peptides, IV therapy, and medical weight loss in Tupelo, MS. Six concierge services tailored to you.",
+      },
       { property: "og:title", content: "Services | Uplift Medical" },
       { property: "og:description", content: "Treatments built around your goals." },
     ],
@@ -37,7 +41,13 @@ function ServicesIndex() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s, i) => (
               <Reveal key={s.slug} delay={i * 60}>
-                <ServiceCard title={s.title} description={s.short} to={`/services/${s.slug}`} index={i} />
+                <ServiceCard
+                  title={s.title}
+                  description={s.short}
+                  to={`/services/${s.slug}`}
+                  index={i}
+                  icon={s.icon}
+                />
               </Reveal>
             ))}
           </div>

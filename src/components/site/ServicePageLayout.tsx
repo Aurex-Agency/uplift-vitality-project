@@ -3,7 +3,7 @@ import { SectionHeading } from "./SectionHeading";
 import { CTAButton } from "./CTAButton";
 import { CTABand } from "./CTABand";
 import { HowItWorks } from "./HowItWorks";
-import { Check } from "lucide-react";
+import { Check, Star } from "lucide-react";
 
 export type ServiceContent = {
   eyebrow: string;
@@ -20,11 +20,15 @@ export type ServiceContent = {
 export function ServicePageLayout({ content }: { content: ServiceContent }) {
   return (
     <>
-      <section className="relative overflow-hidden bg-background pt-12 md:pt-20">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 pb-20 md:grid-cols-2 md:items-center md:gap-16 md:pb-28">
+      <section className="aurora relative overflow-hidden bg-background pt-12 md:pt-20">
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-50" />
+        <div className="pointer-events-none absolute -right-32 top-0 h-[420px] w-[420px] rounded-full bg-gold/10 blur-3xl" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-20 md:grid-cols-2 md:items-center md:gap-16 md:pb-28">
           <Reveal>
-            <span className="eyebrow">{content.eyebrow}</span>
-            <h1 className="mt-4 font-display text-4xl leading-[1.05] text-primary sm:text-5xl md:text-6xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-white/70 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-primary backdrop-blur">
+              {content.eyebrow}
+            </span>
+            <h1 className="mt-5 font-display text-4xl leading-[1.05] text-primary sm:text-5xl md:text-6xl">
               {content.headline}
             </h1>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
@@ -32,18 +36,34 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <CTAButton to="/book">Book an Appointment</CTAButton>
-              <CTAButton to="/qualify" variant="outline">See If You Qualify</CTAButton>
+              <CTAButton to="/qualify" variant="outline">
+                See If You Qualify
+              </CTAButton>
+            </div>
+            <div className="mt-7 flex items-center gap-2">
+              <div className="flex text-gold">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <span className="text-sm text-muted-foreground">
+                Rated 5.0 by patients across MS &amp; TN
+              </span>
             </div>
           </Reveal>
           <Reveal delay={120}>
             {/* IMAGE SLOT: service hero */}
-            <div className="relative overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)]">
-              <img
-                src={content.heroImage}
-                alt={content.heroAlt}
-                className="h-[480px] w-full object-cover md:h-[560px]"
-                loading="eager"
-              />
+            <div className="relative">
+              <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[40px] bg-gradient-to-br from-gold/20 via-transparent to-primary/10 blur-2xl" />
+              <div className="relative overflow-hidden rounded-3xl border border-white/40 shadow-[0_40px_80px_-36px_rgba(14,42,71,0.4)]">
+                <img
+                  src={content.heroImage}
+                  alt={content.heroAlt}
+                  className="h-[420px] w-full object-cover sm:h-[480px] md:h-[560px]"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/35 via-transparent to-transparent" />
+              </div>
             </div>
           </Reveal>
         </div>
@@ -119,7 +139,9 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
               Take our free 60-second assessment and find out if you may be a candidate.
             </p>
             <div className="mt-7">
-              <CTAButton to="/qualify" variant="primary">See If You Qualify</CTAButton>
+              <CTAButton to="/qualify" variant="primary">
+                See If You Qualify
+              </CTAButton>
             </div>
           </div>
         </section>

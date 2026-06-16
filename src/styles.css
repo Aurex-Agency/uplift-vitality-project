@@ -52,7 +52,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
   --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
   --color-cream: var(--cream);
   --color-charcoal: var(--charcoal);
   --color-slate-soft: var(--slate-soft);
@@ -65,7 +67,9 @@
   --radius: 0.875rem;
   /* Brand */
   --navy: oklch(0.265 0.062 256);
+  --navy-deep: oklch(0.205 0.055 258);
   --gold: oklch(0.745 0.108 82);
+  --gold-bright: oklch(0.82 0.13 84);
   --cream: oklch(0.975 0.012 85);
   --charcoal: oklch(0.27 0.018 252);
   --slate-soft: oklch(0.52 0.025 245);
@@ -153,7 +157,11 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, .font-display {
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
     font-family: var(--font-display);
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -182,15 +190,106 @@
   border-radius: 16px;
   box-shadow:
     0 1px 2px rgba(14, 42, 71, 0.04),
-    0 12px 32px -16px rgba(14, 42, 71, 0.10);
+    0 12px 32px -16px rgba(14, 42, 71, 0.1);
 }
 
 @utility reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 700ms ease-out, transform 700ms ease-out;
+  transition:
+    opacity 700ms ease-out,
+    transform 700ms ease-out;
 }
 @utility reveal-in {
   opacity: 1;
   transform: none;
+}
+
+/* ---- Eye-popping additions ---- */
+
+/* Layered aurora glow for hero / dark sections */
+@utility aurora {
+  position: relative;
+  background:
+    radial-gradient(120% 120% at 85% -10%, oklch(0.745 0.108 82 / 0.16) 0%, transparent 45%),
+    radial-gradient(90% 90% at 5% 110%, oklch(0.745 0.108 82 / 0.1) 0%, transparent 50%);
+}
+
+/* Deep navy gradient for inverted bands */
+@utility navy-gradient {
+  background:
+    radial-gradient(110% 120% at 80% 0%, oklch(0.32 0.07 256) 0%, transparent 55%),
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+}
+
+/* Subtle dotted texture overlay */
+@utility dot-grid {
+  background-image: radial-gradient(oklch(0.265 0.062 256 / 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Navy → gold gradient text for accent words */
+@utility gradient-text {
+  background: linear-gradient(105deg, var(--navy) 0%, var(--navy) 35%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Warm gold gradient fill (buttons, accents) */
+@utility gold-gradient {
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
+}
+
+/* Glow shadow used on primary actions + featured cards */
+@utility gold-glow {
+  box-shadow:
+    0 10px 30px -10px oklch(0.745 0.108 82 / 0.55),
+    0 4px 12px -6px oklch(0.745 0.108 82 / 0.4);
+}
+
+/* Premium lifted card shadow */
+@utility lift-card {
+  background: #ffffff;
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+  box-shadow:
+    0 1px 2px rgba(14, 42, 71, 0.04),
+    0 18px 48px -24px rgba(14, 42, 71, 0.18);
+}
+
+/* Slow float for decorative elements */
+@utility float-soft {
+  animation: floatSoft 7s ease-in-out infinite;
+}
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Marquee for trust strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .float-soft {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
