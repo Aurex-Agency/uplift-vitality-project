@@ -84,10 +84,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS" },
       { name: "description", content: "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN." },
       { name: "author", content: "Uplift Medical" },
-      { property: "og:title", content: "Uplift Medical | Concierge Hormone & Wellness Care" },
-      { property: "og:description", content: "Concierge hormone, weight loss, peptide, and IV therapy in Tupelo, MS. In-person and telehealth across MS and TN." },
+      { property: "og:title", content: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS" },
+      { property: "og:description", content: "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS" },
+      { name: "twitter:description", content: "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ee0462ae-137f-4c92-a778-d8fef8af9503/id-preview-9d2f5c54--744b1623-dbee-4f7a-bb33-3debfd6c0ae5.lovable.app-1781633358620.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ee0462ae-137f-4c92-a778-d8fef8af9503/id-preview-9d2f5c54--744b1623-dbee-4f7a-bb33-3debfd6c0ae5.lovable.app-1781633358620.png" },
     ],
     links: [
       {
