@@ -9,6 +9,8 @@ import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { SERVICES, TESTIMONIALS, FAQS, SITE } from "@/components/site/site-data";
 import { Phone, ShieldCheck, MonitorSmartphone, Sparkles } from "lucide-react";
+import heroImage from "@/assets/kenny-injection.jpg.asset.json";
+import teamImage from "@/assets/team.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,6 +19,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, MS. In-person and telehealth across MS and TN." },
       { property: "og:title", content: "Uplift Medical | Concierge Hormone & Wellness Care" },
       { property: "og:description", content: "Restore energy, confidence, and vitality with concierge medical care designed around you." },
+      { property: "og:image", content: heroImage.url },
+      { name: "twitter:image", content: heroImage.url },
+    ],
+    links: [
+      { rel: "preload", as: "image", href: heroImage.url, fetchpriority: "high" } as unknown as { rel: string; href: string },
     ],
   }),
   component: Index,
@@ -65,9 +72,14 @@ function Index() {
                 {/* IMAGE SLOT: hero portrait */}
                 <div className="relative overflow-hidden rounded-[28px] border border-hairline shadow-[0_40px_80px_-40px_rgba(14,42,71,0.45)]">
                   <img
-                    src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=900&q=80"
-                    alt="A confident woman in soft natural light"
+                    src={heroImage.url}
+                    alt="Provider at Uplift Medical preparing a precision injection"
                     className="h-[560px] w-full object-cover md:h-[640px]"
+                    width={1440}
+                    height={1800}
+                    loading="eager"
+                    decoding="async"
+                    {...({ fetchpriority: "high" } as { fetchpriority: "high" })}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
                 </div>
