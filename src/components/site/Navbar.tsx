@@ -29,7 +29,9 @@ export function Navbar() {
         <Logo />
 
         <div className="hidden items-center gap-8 lg:flex">
-          <NavLink to="/" exact>Home</NavLink>
+          <NavLink to="/" exact>
+            Home
+          </NavLink>
           <div
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
@@ -70,7 +72,7 @@ export function Navbar() {
           </Link>
           <Link
             to="/book"
-            className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium tracking-wide text-primary-foreground shadow-sm transition hover:-translate-y-0.5 hover:bg-primary/90"
+            className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold tracking-wide text-primary-foreground shadow-[0_8px_24px_-10px_rgba(14,42,71,0.55)] transition hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_14px_30px_-12px_rgba(14,42,71,0.65)]"
           >
             Book Appointment
           </Link>
@@ -99,7 +101,9 @@ export function Navbar() {
                 </button>
               </div>
               <div className="flex flex-col gap-1 px-6 py-6">
-                <MobileLink to="/" onClick={() => setOpen(false)}>Home</MobileLink>
+                <MobileLink to="/" onClick={() => setOpen(false)}>
+                  Home
+                </MobileLink>
                 <p className="eyebrow mt-4 mb-2">Services</p>
                 {SERVICES.map((s) => (
                   <Link
@@ -112,9 +116,15 @@ export function Navbar() {
                   </Link>
                 ))}
                 <div className="my-2 h-px w-full bg-hairline" />
-                <MobileLink to="/about" onClick={() => setOpen(false)}>About</MobileLink>
-                <MobileLink to="/contact" onClick={() => setOpen(false)}>Contact</MobileLink>
-                <MobileLink to="/qualify" onClick={() => setOpen(false)}>See If You Qualify</MobileLink>
+                <MobileLink to="/about" onClick={() => setOpen(false)}>
+                  About
+                </MobileLink>
+                <MobileLink to="/contact" onClick={() => setOpen(false)}>
+                  Contact
+                </MobileLink>
+                <MobileLink to="/qualify" onClick={() => setOpen(false)}>
+                  See If You Qualify
+                </MobileLink>
                 <Link
                   to="/book"
                   onClick={() => setOpen(false)}
@@ -137,7 +147,15 @@ export function Navbar() {
   );
 }
 
-function NavLink({ to, exact, children }: { to: string; exact?: boolean; children: React.ReactNode }) {
+function NavLink({
+  to,
+  exact,
+  children,
+}: {
+  to: string;
+  exact?: boolean;
+  children: React.ReactNode;
+}) {
   return (
     <Link
       to={to}
@@ -150,7 +168,15 @@ function NavLink({ to, exact, children }: { to: string; exact?: boolean; childre
   );
 }
 
-function MobileLink({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: () => void }) {
+function MobileLink({
+  to,
+  children,
+  onClick,
+}: {
+  to: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
   return (
     <Link
       to={to}
