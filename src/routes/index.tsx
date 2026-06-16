@@ -175,6 +175,32 @@ function Index() {
 
       <HowItWorks />
 
+      {/* TEAM BAND */}
+      <section className="bg-background py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl border border-hairline shadow-[0_40px_80px_-40px_rgba(14,42,71,0.45)]">
+              <img
+                src={teamImage.url}
+                alt="The Uplift Medical care team in their Tupelo, Mississippi office"
+                className="h-[360px] w-full object-cover md:h-[520px]"
+                width={1920}
+                height={960}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/10 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-8 text-cream md:p-12">
+                <span className="eyebrow text-gold">The Team</span>
+                <p className="mt-3 max-w-2xl font-display text-2xl leading-snug md:text-4xl">
+                  Experienced providers who listen first, then build a plan around you.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* WHY UPLIFT */}
       <section className="bg-white py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
