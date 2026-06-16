@@ -4,6 +4,8 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { CTABand } from "@/components/site/CTABand";
 import { TestimonialCard } from "@/components/site/TestimonialCard";
 import { TESTIMONIALS } from "@/components/site/site-data";
+import portrait from "@/assets/kenny-portrait.png.asset.json";
+import teamPhoto from "@/assets/team.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -49,14 +51,15 @@ function About() {
               {/* IMAGE SLOT: owner headshot. Replace with real photo. */}
               <div className="relative overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)]">
                 <img
-                  src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80"
-                  alt="Portrait of Kenneth Goolsby, owner of Uplift Medical"
+                  src={portrait.url}
+                  alt="Kenneth Goolsby, owner of Uplift Medical, in a tailored white shirt"
                   className="h-[560px] w-full object-cover"
+                  width={1080}
+                  height={1280}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
-              <p className="mt-4 text-xs tracking-wider text-muted-foreground">
-                Image slot. Real photo to be added.
-              </p>
             </Reveal>
           </div>
           <div className="md:col-span-7">
