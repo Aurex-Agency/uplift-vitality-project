@@ -15,6 +15,13 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesWeightLossRouteImport } from './routes/services.weight-loss'
+import { Route as ServicesProgesteroneEstrogenRouteImport } from './routes/services.progesterone-estrogen'
+import { Route as ServicesPeptideTherapyRouteImport } from './routes/services.peptide-therapy'
+import { Route as ServicesIvTherapyRouteImport } from './routes/services.iv-therapy'
+import { Route as ServicesHormoneTherapyWomenRouteImport } from './routes/services.hormone-therapy-women'
+import { Route as ServicesHormoneTherapyMenRouteImport } from './routes/services.hormone-therapy-men'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -46,6 +53,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesWeightLossRoute = ServicesWeightLossRouteImport.update({
+  id: '/services/weight-loss',
+  path: '/services/weight-loss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesProgesteroneEstrogenRoute =
+  ServicesProgesteroneEstrogenRouteImport.update({
+    id: '/services/progesterone-estrogen',
+    path: '/services/progesterone-estrogen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesPeptideTherapyRoute = ServicesPeptideTherapyRouteImport.update({
+  id: '/services/peptide-therapy',
+  path: '/services/peptide-therapy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIvTherapyRoute = ServicesIvTherapyRouteImport.update({
+  id: '/services/iv-therapy',
+  path: '/services/iv-therapy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesHormoneTherapyWomenRoute =
+  ServicesHormoneTherapyWomenRouteImport.update({
+    id: '/services/hormone-therapy-women',
+    path: '/services/hormone-therapy-women',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesHormoneTherapyMenRoute =
+  ServicesHormoneTherapyMenRouteImport.update({
+    id: '/services/hormone-therapy-men',
+    path: '/services/hormone-therapy-men',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +99,13 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
+  '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
+  '/services/iv-therapy': typeof ServicesIvTherapyRoute
+  '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
+  '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
+  '/services/weight-loss': typeof ServicesWeightLossRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +114,13 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
+  '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
+  '/services/iv-therapy': typeof ServicesIvTherapyRoute
+  '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
+  '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
+  '/services/weight-loss': typeof ServicesWeightLossRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +130,60 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
+  '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
+  '/services/iv-therapy': typeof ServicesIvTherapyRoute
+  '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
+  '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
+  '/services/weight-loss': typeof ServicesWeightLossRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/book' | '/contact' | '/privacy' | '/terms'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/book'
+    | '/contact'
+    | '/privacy'
+    | '/terms'
+    | '/services/hormone-therapy-men'
+    | '/services/hormone-therapy-women'
+    | '/services/iv-therapy'
+    | '/services/peptide-therapy'
+    | '/services/progesterone-estrogen'
+    | '/services/weight-loss'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/book' | '/contact' | '/privacy' | '/terms'
-  id: '__root__' | '/' | '/about' | '/book' | '/contact' | '/privacy' | '/terms'
+  to:
+    | '/'
+    | '/about'
+    | '/book'
+    | '/contact'
+    | '/privacy'
+    | '/terms'
+    | '/services/hormone-therapy-men'
+    | '/services/hormone-therapy-women'
+    | '/services/iv-therapy'
+    | '/services/peptide-therapy'
+    | '/services/progesterone-estrogen'
+    | '/services/weight-loss'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/book'
+    | '/contact'
+    | '/privacy'
+    | '/terms'
+    | '/services/hormone-therapy-men'
+    | '/services/hormone-therapy-women'
+    | '/services/iv-therapy'
+    | '/services/peptide-therapy'
+    | '/services/progesterone-estrogen'
+    | '/services/weight-loss'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -87,6 +193,13 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  ServicesHormoneTherapyMenRoute: typeof ServicesHormoneTherapyMenRoute
+  ServicesHormoneTherapyWomenRoute: typeof ServicesHormoneTherapyWomenRoute
+  ServicesIvTherapyRoute: typeof ServicesIvTherapyRoute
+  ServicesPeptideTherapyRoute: typeof ServicesPeptideTherapyRoute
+  ServicesProgesteroneEstrogenRoute: typeof ServicesProgesteroneEstrogenRoute
+  ServicesWeightLossRoute: typeof ServicesWeightLossRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -133,6 +246,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/weight-loss': {
+      id: '/services/weight-loss'
+      path: '/services/weight-loss'
+      fullPath: '/services/weight-loss'
+      preLoaderRoute: typeof ServicesWeightLossRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/progesterone-estrogen': {
+      id: '/services/progesterone-estrogen'
+      path: '/services/progesterone-estrogen'
+      fullPath: '/services/progesterone-estrogen'
+      preLoaderRoute: typeof ServicesProgesteroneEstrogenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/peptide-therapy': {
+      id: '/services/peptide-therapy'
+      path: '/services/peptide-therapy'
+      fullPath: '/services/peptide-therapy'
+      preLoaderRoute: typeof ServicesPeptideTherapyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/iv-therapy': {
+      id: '/services/iv-therapy'
+      path: '/services/iv-therapy'
+      fullPath: '/services/iv-therapy'
+      preLoaderRoute: typeof ServicesIvTherapyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/hormone-therapy-women': {
+      id: '/services/hormone-therapy-women'
+      path: '/services/hormone-therapy-women'
+      fullPath: '/services/hormone-therapy-women'
+      preLoaderRoute: typeof ServicesHormoneTherapyWomenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/hormone-therapy-men': {
+      id: '/services/hormone-therapy-men'
+      path: '/services/hormone-therapy-men'
+      fullPath: '/services/hormone-therapy-men'
+      preLoaderRoute: typeof ServicesHormoneTherapyMenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -143,6 +305,13 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  ServicesHormoneTherapyMenRoute: ServicesHormoneTherapyMenRoute,
+  ServicesHormoneTherapyWomenRoute: ServicesHormoneTherapyWomenRoute,
+  ServicesIvTherapyRoute: ServicesIvTherapyRoute,
+  ServicesPeptideTherapyRoute: ServicesPeptideTherapyRoute,
+  ServicesProgesteroneEstrogenRoute: ServicesProgesteroneEstrogenRoute,
+  ServicesWeightLossRoute: ServicesWeightLossRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
