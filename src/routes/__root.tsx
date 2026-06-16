@@ -15,6 +15,8 @@ import { TopUtilityBar } from "@/components/site/TopUtilityBar";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { Link as TLink } from "@tanstack/react-router";
+import logoPrimary from "@/assets/logo-primary.svg.asset.json";
+import heroImage from "@/assets/kenny-injection.jpg.asset.json";
 
 function NotFoundComponent() {
   return (
@@ -90,14 +92,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS" },
       { name: "twitter:description", content: "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ee0462ae-137f-4c92-a778-d8fef8af9503/id-preview-9d2f5c54--744b1623-dbee-4f7a-bb33-3debfd6c0ae5.lovable.app-1781633358620.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ee0462ae-137f-4c92-a778-d8fef8af9503/id-preview-9d2f5c54--744b1623-dbee-4f7a-bb33-3debfd6c0ae5.lovable.app-1781633358620.png" },
+      { property: "og:image", content: heroImage.url },
+      { name: "twitter:image", content: heroImage.url },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", href: logoPrimary.url, type: "image/svg+xml" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
