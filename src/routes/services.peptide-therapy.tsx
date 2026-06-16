@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import hero from "@/assets/kenny-injection.jpg.asset.json";
 
 export const Route = createFileRoute("/services/peptide-therapy")({
   head: () => ({
@@ -8,7 +9,7 @@ export const Route = createFileRoute("/services/peptide-therapy")({
       { name: "description", content: "Customized peptide therapy to support recovery, performance, metabolism, and anti-aging." },
       { property: "og:title", content: "Peptide Therapy | Uplift Medical" },
       { property: "og:description", content: "Unlock your body's full potential." },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=1200&q=80" },
+      { property: "og:image", content: hero.url },
     ],
   }),
   component: () => (
@@ -17,9 +18,8 @@ export const Route = createFileRoute("/services/peptide-therapy")({
         eyebrow: "Peptide Therapy",
         headline: "Unlock your body's full potential.",
         subhead: "Enhance performance, boost recovery, and optimize your health.",
-        heroImage:
-          "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=1200&q=80",
-        heroAlt: "Clinical lab vials in soft light",
+        heroImage: hero.url,
+        heroAlt: "Uplift Medical provider preparing a precision peptide injection",
         intro:
           "Peptides are naturally occurring amino acid chains that help regulate hormone production, metabolism, immune response, and cellular repair. As we age, peptide levels decline, leading to slower recovery, lower energy, weight gain, and reduced muscle mass. Our peptide therapy is designed to restore optimal function through customized, science-backed treatments.",
         benefits: [
