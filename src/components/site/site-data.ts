@@ -6,8 +6,8 @@ export const SITE = {
   addressShort: "144 S Thomas St, Suite 102, Tupelo, MS",
   facebook: "https://www.facebook.com/profile.php?id=61558283480368",
   hours: [
-    { day: "Monday – Friday", time: "8:00am – 7:00pm" },
-    { day: "Saturday", time: "9:00am – 4:00pm" },
+    { day: "Monday to Friday", time: "8:00am to 7:00pm" },
+    { day: "Saturday", time: "9:00am to 4:00pm" },
     { day: "Sunday", time: "Closed" },
   ],
 };
