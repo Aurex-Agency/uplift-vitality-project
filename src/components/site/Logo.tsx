@@ -1,17 +1,16 @@
 import { Link } from "@tanstack/react-router";
-import logoPrimary from "@/assets/logo-primary.svg.asset.json";
-import logoSecondary from "@/assets/logo-secondary.svg.asset.json";
+import logoAsset from "@/assets/logo-primary.png.asset.json";
 
 export function Logo({ tone = "navy" }: { tone?: "navy" | "cream" }) {
-  const src = tone === "cream" ? logoSecondary.url : logoPrimary.url;
   return (
     <Link to="/" className="inline-flex items-center" aria-label="Uplift Medical home">
       <img
-        src={src}
+        src={logoAsset.url}
         alt="Uplift Medical"
-        className={`h-10 w-auto md:h-12 ${tone === "cream" ? "" : ""}`}
+        className="h-10 w-auto md:h-12"
         loading="eager"
         decoding="async"
+        fetchPriority="high"
       />
     </Link>
   );
