@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as QualifyRouteImport } from './routes/qualify'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookRouteImport } from './routes/book'
@@ -26,6 +27,11 @@ import { Route as ServicesHormoneTherapyMenRouteImport } from './routes/services
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QualifyRoute = QualifyRouteImport.update({
+  id: '/qualify',
+  path: '/qualify',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
+  '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
+  '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
+  '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/privacy'
+    | '/qualify'
     | '/terms'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/privacy'
+    | '/qualify'
     | '/terms'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/privacy'
+    | '/qualify'
     | '/terms'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
@@ -192,6 +204,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
   PrivacyRoute: typeof PrivacyRoute
+  QualifyRoute: typeof QualifyRoute
   TermsRoute: typeof TermsRoute
   ServicesHormoneTherapyMenRoute: typeof ServicesHormoneTherapyMenRoute
   ServicesHormoneTherapyWomenRoute: typeof ServicesHormoneTherapyWomenRoute
@@ -209,6 +222,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qualify': {
+      id: '/qualify'
+      path: '/qualify'
+      fullPath: '/qualify'
+      preLoaderRoute: typeof QualifyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -304,6 +324,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
   PrivacyRoute: PrivacyRoute,
+  QualifyRoute: QualifyRoute,
   TermsRoute: TermsRoute,
   ServicesHormoneTherapyMenRoute: ServicesHormoneTherapyMenRoute,
   ServicesHormoneTherapyWomenRoute: ServicesHormoneTherapyWomenRoute,
