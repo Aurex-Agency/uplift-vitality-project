@@ -23,8 +23,7 @@ export function CTABand({
           </CTAButton>
           <CTAButton
             href={SITE.phoneHref}
-            variant="outline"
-            className="border-cream/70 bg-white/20 text-cream shadow-sm backdrop-blur hover:bg-cream hover:text-primary"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-cream/70 bg-white/20 px-7 text-sm font-semibold tracking-wide text-cream shadow-sm backdrop-blur transition-all duration-200 hover:bg-cream hover:text-primary active:translate-y-0"
           >
             Call {SITE.phone}
           </CTAButton>
