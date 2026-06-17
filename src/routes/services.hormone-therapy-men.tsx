@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
-import hero from "@/assets/kenny-injection.jpg.asset.json";
+import hero from "@/assets/hero-hormone-men.jpg.asset.json";
 
 export const Route = createFileRoute("/services/hormone-therapy-men")({
   head: () => ({
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/services/hormone-therapy-men")({
         headline: "Restore strength, energy, and vitality.",
         subhead: "Feel stronger. Think sharper. Live with more confidence.",
         heroImage: hero.url,
-        heroAlt: "Uplift Medical provider preparing a testosterone injection",
+        heroAlt: "Competition-ready physique representing peak male vitality and strength",
         intro:
           "Testosterone plays a critical role in a man's overall health, affecting energy, muscle mass, libido, mood, and focus. As men age, testosterone naturally declines, leading to fatigue, weight gain, low motivation, and reduced performance. Our testosterone replacement therapy is designed to restore your levels so you feel like the best version of yourself again.",
         signs: {
