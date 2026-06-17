@@ -9,7 +9,7 @@ export const Route = createFileRoute("/services/weight-loss")({
       { name: "description", content: "Medically guided weight loss in Tupelo, MS. Science-backed nutrition and personalized plans built for your body." },
       { property: "og:title", content: "Medical Weight Loss | Uplift Medical" },
       { property: "og:description", content: "Burn fat, boost energy, and take control." },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80" },
+      { property: "og:image", content: heroImg.url },
     ],
   }),
   component: () => (
