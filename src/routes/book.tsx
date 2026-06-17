@@ -34,9 +34,9 @@ function Book() {
       </section>
 
       <section className="bg-background pb-24 md:pb-32">
-        <div className="mx-auto max-w-5xl px-6">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <Reveal>
-            <div className="overflow-hidden rounded-3xl border border-hairline bg-white p-8 md:p-12">
+            <div className="overflow-hidden rounded-3xl border border-hairline bg-white p-4 sm:p-8 md:p-12">
               <div className="flex flex-col items-center text-center">
                 <CTAButton href={SITE.phoneHref} variant="gold">
                   <Phone className="h-4 w-4" /> Call {SITE.phone}
@@ -46,9 +46,9 @@ function Book() {
                 </p>
               </div>
               <div
-                className="mt-10"
+                className="mt-8 -mx-2 sm:mx-0 overflow-x-hidden"
                 dangerouslySetInnerHTML={{
-                  __html: `<iframe src="https://api.leadconnectorhq.com/widget/booking/MFomhe6DLDUH3epL2IeI" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="YvaIns8LkHwNtABgDEmD_1781735960215"></iframe><br><script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>`,
+                  __html: `<iframe src="https://api.leadconnectorhq.com/widget/booking/MFomhe6DLDUH3epL2IeI" style="width: 100%; min-width: 0; border: none; overflow: hidden; display: block;" scrolling="no" id="YvaIns8LkHwNtABgDEmD_1781735960215"></iframe><script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>`,
                 }}
               />
             </div>
