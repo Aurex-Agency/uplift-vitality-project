@@ -5,7 +5,7 @@ import { SERVICES, SITE } from "./site-data";
 
 export function Footer() {
   return (
-    <footer className="navy-gradient relative mt-24 border-t border-hairline text-primary-foreground">
+    <footer className="navy-gradient relative border-t border-hairline text-primary-foreground">
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-[0.05]" />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
