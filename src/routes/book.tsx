@@ -45,17 +45,12 @@ function Book() {
                   Prefer to book online? Use the scheduler below.
                 </p>
               </div>
-              {/* BOOKING WIDGET EMBED GOES HERE.
-                  Paste the GoHighLevel or calendar iframe inside this container. */}
-              <div className="mt-10 flex min-h-[360px] flex-col items-center justify-center rounded-2xl border border-dashed border-hairline bg-background p-10 text-center">
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold">
-                  <Calendar className="h-6 w-6" />
-                </span>
-                <p className="mt-5 font-display text-2xl text-primary">Online scheduler coming soon</p>
-                <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                  Your scheduling widget will live here. Until then, please call us and we will book you immediately.
-                </p>
-              </div>
+              <div
+                className="mt-10"
+                dangerouslySetInnerHTML={{
+                  __html: `<iframe src="https://api.leadconnectorhq.com/widget/booking/MFomhe6DLDUH3epL2IeI" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="YvaIns8LkHwNtABgDEmD_1781735960215"></iframe><br><script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>`,
+                }}
+              />
             </div>
           </Reveal>
 
