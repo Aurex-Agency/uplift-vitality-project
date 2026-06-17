@@ -3,6 +3,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
 import { MapPin, Phone, Clock } from "lucide-react";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
@@ -17,6 +18,17 @@ export const Route = createFileRoute("/book")({
 });
 
 function Book() {
+  useEffect(() => {
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[src="https://link.msgsndr.com/js/form_embed.js"]'
+    );
+    if (existing) return;
+    const s = document.createElement("script");
+    s.src = "https://link.msgsndr.com/js/form_embed.js";
+    s.async = true;
+    document.body.appendChild(s);
+  }, []);
+
   return (
     <>
       <section className="bg-background pt-14 pb-10 md:pt-24">
@@ -45,12 +57,14 @@ function Book() {
                   Prefer to book online? Use the scheduler below.
                 </p>
               </div>
-              <div
-                className="mt-8 -mx-2 sm:mx-0 overflow-x-hidden"
-                dangerouslySetInnerHTML={{
-                  __html: `<iframe src="https://api.leadconnectorhq.com/widget/booking/MFomhe6DLDUH3epL2IeI" style="width: 100%; min-width: 0; border: none; overflow: hidden; display: block;" scrolling="no" id="YvaIns8LkHwNtABgDEmD_1781735960215"></iframe><script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>`,
-                }}
-              />
+              <div className="mt-8 -mx-4 sm:mx-0">
+                <iframe
+                  src="https://api.leadconnectorhq.com/widget/booking/MFomhe6DLDUH3epL2IeI"
+                  id="YvaIns8LkHwNtABgDEmD_1781735960215"
+                  scrolling="no"
+                  style={{ width: "100%", minWidth: 0, border: "none", display: "block", minHeight: 760 }}
+                />
+              </div>
             </div>
           </Reveal>
 
