@@ -9,7 +9,7 @@ export const Route = createFileRoute("/services/progesterone-estrogen")({
       { name: "description", content: "Balance hormones and ease menopause or perimenopause symptoms with personalized therapy in Tupelo, MS." },
       { property: "og:title", content: "Progesterone and Estrogen Therapy" },
       { property: "og:description", content: "Balance your hormones, restore your vitality." },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" },
+      { property: "og:image", content: heroImg.url },
     ],
   }),
   component: () => (
