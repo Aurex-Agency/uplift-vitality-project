@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import heroImg from "@/assets/hero-progesterone-estrogen.jpg.asset.json";
 
 export const Route = createFileRoute("/services/progesterone-estrogen")({
   head: () => ({
