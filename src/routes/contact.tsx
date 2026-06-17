@@ -5,7 +5,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
 import { submitContact } from "@/lib/leads";
-import { MapPin, Phone, Clock, Facebook } from "lucide-react";
+import { MapPin, Phone, Clock, Facebook, type LucideIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -157,7 +157,15 @@ function Field({ label, name, type = "text", error }: { label: string; name: str
   );
 }
 
-function DetailRow({ icon: Icon, label, children }: { icon: any; label: string; children: React.ReactNode }) {
+function DetailRow({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: LucideIcon;
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex gap-4 rounded-2xl border border-hairline bg-white p-6">
       <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">

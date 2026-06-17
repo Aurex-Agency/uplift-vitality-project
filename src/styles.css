@@ -152,12 +152,28 @@
     border-color: var(--color-border);
   }
 
+  html {
+    /* Prevent iOS bumping up font sizes in landscape */
+    -webkit-text-size-adjust: 100%;
+    /* Guard against horizontal scroll/jitter on mobile without
+       breaking position: sticky (clip does not create a scroll container) */
+    overflow-x: clip;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  /* Media never forces the layout wider than the viewport */
+  img,
+  iframe,
+  video {
+    max-width: 100%;
   }
 
   h1,
@@ -223,8 +239,8 @@
 @utility aurora {
   position: relative;
   background:
-    radial-gradient(120% 120% at 85% -10%, oklch(0.745 0.108 82 / 0.16) 0%, transparent 45%),
-    radial-gradient(90% 90% at 5% 110%, oklch(0.745 0.108 82 / 0.1) 0%, transparent 50%);
+    radial-gradient(120% 120% at 85% -10%, oklch(0.755 0.142 86 / 0.16) 0%, transparent 45%),
+    radial-gradient(90% 90% at 5% 110%, oklch(0.755 0.142 86 / 0.1) 0%, transparent 50%);
 }
 
 /* Deep navy gradient for inverted bands */
@@ -303,16 +319,6 @@
   }
   50% {
     transform: translateY(-10px);
-  }
-}
-
-/* Marquee for trust strip */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }
 

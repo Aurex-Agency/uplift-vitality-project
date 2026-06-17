@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
-import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Clock, ExternalLink, type LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/MFomhe6DLDUH3epL2IeI";
@@ -105,7 +105,15 @@ function Book() {
   );
 }
 
-function Info({ icon: Icon, title, children }: { icon: any; title: string; children: React.ReactNode }) {
+function Info({
+  icon: Icon,
+  title,
+  children,
+}: {
+  icon: LucideIcon;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="rounded-2xl border border-hairline bg-white p-6">
       <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold/15 text-gold">
