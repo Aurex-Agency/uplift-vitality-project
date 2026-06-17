@@ -18,9 +18,8 @@ export const Route = createFileRoute("/services/progesterone-estrogen")({
         eyebrow: "Progesterone and Estrogen Therapy",
         headline: "Balance your hormones, restore your vitality.",
         subhead: "Feel like yourself again with personalized hormone therapy.",
-        heroImage:
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
-        heroAlt: "Calm clinical wellness scene",
+        heroImage: heroImg.url,
+        heroAlt: "Uplift Medical providers showing hormone therapy products",
         intro:
           "Hormonal imbalances can significantly impact a woman's well-being, causing fatigue, mood swings, weight gain, hot flashes, and sleep disturbances. Whether due to menopause, perimenopause, or other shifts, estrogen and progesterone play a crucial role in energy, mood, bone health, and vitality. Our therapy helps women restore balance and regain control of their health.",
         benefits: [
