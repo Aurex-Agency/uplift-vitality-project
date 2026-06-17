@@ -55,6 +55,7 @@
   --color-navy-deep: var(--navy-deep);
   --color-gold: var(--gold);
   --color-gold-bright: var(--gold-bright);
+  --color-gold-deep: var(--gold-deep);
   --color-cream: var(--cream);
   --color-charcoal: var(--charcoal);
   --color-slate-soft: var(--slate-soft);
@@ -68,8 +69,10 @@
   /* Brand */
   --navy: oklch(0.265 0.062 256);
   --navy-deep: oklch(0.205 0.055 258);
-  --gold: oklch(0.745 0.108 82);
-  --gold-bright: oklch(0.82 0.13 84);
+  /* Rich metallic gold: warmer hue + higher chroma for a real-gold feel */
+  --gold: oklch(0.755 0.142 86);
+  --gold-bright: oklch(0.88 0.13 92);
+  --gold-deep: oklch(0.62 0.12 76);
   --cream: oklch(0.975 0.012 85);
   --charcoal: oklch(0.27 0.018 252);
   --slate-soft: oklch(0.52 0.025 245);
@@ -180,8 +183,17 @@
 @utility gold-rule {
   display: block;
   width: 56px;
-  height: 1px;
-  background: var(--gold);
+  height: 2px;
+  border-radius: 2px;
+  /* Metallic glint along the rule */
+  background: linear-gradient(
+    90deg,
+    var(--gold-deep) 0%,
+    var(--gold) 30%,
+    var(--gold-bright) 55%,
+    var(--gold) 80%,
+    var(--gold-deep) 100%
+  );
 }
 
 @utility soft-card {
@@ -236,16 +248,38 @@
   color: transparent;
 }
 
-/* Warm gold gradient fill (buttons, accents) */
+/* Polished metallic gold fill with a diagonal sheen (buttons, accents) */
 @utility gold-gradient {
-  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--gold-deep) 0%,
+    var(--gold) 26%,
+    var(--gold-bright) 50%,
+    var(--gold) 74%,
+    var(--gold-deep) 100%
+  );
 }
 
 /* Glow shadow used on primary actions + featured cards */
 @utility gold-glow {
   box-shadow:
-    0 10px 30px -10px oklch(0.745 0.108 82 / 0.55),
-    0 4px 12px -6px oklch(0.745 0.108 82 / 0.4);
+    0 10px 30px -10px oklch(0.755 0.142 86 / 0.6),
+    0 4px 12px -6px oklch(0.755 0.142 86 / 0.45);
+}
+
+/* Reflective gold text for premium accent words */
+@utility gold-text {
+  background: linear-gradient(
+    100deg,
+    var(--gold-deep) 0%,
+    var(--gold) 30%,
+    var(--gold-bright) 52%,
+    var(--gold) 74%,
+    var(--gold-deep) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Premium lifted card shadow */

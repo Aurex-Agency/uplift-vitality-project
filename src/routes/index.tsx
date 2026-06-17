@@ -196,7 +196,7 @@ function Index() {
             <Reveal>
               <span className="eyebrow">Telehealth Across MS and TN</span>
               <h2 className="mt-4 font-display text-4xl leading-tight md:text-6xl">
-                Quality care, <span className="text-gold">on your terms.</span>
+                Quality care, <span className="gold-text">on your terms.</span>
               </h2>
               <span className="gold-rule mt-6" />
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-cream/85">
