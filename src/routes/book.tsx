@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
-import { MapPin, Phone, Clock, Calendar } from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
