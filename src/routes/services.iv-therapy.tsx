@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import heroImg from "@/assets/hero-iv-therapy.jpg.asset.json";
 
 export const Route = createFileRoute("/services/iv-therapy")({
   head: () => ({
@@ -8,7 +9,7 @@ export const Route = createFileRoute("/services/iv-therapy")({
       { name: "description", content: "IV therapy in Tupelo, MS. Hydration, vitamins, immune support, and recovery delivered directly to your bloodstream." },
       { property: "og:title", content: "IV Therapy | Uplift Medical" },
       { property: "og:description", content: "Hydrate, replenish, and revitalize." },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1200&q=80" },
+      { property: "og:image", content: heroImg.url },
     ],
   }),
   component: () => (
@@ -17,9 +18,8 @@ export const Route = createFileRoute("/services/iv-therapy")({
         eyebrow: "IV Therapy",
         headline: "Hydrate, replenish, and revitalize.",
         subhead: "Boost your energy. Strengthen your immune system. Feel your best.",
-        heroImage:
-          "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=1200&q=80",
-        heroAlt: "IV therapy treatment in a calm clinical setting",
+        heroImage: heroImg.url,
+        heroAlt: "Uplift Medical providers showing wellness products",
         intro:
           "IV therapy delivers fluids, vitamins, minerals, and nutrients directly into your bloodstream for rapid absorption. It bypasses the digestive system so your body gets more of what it needs, faster.",
         benefits: [
