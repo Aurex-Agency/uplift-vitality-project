@@ -156,11 +156,13 @@ function RootComponent() {
       <div className="flex min-h-screen flex-col bg-background">
         <TopUtilityBar />
         <Navbar />
-        <main className="flex-1 pb-20 lg:pb-0">
+        <main className="flex-1">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
-        <Footer />
+        <div className="pb-20 lg:pb-0">
+          <Footer />
+        </div>
         <MobileCTABar />
       </div>
     </QueryClientProvider>
