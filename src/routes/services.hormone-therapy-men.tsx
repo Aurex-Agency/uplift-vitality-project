@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
-import hero from "@/assets/kenny-injection.jpg.asset.json";
+import hero from "@/assets/hero-hormone-men.jpg.asset.json";
 
 export const Route = createFileRoute("/services/hormone-therapy-men")({
   head: () => ({
