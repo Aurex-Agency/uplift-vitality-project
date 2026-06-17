@@ -2,8 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
-import { MapPin, Phone, Clock } from "lucide-react";
-import { useEffect } from "react";
+import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/MFomhe6DLDUH3epL2IeI";
+const BOOKING_SCRIPT_URL = "https://link.msgsndr.com/js/form_embed.js";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
@@ -18,14 +21,19 @@ export const Route = createFileRoute("/book")({
 });
 
 function Book() {
+  const [embedKey, setEmbedKey] = useState(0);
+
   useEffect(() => {
-    const existing = document.querySelector<HTMLScriptElement>(
-      'script[src="https://link.msgsndr.com/js/form_embed.js"]'
-    );
-    if (existing) return;
+    const existing = document.querySelector<HTMLScriptElement>(`script[src="${BOOKING_SCRIPT_URL}"]`);
+    if (existing) {
+      setEmbedKey((key) => key + 1);
+      return;
+    }
+
     const s = document.createElement("script");
-    s.src = "https://link.msgsndr.com/js/form_embed.js";
+    s.src = BOOKING_SCRIPT_URL;
     s.async = true;
+    s.onload = () => setEmbedKey((key) => key + 1);
     document.body.appendChild(s);
   }, []);
 
@@ -47,26 +55,35 @@ function Book() {
 
       <section className="bg-background pb-24 md:pb-32">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <Reveal>
-            <div className="overflow-hidden rounded-3xl border border-hairline bg-white p-4 sm:p-8 md:p-12">
-              <div className="flex flex-col items-center text-center">
-                <CTAButton href={SITE.phoneHref} variant="gold">
-                  <Phone className="h-4 w-4" /> Call {SITE.phone}
-                </CTAButton>
-                <p className="mt-4 text-sm text-muted-foreground">
-                  Prefer to book online? Use the scheduler below.
-                </p>
-              </div>
-              <div className="mt-8 -mx-4 sm:mx-0">
-                <iframe
-                  src="https://api.leadconnectorhq.com/widget/booking/MFomhe6DLDUH3epL2IeI"
-                  id="YvaIns8LkHwNtABgDEmD_1781735960215"
-                  scrolling="no"
-                  style={{ width: "100%", minWidth: 0, border: "none", display: "block", minHeight: 760 }}
-                />
-              </div>
+          <div className="overflow-hidden rounded-3xl border border-hairline bg-white p-4 sm:p-8 md:p-12">
+            <div className="flex flex-col items-center text-center">
+              <CTAButton href={SITE.phoneHref} variant="gold">
+                <Phone className="h-4 w-4" /> Call {SITE.phone}
+              </CTAButton>
+              <p className="mt-4 text-sm text-muted-foreground">
+                Prefer to book online? Use the scheduler below.
+              </p>
             </div>
-          </Reveal>
+            <div className="mt-8 overflow-hidden rounded-2xl border border-hairline bg-white">
+              <iframe
+                key={embedKey}
+                src={BOOKING_URL}
+                title="Book an appointment with Uplift Medical"
+                id="YvaIns8LkHwNtABgDEmD_1781735960215"
+                scrolling="no"
+                className="block w-full border-0"
+                style={{ minHeight: "min(980px, 120vh)", height: "980px" }}
+              />
+            </div>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+            >
+              Open scheduler in a new tab <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <Info icon={MapPin} title="Location">{SITE.address}</Info>
