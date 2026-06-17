@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 type Props = {
   to?: string;
@@ -20,7 +21,7 @@ const styles = {
 };
 
 export function CTAButton({ to, href, variant = "primary", children, className = "" }: Props) {
-  const cls = `${base} ${styles[variant]} ${className}`;
+  const cls = cn(base, styles[variant], className);
   if (href) {
     return (
       <a href={href} className={cls}>
