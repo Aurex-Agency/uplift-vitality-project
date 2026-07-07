@@ -19,10 +19,13 @@ function Terms() {
         <span className="gold-rule mt-6" />
         <div className="mt-8 space-y-5 text-base leading-relaxed text-foreground">
           <p>
-            By accessing and using this website you agree to these terms. The content on this site is for informational purposes and is not a substitute for medical advice, diagnosis, or treatment.
+            By accessing and using this website you agree to these terms. The content on this site
+            is for informational purposes and is not a substitute for medical advice, diagnosis, or
+            treatment.
           </p>
           <p>
-            Always seek the advice of a qualified healthcare provider with any questions you may have regarding a medical condition. Individual results vary.
+            Always seek the advice of a qualified healthcare provider with any questions you may
+            have regarding a medical condition. Individual results vary.
           </p>
           <p className="text-sm text-muted-foreground">
             Full terms will be added here. This page is intentionally brief.

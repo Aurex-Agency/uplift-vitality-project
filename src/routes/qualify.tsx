@@ -280,7 +280,7 @@ function Qualify() {
                 <div className="mt-10">
                   <button
                     onClick={next}
-                    className="inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-10 text-base font-medium tracking-wide text-primary-foreground transition hover:-translate-y-0.5 hover:bg-primary/90 sm:w-auto"
+                    className="gold-gradient gold-glow inline-flex h-14 w-full items-center justify-center rounded-full px-10 text-base font-semibold tracking-wide text-primary transition hover:-translate-y-0.5 sm:w-auto"
                   >
                     Start the Assessment
                   </button>
@@ -456,7 +456,7 @@ function Qualify() {
                 </button>
                 <button
                   onClick={submit}
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-medium tracking-wide text-primary-foreground transition hover:-translate-y-0.5 hover:bg-primary/90"
+                  className="gold-gradient gold-glow inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-0.5"
                 >
                   See My Results
                 </button>
@@ -498,7 +498,9 @@ function Qualify() {
                   )}
                 </p>
                 <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                  <CTAButton to="/book">Book an Appointment</CTAButton>
+                  <CTAButton to="/book" variant="gold">
+                    Book an Appointment
+                  </CTAButton>
                   <CTAButton href={SITE.phoneHref} variant="outline">
                     <Phone className="h-4 w-4" /> Call {SITE.phone}
                   </CTAButton>

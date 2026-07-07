@@ -1,15 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
-import heroImg from "@/assets/hero-hormone-women.jpg.asset.json";
+import heroImg from "@/assets/hero-hormone-women.jpg";
 
 export const Route = createFileRoute("/services/hormone-therapy-women")({
   head: () => ({
     meta: [
       { title: "Testosterone Therapy for Women | Uplift Medical, Tupelo MS" },
-      { name: "description", content: "Testosterone therapy designed for women. Restore energy, mood, libido, and strength with concierge care in Tupelo, MS." },
+      {
+        name: "description",
+        content:
+          "Testosterone therapy designed for women. Restore energy, mood, libido, and strength with concierge care in Tupelo, MS.",
+      },
       { property: "og:title", content: "Testosterone Therapy for Women | Uplift Medical" },
       { property: "og:description", content: "Restore balance, energy, and confidence." },
-      { property: "og:image", content: heroImg.url },
+      { property: "og:image", content: heroImg },
     ],
   }),
   component: () => (
@@ -18,8 +22,8 @@ export const Route = createFileRoute("/services/hormone-therapy-women")({
         eyebrow: "Testosterone Therapy for Women",
         headline: "Restore balance, energy, and confidence.",
         subhead: "Feel stronger, sharper, and more in control of your health.",
-        heroImage: heroImg.url,
-        heroAlt: "Uplift Medical provider preparing an injection", 
+        heroImage: heroImg,
+        heroAlt: "Uplift Medical provider preparing an injection",
         intro:
           "Testosterone is not just for men. Women need healthy testosterone levels to maintain energy, muscle tone, mood stability, and overall well-being. As women age, levels decline, leading to fatigue, brain fog, weight gain, low libido, and reduced strength. Our testosterone therapy for women is designed to restore hormonal balance so you feel revitalized and in control again.",
         signs: {

@@ -1,15 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
-import hero from "@/assets/hero-hormone-men.jpg.asset.json";
+import hero from "@/assets/hero-hormone-men.jpg";
 
 export const Route = createFileRoute("/services/hormone-therapy-men")({
   head: () => ({
     meta: [
       { title: "Testosterone Therapy for Men | Uplift Medical, Tupelo MS" },
-      { name: "description", content: "Physician-guided TRT in Tupelo, MS. Restore energy, strength, focus, libido, and mood. In-person and telehealth." },
+      {
+        name: "description",
+        content:
+          "Physician-guided TRT in Tupelo, MS. Restore energy, strength, focus, libido, and mood. In-person and telehealth.",
+      },
       { property: "og:title", content: "Testosterone Therapy for Men | Uplift Medical" },
-      { property: "og:description", content: "Restore strength, energy, and vitality. Feel stronger. Think sharper. Live with more confidence." },
-      { property: "og:image", content: hero.url },
+      {
+        property: "og:description",
+        content:
+          "Restore strength, energy, and vitality. Feel stronger. Think sharper. Live with more confidence.",
+      },
+      { property: "og:image", content: hero },
     ],
   }),
   component: () => (
@@ -18,7 +26,7 @@ export const Route = createFileRoute("/services/hormone-therapy-men")({
         eyebrow: "Testosterone Therapy for Men",
         headline: "Restore strength, energy, and vitality.",
         subhead: "Feel stronger. Think sharper. Live with more confidence.",
-        heroImage: hero.url,
+        heroImage: hero,
         heroAlt: "Competition-ready physique representing peak male vitality and strength",
         intro:
           "Testosterone plays a critical role in a man's overall health, affecting energy, muscle mass, libido, mood, and focus. As men age, testosterone naturally declines, leading to fatigue, weight gain, low motivation, and reduced performance. Our testosterone replacement therapy is designed to restore your levels so you feel like the best version of yourself again.",

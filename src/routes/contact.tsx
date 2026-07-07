@@ -14,9 +14,16 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact Uplift Medical | Tupelo, MS" },
-      { name: "description", content: "Call, message, or visit Uplift Medical at 144 S Thomas St in Tupelo, MS. Hours, map, and contact form." },
+      {
+        name: "description",
+        content:
+          "Call, message, or visit Uplift Medical at 144 S Thomas St in Tupelo, MS. Hours, map, and contact form.",
+      },
       { property: "og:title", content: "Contact Uplift Medical" },
-      { property: "og:description", content: "We would love to hear from you. Reach out by phone, message, or visit." },
+      {
+        property: "og:description",
+        content: "We would love to hear from you. Reach out by phone, message, or visit.",
+      },
     ],
   }),
   component: Contact,
@@ -45,7 +52,9 @@ function Contact() {
     const parsed = schema.safeParse(data);
     if (!parsed.success) {
       const errs: Record<string, string> = {};
-      parsed.error.issues.forEach((i) => { errs[i.path[0] as string] = i.message; });
+      parsed.error.issues.forEach((i) => {
+        errs[i.path[0] as string] = i.message;
+      });
       setErrors(errs);
       return;
     }
@@ -76,10 +85,16 @@ function Contact() {
                 {sent ? (
                   <div className="py-10 text-center">
                     <span className="eyebrow">Thank You</span>
-                    <h2 className="mt-3 font-display text-3xl text-primary">Your message is on its way.</h2>
-                    <p className="mt-3 text-muted-foreground">We will be in touch shortly. For anything urgent, call us.</p>
+                    <h2 className="mt-3 font-display text-3xl text-primary">
+                      Your message is on its way.
+                    </h2>
+                    <p className="mt-3 text-muted-foreground">
+                      We will be in touch shortly. For anything urgent, call us.
+                    </p>
                     <div className="mt-6">
-                      <CTAButton href={SITE.phoneHref} variant="outline">Call {SITE.phone}</CTAButton>
+                      <CTAButton href={SITE.phoneHref} variant="outline">
+                        Call {SITE.phone}
+                      </CTAButton>
                     </div>
                   </div>
                 ) : (
@@ -90,13 +105,25 @@ function Contact() {
                     </div>
                     <Field label="Phone" name="phone" type="tel" error={errors.phone} />
                     <div>
-                      <Label htmlFor="message" className="text-xs tracking-widest uppercase text-muted-foreground">Message</Label>
-                      <Textarea id="message" name="message" rows={6} className="mt-2 rounded-xl border-hairline bg-background" />
-                      {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+                      <Label
+                        htmlFor="message"
+                        className="text-xs tracking-widest uppercase text-muted-foreground"
+                      >
+                        Message
+                      </Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        rows={6}
+                        className="mt-2 rounded-xl border-hairline bg-background"
+                      />
+                      {errors.message && (
+                        <p className="mt-1 text-xs text-destructive">{errors.message}</p>
+                      )}
                     </div>
                     <button
                       type="submit"
-                      className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-medium tracking-wide text-primary-foreground transition hover:-translate-y-0.5 hover:bg-primary/90"
+                      className="gold-gradient gold-glow inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-0.5"
                     >
                       Send Message
                     </button>
@@ -109,9 +136,13 @@ function Contact() {
           <div className="md:col-span-5">
             <Reveal delay={120}>
               <div className="space-y-6">
-                <DetailRow icon={MapPin} label="Visit">{SITE.address}</DetailRow>
+                <DetailRow icon={MapPin} label="Visit">
+                  {SITE.address}
+                </DetailRow>
                 <DetailRow icon={Phone} label="Call">
-                  <a href={SITE.phoneHref} className="hover:text-gold">{SITE.phone}</a>
+                  <a href={SITE.phoneHref} className="hover:text-gold">
+                    {SITE.phone}
+                  </a>
                 </DetailRow>
                 <DetailRow icon={Clock} label="Hours">
                   <div className="space-y-1">
@@ -124,7 +155,12 @@ function Contact() {
                   </div>
                 </DetailRow>
                 <DetailRow icon={Facebook} label="Follow">
-                  <a href={SITE.facebook} target="_blank" rel="noreferrer" className="hover:text-gold">
+                  <a
+                    href={SITE.facebook}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-gold"
+                  >
                     Facebook
                   </a>
                 </DetailRow>
@@ -147,11 +183,28 @@ function Contact() {
   );
 }
 
-function Field({ label, name, type = "text", error }: { label: string; name: string; type?: string; error?: string }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  error,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  error?: string;
+}) {
   return (
     <div>
-      <Label htmlFor={name} className="text-xs tracking-widest uppercase text-muted-foreground">{label}</Label>
-      <Input id={name} name={name} type={type} className="mt-2 h-12 rounded-xl border-hairline bg-background" />
+      <Label htmlFor={name} className="text-xs tracking-widest uppercase text-muted-foreground">
+        {label}
+      </Label>
+      <Input
+        id={name}
+        name={name}
+        type={type}
+        className="mt-2 h-12 rounded-xl border-hairline bg-background"
+      />
       {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
     </div>
   );

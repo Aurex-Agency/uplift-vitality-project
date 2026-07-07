@@ -23,7 +23,7 @@ export function MobileCTABar() {
         </a>
         <Link
           to="/book"
-          className="inline-flex h-12 flex-[1.4] items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-[0_8px_24px_-10px_rgba(14,42,71,0.6)]"
+          className="gold-gradient gold-glow inline-flex h-12 flex-[1.4] items-center justify-center gap-2 rounded-full text-sm font-semibold text-primary"
         >
           <CalendarCheck className="h-4 w-4" /> Book Appointment
         </Link>

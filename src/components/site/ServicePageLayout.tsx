@@ -35,7 +35,9 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
               {content.subhead}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <CTAButton to="/book">Book an Appointment</CTAButton>
+              <CTAButton to="/book" variant="gold">
+                Book an Appointment
+              </CTAButton>
               <CTAButton to="/qualify" variant="outline">
                 See If You Qualify
               </CTAButton>
