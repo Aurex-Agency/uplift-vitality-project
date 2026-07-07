@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { nitro } from "nitro/vite";
 import viteReact from "@vitejs/plugin-react";
 
 // Standalone Vite config — no build-time dependency on Lovable.
@@ -9,10 +10,12 @@ import viteReact from "@vitejs/plugin-react";
 //   - Tailwind CSS v4
 //   - tsconfig path aliases (@/*)
 //   - TanStack Start (SSR; server entry redirected to src/server.ts)
+//   - Nitro (build only) targeting Vercel — emits the .vercel/output
+//     Build Output API bundle that Vercel serves natively
 //   - React
 // CSS uses Lightning CSS in dev and build so the dev preview matches the
 // built output (Vite otherwise uses PostCSS in dev, Lightning CSS at build).
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   css: { transformer: "lightningcss" },
   resolve: {
     alias: {
@@ -43,6 +46,8 @@ export default defineConfig({
       },
       server: { entry: "server" },
     }),
+    // Nitro is a build-time deploy plugin; it must not load into the dev server.
+    ...(command === "build" ? [nitro({ preset: "vercel" })] : []),
     viteReact(),
   ],
-});
+}));
