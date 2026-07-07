@@ -18,8 +18,8 @@ import {
   ArrowRight,
   Check,
 } from "lucide-react";
-import heroImage from "@/assets/kenny-injection.jpg.asset.json";
-import teamImage from "@/assets/team.jpg.asset.json";
+import heroImage from "@/assets/kenny-injection.jpg";
+import teamImage from "@/assets/team.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,11 +36,11 @@ export const Route = createFileRoute("/")({
         content:
           "Restore energy, confidence, and vitality with concierge medical care designed around you.",
       },
-      { property: "og:image", content: heroImage.url },
-      { name: "twitter:image", content: heroImage.url },
+      { property: "og:image", content: SITE.url + heroImage },
+      { name: "twitter:image", content: SITE.url + heroImage },
     ],
     links: [
-      { rel: "preload", as: "image", href: heroImage.url, fetchpriority: "high" } as unknown as {
+      { rel: "preload", as: "image", href: heroImage, fetchPriority: "high" } as unknown as {
         rel: string;
         href: string;
       },
@@ -88,7 +88,7 @@ function Index() {
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <CTAButton to="/book">
+                <CTAButton to="/book" variant="gold">
                   Book an Appointment
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </CTAButton>
@@ -120,14 +120,14 @@ function Index() {
                 {/* IMAGE SLOT: hero portrait */}
                 <div className="relative overflow-hidden rounded-[28px] border border-white/40 shadow-[0_50px_100px_-40px_rgba(14,42,71,0.5)]">
                   <img
-                    src={heroImage.url}
+                    src={heroImage}
                     alt="Provider at Uplift Medical preparing a precision injection"
                     className="h-[460px] w-full object-cover sm:h-[560px] md:h-[640px]"
                     width={1440}
                     height={1800}
                     loading="eager"
                     decoding="async"
-                    {...({ fetchpriority: "high" } as { fetchpriority: "high" })}
+                    fetchPriority="high"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/55 via-transparent to-transparent" />
                 </div>
@@ -174,7 +174,9 @@ function Index() {
                 attentive care built around your goals.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <CTAButton to="/book">Book an Appointment</CTAButton>
+                <CTAButton to="/book" variant="gold">
+                  Book an Appointment
+                </CTAButton>
                 <a
                   href={SITE.phoneHref}
                   className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-gold"
@@ -270,7 +272,7 @@ function Index() {
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl border border-hairline shadow-[0_40px_80px_-40px_rgba(14,42,71,0.45)]">
               <img
-                src={teamImage.url}
+                src={teamImage}
                 alt="The Uplift Medical care team in their Tupelo, Mississippi office"
                 className="h-[360px] w-full object-cover md:h-[520px]"
                 width={1920}

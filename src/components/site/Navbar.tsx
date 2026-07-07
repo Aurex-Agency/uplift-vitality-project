@@ -72,7 +72,7 @@ export function Navbar() {
           </Link>
           <Link
             to="/book"
-            className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold tracking-wide text-primary-foreground shadow-[0_8px_24px_-10px_rgba(14,42,71,0.55)] transition hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_14px_30px_-12px_rgba(14,42,71,0.65)]"
+            className="gold-gradient gold-glow inline-flex h-11 items-center justify-center rounded-full px-6 text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-0.5"
           >
             Book Appointment
           </Link>
@@ -128,7 +128,7 @@ export function Navbar() {
                 <Link
                   to="/book"
                   onClick={() => setOpen(false)}
-                  className="mt-4 inline-flex h-12 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground"
+                  className="gold-gradient gold-glow mt-4 inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold text-primary"
                 >
                   Book Appointment
                 </Link>

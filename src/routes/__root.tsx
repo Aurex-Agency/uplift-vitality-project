@@ -12,12 +12,13 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { TopUtilityBar } from "@/components/site/TopUtilityBar";
+import { SITE } from "@/components/site/site-data";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { MobileCTABar } from "@/components/site/MobileCTABar";
 import { Link as TLink } from "@tanstack/react-router";
-import logoPrimary from "@/assets/logo-primary.png.asset.json";
-import heroImage from "@/assets/kenny-injection.jpg.asset.json";
+import logoPrimary from "@/assets/logo-primary.png";
+import heroImage from "@/assets/kenny-injection.jpg";
 
 function NotFoundComponent() {
   return (
@@ -111,15 +112,55 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
       },
-      { property: "og:image", content: heroImage.url },
-      { name: "twitter:image", content: heroImage.url },
+      { property: "og:image", content: SITE.url + heroImage },
+      { name: "twitter:image", content: SITE.url + heroImage },
+      { name: "theme-color", content: "#0e2a47" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalClinic",
+          name: "Uplift Medical",
+          description:
+            "Concierge hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+          telephone: "+1-662-491-1457",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "144 S Thomas St, Suite 102, B",
+            addressLocality: "Tupelo",
+            addressRegion: "MS",
+            postalCode: "38801",
+            addressCountry: "US",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "08:00",
+              closes: "19:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: "Saturday",
+              opens: "09:00",
+              closes: "16:00",
+            },
+          ],
+          sameAs: ["https://www.facebook.com/profile.php?id=61558283480368"],
+          image: SITE.url + logoPrimary,
+          url: SITE.url,
+        }),
+      },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: logoPrimary.url, type: "image/png" },
+      { rel: "icon", href: logoPrimary, type: "image/png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

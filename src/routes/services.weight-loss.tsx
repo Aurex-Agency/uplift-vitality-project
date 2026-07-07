@@ -1,15 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
-import heroImg from "@/assets/hero-weight-loss.jpg.asset.json";
+import { SITE } from "@/components/site/site-data";
+import heroImg from "@/assets/hero-weight-loss.jpg";
 
 export const Route = createFileRoute("/services/weight-loss")({
   head: () => ({
     meta: [
       { title: "Medical Weight Loss | Uplift Medical, Tupelo MS" },
-      { name: "description", content: "Medically guided weight loss in Tupelo, MS. Science-backed nutrition and personalized plans built for your body." },
+      {
+        name: "description",
+        content:
+          "Medically guided weight loss in Tupelo, MS. Science-backed nutrition and personalized plans built for your body.",
+      },
       { property: "og:title", content: "Medical Weight Loss | Uplift Medical" },
       { property: "og:description", content: "Burn fat, boost energy, and take control." },
-      { property: "og:image", content: heroImg.url },
+      { property: "og:image", content: SITE.url + heroImg },
     ],
   }),
   component: () => (
@@ -18,7 +23,7 @@ export const Route = createFileRoute("/services/weight-loss")({
         eyebrow: "Medical Weight Loss",
         headline: "Burn fat, boost energy, and take control.",
         subhead: "Medically guided weight loss with no guesswork.",
-        heroImage: heroImg.url,
+        heroImage: heroImg,
         heroAlt: "Person walking outdoors in natural light",
         intro:
           "Our medically guided weight loss programs combine science-backed nutrition, metabolism-boosting treatments, and personalized plans to help you achieve lasting results. No fad diets and no guesswork, just a plan built for your body.",

@@ -12,9 +12,16 @@ export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
       { title: "Book an Appointment | Uplift Medical, Tupelo MS" },
-      { name: "description", content: "Book your consultation with Uplift Medical. Concierge hormone, weight loss, peptide, and IV therapy in Tupelo, MS." },
+      {
+        name: "description",
+        content:
+          "Book your consultation with Uplift Medical. Concierge hormone, weight loss, peptide, and IV therapy in Tupelo, MS.",
+      },
       { property: "og:title", content: "Book an Appointment | Uplift Medical" },
-      { property: "og:description", content: "Start your journey to feeling uplifted. Choose a time or call us directly." },
+      {
+        property: "og:description",
+        content: "Start your journey to feeling uplifted. Choose a time or call us directly.",
+      },
     ],
   }),
   component: Book,
@@ -24,7 +31,9 @@ function Book() {
   const [embedKey, setEmbedKey] = useState(0);
 
   useEffect(() => {
-    const existing = document.querySelector<HTMLScriptElement>(`script[src="${BOOKING_SCRIPT_URL}"]`);
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${BOOKING_SCRIPT_URL}"]`,
+    );
     if (existing) {
       setEmbedKey((key) => key + 1);
       return;
@@ -47,7 +56,8 @@ function Book() {
               Start your journey to feeling uplifted.
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Booking is easy. Choose a time that works for you, or call us directly and our team will get you scheduled.
+              Booking is easy. Choose a time that works for you, or call us directly and our team
+              will get you scheduled.
             </p>
           </Reveal>
         </div>
@@ -86,7 +96,9 @@ function Book() {
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <Info icon={MapPin} title="Location">{SITE.address}</Info>
+            <Info icon={MapPin} title="Location">
+              {SITE.address}
+            </Info>
             <Info icon={Clock} title="Hours">
               {SITE.hours.map((h) => (
                 <div key={h.day} className="text-sm">
@@ -96,7 +108,9 @@ function Book() {
               ))}
             </Info>
             <Info icon={Phone} title="Phone">
-              <a href={SITE.phoneHref} className="hover:text-gold">{SITE.phone}</a>
+              <a href={SITE.phoneHref} className="hover:text-gold">
+                {SITE.phone}
+              </a>
             </Info>
           </div>
         </div>

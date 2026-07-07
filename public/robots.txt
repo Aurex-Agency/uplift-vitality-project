@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uplift.aurexagency.com/sitemap.xml
