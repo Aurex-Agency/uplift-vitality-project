@@ -1,5 +1,8 @@
 export const SITE = {
   name: "Uplift Medical",
+  // Canonical site origin, no trailing slash. Used for og:image and structured data.
+  // TODO at launch: switch to https://upliftmedicalms.com (also update public/sitemap.xml).
+  url: "https://uplift.aurexagency.com",
   phone: "662-491-1457",
   phoneHref: "tel:16624911457",
   address: "144 S Thomas St, Suite 102, B, Tupelo, MS 38801",

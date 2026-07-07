@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import { SITE } from "@/components/site/site-data";
 import hero from "@/assets/hero-hormone-men.jpg";
 
 export const Route = createFileRoute("/services/hormone-therapy-men")({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/services/hormone-therapy-men")({
         content:
           "Restore strength, energy, and vitality. Feel stronger. Think sharper. Live with more confidence.",
       },
-      { property: "og:image", content: hero },
+      { property: "og:image", content: SITE.url + hero },
     ],
   }),
   component: () => (

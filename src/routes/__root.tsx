@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { TopUtilityBar } from "@/components/site/TopUtilityBar";
+import { SITE } from "@/components/site/site-data";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { MobileCTABar } from "@/components/site/MobileCTABar";
@@ -111,8 +112,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
       },
-      { property: "og:image", content: heroImage },
-      { name: "twitter:image", content: heroImage },
+      { property: "og:image", content: SITE.url + heroImage },
+      { name: "twitter:image", content: SITE.url + heroImage },
       { name: "theme-color", content: "#0e2a47" },
     ],
     scripts: [
@@ -148,7 +149,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
           ],
           sameAs: ["https://www.facebook.com/profile.php?id=61558283480368"],
-          image: logoPrimary,
+          image: SITE.url + logoPrimary,
+          url: SITE.url,
         }),
       },
     ],

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import { SITE } from "@/components/site/site-data";
 import hero from "@/assets/kenny-injection.jpg";
 
 export const Route = createFileRoute("/services/peptide-therapy")({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/services/peptide-therapy")({
       },
       { property: "og:title", content: "Peptide Therapy | Uplift Medical" },
       { property: "og:description", content: "Unlock your body's full potential." },
-      { property: "og:image", content: hero },
+      { property: "og:image", content: SITE.url + hero },
     ],
   }),
   component: () => (

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import { SITE } from "@/components/site/site-data";
 import heroImg from "@/assets/hero-weight-loss.jpg";
 
 export const Route = createFileRoute("/services/weight-loss")({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/services/weight-loss")({
       },
       { property: "og:title", content: "Medical Weight Loss | Uplift Medical" },
       { property: "og:description", content: "Burn fat, boost energy, and take control." },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: SITE.url + heroImg },
     ],
   }),
   component: () => (

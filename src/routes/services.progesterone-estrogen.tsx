@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import { SITE } from "@/components/site/site-data";
 import heroImg from "@/assets/hero-progesterone-estrogen.jpg";
 
 export const Route = createFileRoute("/services/progesterone-estrogen")({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/services/progesterone-estrogen")({
       },
       { property: "og:title", content: "Progesterone and Estrogen Therapy" },
       { property: "og:description", content: "Balance your hormones, restore your vitality." },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: SITE.url + heroImg },
     ],
   }),
   component: () => (

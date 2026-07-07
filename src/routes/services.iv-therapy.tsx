@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import { SITE } from "@/components/site/site-data";
 import heroImg from "@/assets/hero-iv-therapy.jpg";
 
 export const Route = createFileRoute("/services/iv-therapy")({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/services/iv-therapy")({
       },
       { property: "og:title", content: "IV Therapy | Uplift Medical" },
       { property: "og:description", content: "Hydrate, replenish, and revitalize." },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: SITE.url + heroImg },
     ],
   }),
   component: () => (

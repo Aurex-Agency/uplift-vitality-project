@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePageLayout } from "@/components/site/ServicePageLayout";
+import { SITE } from "@/components/site/site-data";
 import heroImg from "@/assets/hero-hormone-women.jpg";
 
 export const Route = createFileRoute("/services/hormone-therapy-women")({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/services/hormone-therapy-women")({
       },
       { property: "og:title", content: "Testosterone Therapy for Women | Uplift Medical" },
       { property: "og:description", content: "Restore balance, energy, and confidence." },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: SITE.url + heroImg },
     ],
   }),
   component: () => (

@@ -36,8 +36,8 @@ export const Route = createFileRoute("/")({
         content:
           "Restore energy, confidence, and vitality with concierge medical care designed around you.",
       },
-      { property: "og:image", content: heroImage },
-      { name: "twitter:image", content: heroImage },
+      { property: "og:image", content: SITE.url + heroImage },
+      { name: "twitter:image", content: SITE.url + heroImage },
     ],
     links: [
       { rel: "preload", as: "image", href: heroImage, fetchPriority: "high" } as unknown as {
