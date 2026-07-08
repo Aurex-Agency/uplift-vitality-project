@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { CTAButton } from "@/components/site/CTAButton";
 import { CTABand } from "@/components/site/CTABand";
 import { TestimonialCard } from "@/components/site/TestimonialCard";
 import { TESTIMONIALS } from "@/components/site/site-data";
@@ -108,18 +109,11 @@ function About() {
         </div>
       </section>
 
-      {/* TEAM PLACEHOLDER */}
+      {/* BRAND ETHOS */}
       <section className="bg-background py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-2 md:gap-16">
           <Reveal>
-            <SectionHeading
-              eyebrow="Our Team"
-              title="Experienced providers, attentive care."
-              subhead="Our team includes nurse practitioners and support staff dedicated to every step of your journey."
-            />
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="mx-auto mt-14 max-w-lg overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)]">
+            <div className="mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)] md:mx-0">
               <img
                 src={teamPhoto}
                 alt="Wearing the Uplift Medical tank top at the gym"
@@ -129,6 +123,24 @@ function About() {
                 loading="lazy"
                 decoding="async"
               />
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <span className="eyebrow">The Uplift Standard</span>
+            <h2 className="mt-4 font-display text-4xl leading-tight text-primary md:text-5xl">
+              Built for how you actually live.
+            </h2>
+            <span className="gold-rule mt-6" />
+            <p className="mt-7 max-w-lg text-lg leading-relaxed text-foreground">
+              Whether you are chasing a personal record or just keeping up with a full life, Uplift
+              Medical helps you show up with more energy, strength, and confidence. Personalized
+              care, built around your goals and the way you really live &mdash; not a
+              one-size-fits-all protocol.
+            </p>
+            <div className="mt-8">
+              <CTAButton to="/qualify" variant="gold">
+                See If You Qualify
+              </CTAButton>
             </div>
           </Reveal>
         </div>
