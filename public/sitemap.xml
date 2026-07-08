@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO at launch: replace uplift.aurexagency.com with upliftmedicalms.com (also update SITE.url in src/components/site/site-data.ts) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://uplift.aurexagency.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://uplift.aurexagency.com/qualify</loc><priority>0.9</priority></url>
-  <url><loc>https://uplift.aurexagency.com/book</loc><priority>0.9</priority></url>
-  <url><loc>https://uplift.aurexagency.com/services</loc><priority>0.8</priority></url>
-  <url><loc>https://uplift.aurexagency.com/services/hormone-therapy-men</loc><priority>0.8</priority></url>
-  <url><loc>https://uplift.aurexagency.com/services/hormone-therapy-women</loc><priority>0.8</priority></url>
-  <url><loc>https://uplift.aurexagency.com/services/progesterone-estrogen</loc><priority>0.8</priority></url>
-  <url><loc>https://uplift.aurexagency.com/services/peptide-therapy</loc><priority>0.8</priority></url>
-  <url><loc>https://uplift.aurexagency.com/services/nutrition</loc><priority>0.8</priority></url>
-  <url><loc>https://uplift.aurexagency.com/services/personalized-training</loc><priority>0.8</priority></url>
-  <url><loc>https://uplift.aurexagency.com/services/supplementation</loc><priority>0.8</priority></url>
-  <url><loc>https://uplift.aurexagency.com/locations/tupelo</loc><priority>0.7</priority></url>
-  <url><loc>https://uplift.aurexagency.com/locations/saltillo</loc><priority>0.7</priority></url>
-  <url><loc>https://uplift.aurexagency.com/locations/pontotoc</loc><priority>0.7</priority></url>
-  <url><loc>https://uplift.aurexagency.com/locations/amory</loc><priority>0.7</priority></url>
-  <url><loc>https://uplift.aurexagency.com/locations/new-albany</loc><priority>0.7</priority></url>
-  <url><loc>https://uplift.aurexagency.com/locations/oxford</loc><priority>0.7</priority></url>
-  <url><loc>https://uplift.aurexagency.com/about</loc><priority>0.6</priority></url>
-  <url><loc>https://uplift.aurexagency.com/contact</loc><priority>0.6</priority></url>
-  <url><loc>https://uplift.aurexagency.com/privacy</loc><priority>0.2</priority></url>
-  <url><loc>https://uplift.aurexagency.com/terms</loc><priority>0.2</priority></url>
+  <url><loc>https://upliftmedicalms.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://upliftmedicalms.com/qualify</loc><priority>0.9</priority></url>
+  <url><loc>https://upliftmedicalms.com/book</loc><priority>0.9</priority></url>
+  <url><loc>https://upliftmedicalms.com/services</loc><priority>0.8</priority></url>
+  <url><loc>https://upliftmedicalms.com/services/hormone-therapy-men</loc><priority>0.8</priority></url>
+  <url><loc>https://upliftmedicalms.com/services/hormone-therapy-women</loc><priority>0.8</priority></url>
+  <url><loc>https://upliftmedicalms.com/services/progesterone-estrogen</loc><priority>0.8</priority></url>
+  <url><loc>https://upliftmedicalms.com/services/peptide-therapy</loc><priority>0.8</priority></url>
+  <url><loc>https://upliftmedicalms.com/services/nutrition</loc><priority>0.8</priority></url>
+  <url><loc>https://upliftmedicalms.com/services/personalized-training</loc><priority>0.8</priority></url>
+  <url><loc>https://upliftmedicalms.com/services/supplementation</loc><priority>0.8</priority></url>
+  <url><loc>https://upliftmedicalms.com/locations/tupelo</loc><priority>0.7</priority></url>
+  <url><loc>https://upliftmedicalms.com/locations/saltillo</loc><priority>0.7</priority></url>
+  <url><loc>https://upliftmedicalms.com/locations/pontotoc</loc><priority>0.7</priority></url>
+  <url><loc>https://upliftmedicalms.com/locations/amory</loc><priority>0.7</priority></url>
+  <url><loc>https://upliftmedicalms.com/locations/new-albany</loc><priority>0.7</priority></url>
+  <url><loc>https://upliftmedicalms.com/locations/oxford</loc><priority>0.7</priority></url>
+  <url><loc>https://upliftmedicalms.com/about</loc><priority>0.6</priority></url>
+  <url><loc>https://upliftmedicalms.com/contact</loc><priority>0.6</priority></url>
+  <url><loc>https://upliftmedicalms.com/privacy</loc><priority>0.2</priority></url>
+  <url><loc>https://upliftmedicalms.com/terms</loc><priority>0.2</priority></url>
 </urlset>

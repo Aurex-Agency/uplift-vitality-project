@@ -22,15 +22,16 @@ and server-rendered routes from a Node function.
 
 ## Custom domain
 
-When `upliftmedicalms.com` is ready:
+The site is configured for `https://upliftmedicalms.com` (canonicals, og:url,
+structured data, sitemap, robots.txt).
 
 1. Vercel → Project → **Settings → Domains** → add `upliftmedicalms.com`
    (and `www`), then point DNS at Vercel as instructed there.
-2. In the repo, update the canonical origin so SEO tags and the sitemap use
-   the real domain (two spots, both flagged with `TODO at launch`):
-   - `SITE.url` in `src/components/site/site-data.ts`
-   - the URLs in `public/sitemap.xml`
-3. Commit and push — Vercel redeploys automatically.
+2. If the domain ever changes, update `SITE.url` in
+   `src/components/site/site-data.ts` plus `public/sitemap.xml` and
+   `public/robots.txt`, then commit and push.
+3. After launch, submit `https://upliftmedicalms.com/sitemap.xml` in Google
+   Search Console.
 
 ## Local commands
 
