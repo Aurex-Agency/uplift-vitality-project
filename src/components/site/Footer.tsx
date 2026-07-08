@@ -94,7 +94,7 @@ export function Footer() {
 
       <div className="relative border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-2 px-6 py-5 text-xs text-primary-foreground/60">
-          <span className="eyebrow text-[0.65rem]">Areas We Serve</span>
+          <span className="eyebrow text-[0.7rem]">Areas We Serve</span>
           {LOCATION_LIST.map((loc) => (
             <Link
               key={loc.slug}

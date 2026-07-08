@@ -194,6 +194,12 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        {/* Runs before first paint: reveal animations only hide content when JS is on. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.setAttribute('data-js','')",
+          }}
+        />
         <HeadContent />
       </head>
       <body>

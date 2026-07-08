@@ -221,16 +221,32 @@
     0 12px 32px -16px rgba(14, 42, 71, 0.1);
 }
 
-@utility reveal {
+/* Scroll-reveal animation.
+   Hidden state only applies once JS has stamped data-js on <html> (inline
+   script in the shell), so content is never invisible without JavaScript.
+   On mobile, a CSS fallback animation force-reveals everything ~1s in even
+   if hydration is slow, so sections can never sit blank. */
+html[data-js] .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition:
     opacity 700ms ease-out,
     transform 700ms ease-out;
 }
-@utility reveal-in {
-  opacity: 1;
-  transform: none;
+.reveal-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+@media (max-width: 1023px) {
+  html[data-js] .reveal {
+    animation: revealFallback 700ms ease-out 1s forwards;
+  }
+}
+@keyframes revealFallback {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ---- Eye-popping additions ---- */
@@ -327,9 +343,10 @@
   .float-soft {
     animation: none;
   }
-  .reveal {
+  html[data-js] .reveal {
     opacity: 1;
     transform: none;
     transition: none;
+    animation: none;
   }
 }
