@@ -12,7 +12,7 @@ export const Route = createFileRoute("/services/")({
       {
         name: "description",
         content:
-          "Hormone therapy, peptides, IV therapy, and medical weight loss in Tupelo, MS. Six concierge services tailored to you.",
+          "Hormone therapy, progesterone and estrogen therapy, and peptide therapy in Tupelo, MS. Concierge care tailored to you.",
       },
       { property: "og:title", content: "Services | Uplift Medical" },
       { property: "og:description", content: "Treatments built around your goals." },
@@ -30,7 +30,7 @@ function ServicesIndex() {
             <SectionHeading
               eyebrow="What We Do"
               title="Treatments built around your goals."
-              subhead="Six concierge services. Every plan starts with your labs, your history, and your goals."
+              subhead="Concierge care. Every plan starts with your labs, your history, and your goals."
             />
           </Reveal>
         </div>

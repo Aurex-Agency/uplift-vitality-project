@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { CTAButton } from "@/components/site/CTAButton";
 import { CTABand } from "@/components/site/CTABand";
 import { TestimonialCard } from "@/components/site/TestimonialCard";
 import { TESTIMONIALS } from "@/components/site/site-data";
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Meet the team behind Uplift Medical. Personalized hormone, weight loss, and wellness care led by owner Kenneth Goolsby in Tupelo, MS.",
+          "Meet the team behind Uplift Medical. Personalized hormone therapy and wellness care led by owner Kenneth Goolsby in Tupelo, MS.",
       },
       { property: "og:title", content: "About Uplift Medical" },
       {
@@ -108,27 +109,38 @@ function About() {
         </div>
       </section>
 
-      {/* TEAM PLACEHOLDER */}
+      {/* BRAND ETHOS */}
       <section className="bg-background py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-2 md:gap-16">
           <Reveal>
-            <SectionHeading
-              eyebrow="Our Team"
-              title="Experienced providers, attentive care."
-              subhead="Our team includes nurse practitioners and support staff dedicated to every step of your journey."
-            />
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="mt-14 overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)]">
+            <div className="mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)] md:mx-0">
               <img
                 src={teamPhoto}
-                alt="The Uplift Medical providers and staff together in the Tupelo office"
+                alt="Wearing the Uplift Medical tank top at the gym"
                 className="h-auto w-full object-cover"
-                width={1920}
-                height={960}
+                width={1170}
+                height={1458}
                 loading="lazy"
                 decoding="async"
               />
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <span className="eyebrow">The Uplift Standard</span>
+            <h2 className="mt-4 font-display text-4xl leading-tight text-primary md:text-5xl">
+              Built for how you actually live.
+            </h2>
+            <span className="gold-rule mt-6" />
+            <p className="mt-7 max-w-lg text-lg leading-relaxed text-foreground">
+              Whether you are chasing a personal record or just keeping up with a full life, Uplift
+              Medical helps you show up with more energy, strength, and confidence. Personalized
+              care, built around your goals and the way you really live &mdash; not a
+              one-size-fits-all protocol.
+            </p>
+            <div className="mt-8">
+              <CTAButton to="/qualify" variant="gold">
+                See If You Qualify
+              </CTAButton>
             </div>
           </Reveal>
         </div>

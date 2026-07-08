@@ -15,7 +15,7 @@ export const Route = createFileRoute("/book")({
       {
         name: "description",
         content:
-          "Book your consultation with Uplift Medical. Concierge hormone, weight loss, peptide, and IV therapy in Tupelo, MS.",
+          "Book your consultation with Uplift Medical. Concierge hormone and peptide therapy in Tupelo, MS.",
       },
       { property: "og:title", content: "Book an Appointment | Uplift Medical" },
       {

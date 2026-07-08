@@ -19,7 +19,7 @@ import {
   Check,
 } from "lucide-react";
 import heroImage from "@/assets/kenny-injection.jpg";
-import teamImage from "@/assets/team.jpg";
+import teeImage from "@/assets/uplift-tee-gym.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, MS. In-person and telehealth across MS and TN.",
+          "Personalized hormone therapy and peptide treatments in Tupelo, MS. In-person and telehealth across MS and TN.",
       },
       { property: "og:title", content: "Uplift Medical | Concierge Hormone & Wellness Care" },
       {
@@ -67,9 +67,8 @@ function Index() {
                 Feel like the <span className="gradient-text">best version</span> of yourself again.
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Personalized hormone therapy, medical weight loss, peptide, and IV treatments
-                designed to restore your energy, confidence, and vitality &mdash; expert care
-                without the hassle of insurance.
+                Personalized hormone therapy and peptide treatments designed to restore your energy,
+                confidence, and vitality &mdash; expert care without the hassle of insurance.
               </p>
 
               {/* Rating + social proof */}
@@ -245,7 +244,7 @@ function Index() {
             <SectionHeading
               eyebrow="What We Do"
               title="Treatments built around your goals."
-              subhead="Six core services, each tailored to your labs, history, and lifestyle."
+              subhead="Concierge services, each tailored to your labs, history, and lifestyle."
             />
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -266,27 +265,42 @@ function Index() {
 
       <HowItWorks />
 
-      {/* TEAM BAND */}
-      <section className="bg-background py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
+      {/* JUST WIN — BRAND BAND */}
+      <section className="navy-gradient relative overflow-hidden py-20 text-cream md:py-28">
+        <div className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-gold/10 blur-3xl" />
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-2 md:gap-16">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-hairline shadow-[0_40px_80px_-40px_rgba(14,42,71,0.45)]">
-              <img
-                src={teamImage}
-                alt="The Uplift Medical care team in their Tupelo, Mississippi office"
-                className="h-[360px] w-full object-cover md:h-[520px]"
-                width={1920}
-                height={960}
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/10 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-8 text-cream md:p-12">
-                <span className="eyebrow text-gold">The Team</span>
-                <p className="mt-3 max-w-2xl font-display text-2xl leading-snug md:text-4xl">
-                  Experienced providers who listen first, then build a plan around you.
-                </p>
+            <div className="relative mx-auto w-full max-w-sm md:mx-0">
+              <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[36px] bg-gradient-to-br from-gold/25 via-transparent to-transparent blur-2xl" />
+              <div className="overflow-hidden rounded-[28px] border border-white/15 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.75)]">
+                <img
+                  src={teeImage}
+                  alt="Wearing the Uplift Medical 'Just Win' shirt — life, work, relationships"
+                  className="h-[440px] w-full object-cover object-[50%_38%] sm:h-[520px] md:h-[600px]"
+                  width={1200}
+                  height={1800}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <span className="eyebrow">Just Win</span>
+            <h2 className="mt-4 font-display text-4xl leading-tight md:text-6xl">
+              Life, work, relationships. <span className="gold-text">Just win.</span>
+            </h2>
+            <span className="gold-rule mt-6" />
+            <p className="mt-7 max-w-lg text-lg leading-relaxed text-cream/85">
+              Feeling your best is not vanity &mdash; it is how you show up for everything that
+              matters. Uplift Medical helps you reclaim the energy, strength, and confidence to win
+              in the gym, at work, and everywhere in between.
+            </p>
+            <div className="mt-8">
+              <CTAButton to="/qualify" variant="gold">
+                See If You Qualify
+              </CTAButton>
             </div>
           </Reveal>
         </div>

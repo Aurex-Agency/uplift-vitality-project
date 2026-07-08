@@ -24,7 +24,7 @@ export const Route = createFileRoute("/services/progesterone-estrogen")({
         headline: "Balance your hormones, restore your vitality.",
         subhead: "Feel like yourself again with personalized hormone therapy.",
         heroImage: heroImg,
-        heroAlt: "Uplift Medical providers showing hormone therapy products",
+        heroAlt: "A person holding an Uplift Medical business card",
         intro:
           "Hormonal imbalances can significantly impact a woman's well-being, causing fatigue, mood swings, weight gain, hot flashes, and sleep disturbances. Whether due to menopause, perimenopause, or other shifts, estrogen and progesterone play a crucial role in energy, mood, bone health, and vitality. Our therapy helps women restore balance and regain control of their health.",
         benefits: [

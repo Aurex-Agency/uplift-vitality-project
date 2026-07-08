@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+          "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
       },
       { name: "author", content: "Uplift Medical" },
       {
@@ -95,7 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+          "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -106,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "twitter:description",
         content:
-          "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+          "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
       },
       { property: "og:image", content: SITE.url + heroImage },
       { name: "twitter:image", content: SITE.url + heroImage },
@@ -120,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "MedicalClinic",
           name: "Uplift Medical",
           description:
-            "Concierge hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+            "Concierge hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
           telephone: "+1-662-491-1457",
           address: {
             "@type": "PostalAddress",
