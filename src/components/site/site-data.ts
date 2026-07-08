@@ -3,8 +3,8 @@ export const SITE = {
   // Canonical site origin, no trailing slash. Used for og:image and structured data.
   // TODO at launch: switch to https://upliftmedicalms.com (also update public/sitemap.xml).
   url: "https://uplift.aurexagency.com",
-  phone: "662-491-1457",
-  phoneHref: "tel:16624911457",
+  phone: "662-584-4958",
+  phoneHref: "tel:16625844958",
   address: "144 S Thomas St, Suite 102, B, Tupelo, MS 38801",
   addressShort: "144 S Thomas St, Suite 102, Tupelo, MS",
   facebook: "https://www.facebook.com/profile.php?id=61558283480368",
@@ -39,6 +39,24 @@ export const SERVICES = [
     title: "Peptide Therapy",
     short: "Support recovery, performance, and anti-aging at the cellular level.",
     icon: "Dna",
+  },
+  {
+    slug: "nutrition",
+    title: "Nutrition",
+    short: "A tailored nutrition plan built around your goals, lifestyle, and favorite foods.",
+    icon: "Salad",
+  },
+  {
+    slug: "personalized-training",
+    title: "Personalized Training",
+    short: "Custom workout programming for strength, muscle, fat loss, or toning up.",
+    icon: "TrendingUp",
+  },
+  {
+    slug: "supplementation",
+    title: "Vitamin & Supplementation",
+    short: "Holistic, provider-guided vitamin and supplement protocols for lasting health.",
+    icon: "Leaf",
   },
 ] as const;
 
@@ -122,6 +140,6 @@ export const FAQS = [
   },
   {
     q: "How do I get started?",
-    a: "It is easy. Schedule a consultation, get your lab work done, and we will build a customized treatment plan for you. Call 662-491-1457 to book.",
+    a: "It is easy. Schedule a consultation, get your lab work done, and we will build a customized treatment plan for you. Call 662-584-4958 to book.",
   },
 ];

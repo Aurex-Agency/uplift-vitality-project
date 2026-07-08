@@ -121,7 +121,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Uplift Medical",
           description:
             "Concierge hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
-          telephone: "+1-662-491-1457",
+          telephone: "+1-662-584-4958",
           address: {
             "@type": "PostalAddress",
             streetAddress: "144 S Thomas St, Suite 102, B",
