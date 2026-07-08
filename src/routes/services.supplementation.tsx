@@ -27,7 +27,7 @@ export const Route = createFileRoute("/services/supplementation")({
         heroImage: heroImg,
         heroAlt: "Uplift Medical provider preparing a personalized health protocol",
         intro:
-          "If you are tired of relying on medication for high blood pressure, cholesterol, or elevated lab values, we take a holistic approach to what best suits your body. Paired with optimized hormones, our natural vitamin and health protocols are designed to support your overall health — and, under your provider's supervision, may help reduce your reliance on certain medications over time. We always coordinate with your prescriber, and you should never stop a prescribed medication on your own.",
+          "If you are tired of relying on medication for high blood pressure, cholesterol, or elevated lab values, we take a holistic approach to what best suits your body. Paired with optimized hormones, our natural vitamin and health protocols are designed to support your overall health and, under your provider's supervision, may help reduce your reliance on certain medications over time. We always coordinate with your prescriber, and you should never stop a prescribed medication on your own.",
         signs: {
           title: "This may be a fit if you",
           items: [

@@ -10,7 +10,7 @@ export const Route = createFileRoute("/services/personalized-training")({
       {
         name: "description",
         content:
-          "Custom workout programming built around your goals — strength, muscle, fat loss, or toning up. Get the structure and push you need with Uplift Medical in Tupelo, MS.",
+          "Custom workout programming built around your goals: strength, muscle, fat loss, or toning up. Get the structure and push you need with Uplift Medical in Tupelo, MS.",
       },
       { property: "og:title", content: "Personalized Training Programs | Uplift Medical" },
       { property: "og:description", content: "A training plan built around your goals." },
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/services/personalized-training")({
           {
             title: "What your program delivers",
             items: [
-              "Programming for your goal — strength, muscle, fat loss, or tone.",
+              "Programming for your goal: strength, muscle, fat loss, or tone.",
               "Routines matched to your experience level.",
               "Progression that keeps you moving forward.",
               "Accountability and an extra push when you need it.",

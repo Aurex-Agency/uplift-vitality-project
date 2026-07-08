@@ -134,8 +134,8 @@ function About() {
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-foreground">
               Whether you are chasing a personal record or just keeping up with a full life, Uplift
               Medical helps you show up with more energy, strength, and confidence. Personalized
-              care, built around your goals and the way you really live &mdash; not a
-              one-size-fits-all protocol.
+              care, built around your goals and the way you really live, not a one-size-fits-all
+              protocol.
             </p>
             <div className="mt-8">
               <CTAButton to="/qualify" variant="gold">

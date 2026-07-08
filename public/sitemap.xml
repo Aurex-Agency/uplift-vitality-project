@@ -12,6 +12,12 @@
   <url><loc>https://uplift.aurexagency.com/services/nutrition</loc><priority>0.8</priority></url>
   <url><loc>https://uplift.aurexagency.com/services/personalized-training</loc><priority>0.8</priority></url>
   <url><loc>https://uplift.aurexagency.com/services/supplementation</loc><priority>0.8</priority></url>
+  <url><loc>https://uplift.aurexagency.com/locations/tupelo</loc><priority>0.7</priority></url>
+  <url><loc>https://uplift.aurexagency.com/locations/saltillo</loc><priority>0.7</priority></url>
+  <url><loc>https://uplift.aurexagency.com/locations/pontotoc</loc><priority>0.7</priority></url>
+  <url><loc>https://uplift.aurexagency.com/locations/amory</loc><priority>0.7</priority></url>
+  <url><loc>https://uplift.aurexagency.com/locations/new-albany</loc><priority>0.7</priority></url>
+  <url><loc>https://uplift.aurexagency.com/locations/oxford</loc><priority>0.7</priority></url>
   <url><loc>https://uplift.aurexagency.com/about</loc><priority>0.6</priority></url>
   <url><loc>https://uplift.aurexagency.com/contact</loc><priority>0.6</priority></url>
   <url><loc>https://uplift.aurexagency.com/privacy</loc><priority>0.2</priority></url>

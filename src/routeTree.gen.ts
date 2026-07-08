@@ -24,6 +24,7 @@ import { Route as ServicesPeptideTherapyRouteImport } from './routes/services.pe
 import { Route as ServicesNutritionRouteImport } from './routes/services.nutrition'
 import { Route as ServicesHormoneTherapyWomenRouteImport } from './routes/services.hormone-therapy-women'
 import { Route as ServicesHormoneTherapyMenRouteImport } from './routes/services.hormone-therapy-men'
+import { Route as LocationsCityRouteImport } from './routes/locations.$city'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -104,6 +105,11 @@ const ServicesHormoneTherapyMenRoute =
     path: '/services/hormone-therapy-men',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LocationsCityRoute = LocationsCityRouteImport.update({
+  id: '/locations/$city',
+  path: '/locations/$city',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -113,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
+  '/locations/$city': typeof LocationsCityRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
   '/services/nutrition': typeof ServicesNutritionRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
+  '/locations/$city': typeof LocationsCityRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
   '/services/nutrition': typeof ServicesNutritionRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
+  '/locations/$city': typeof LocationsCityRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
   '/services/nutrition': typeof ServicesNutritionRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qualify'
     | '/terms'
+    | '/locations/$city'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
     | '/services/nutrition'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qualify'
     | '/terms'
+    | '/locations/$city'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
     | '/services/nutrition'
@@ -201,6 +212,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qualify'
     | '/terms'
+    | '/locations/$city'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
     | '/services/nutrition'
@@ -219,6 +231,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   QualifyRoute: typeof QualifyRoute
   TermsRoute: typeof TermsRoute
+  LocationsCityRoute: typeof LocationsCityRoute
   ServicesHormoneTherapyMenRoute: typeof ServicesHormoneTherapyMenRoute
   ServicesHormoneTherapyWomenRoute: typeof ServicesHormoneTherapyWomenRoute
   ServicesNutritionRoute: typeof ServicesNutritionRoute
@@ -336,6 +349,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesHormoneTherapyMenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/locations/$city': {
+      id: '/locations/$city'
+      path: '/locations/$city'
+      fullPath: '/locations/$city'
+      preLoaderRoute: typeof LocationsCityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -347,6 +367,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   QualifyRoute: QualifyRoute,
   TermsRoute: TermsRoute,
+  LocationsCityRoute: LocationsCityRoute,
   ServicesHormoneTherapyMenRoute: ServicesHormoneTherapyMenRoute,
   ServicesHormoneTherapyWomenRoute: ServicesHormoneTherapyWomenRoute,
   ServicesNutritionRoute: ServicesNutritionRoute,

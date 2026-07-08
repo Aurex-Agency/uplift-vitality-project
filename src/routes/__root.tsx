@@ -77,94 +77,113 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS" },
-      {
-        name: "description",
-        content:
-          "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
-      },
-      { name: "author", content: "Uplift Medical" },
-      {
-        property: "og:title",
-        content: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS",
-      },
-      {
-        property: "og:description",
-        content:
-          "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      {
-        name: "twitter:title",
-        content: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
-      },
-      { property: "og:image", content: SITE.url + heroImage },
-      { name: "twitter:image", content: SITE.url + heroImage },
-      { name: "theme-color", content: "#0e2a47" },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "MedicalClinic",
-          name: "Uplift Medical",
-          description:
-            "Concierge hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
-          telephone: "+1-662-584-4958",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "144 S Thomas St, Suite 102, B",
-            addressLocality: "Tupelo",
-            addressRegion: "MS",
-            postalCode: "38801",
-            addressCountry: "US",
-          },
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "08:00",
-              closes: "19:00",
+  head: ({ matches }) => {
+    // Canonical URL for the current page, emitted site-wide from the root.
+    const rawPath = matches[matches.length - 1]?.pathname ?? "/";
+    const path = rawPath !== "/" && rawPath.endsWith("/") ? rawPath.slice(0, -1) : rawPath;
+    const canonical = SITE.url + path;
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS" },
+        {
+          name: "description",
+          content:
+            "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+        },
+        { name: "author", content: "Uplift Medical" },
+        {
+          property: "og:title",
+          content: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS",
+        },
+        {
+          property: "og:description",
+          content:
+            "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: canonical },
+        { property: "og:site_name", content: "Uplift Medical" },
+        { name: "twitter:card", content: "summary_large_image" },
+        {
+          name: "twitter:title",
+          content: "Uplift Medical | Concierge Hormone & Wellness Care in Tupelo, MS",
+        },
+        {
+          name: "twitter:description",
+          content:
+            "Personalized hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+        },
+        { property: "og:image", content: SITE.url + heroImage },
+        { name: "twitter:image", content: SITE.url + heroImage },
+        { name: "theme-color", content: "#0e2a47" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MedicalClinic",
+            name: "Uplift Medical",
+            description:
+              "Concierge hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
+            telephone: "+1-662-584-4958",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "144 S Thomas St, Suite 102, B",
+              addressLocality: "Tupelo",
+              addressRegion: "MS",
+              postalCode: "38801",
+              addressCountry: "US",
             },
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: "Saturday",
-              opens: "09:00",
-              closes: "16:00",
-            },
-          ],
-          sameAs: ["https://www.facebook.com/profile.php?id=61558283480368"],
-          image: SITE.url + logoPrimary,
-          url: SITE.url,
-        }),
-      },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "icon", href: logoPrimary, type: "image/png" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
-      },
-    ],
-  }),
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                opens: "08:00",
+                closes: "19:00",
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: "Saturday",
+                opens: "09:00",
+                closes: "16:00",
+              },
+            ],
+            sameAs: ["https://www.facebook.com/profile.php?id=61558283480368"],
+            image: SITE.url + logoPrimary,
+            url: SITE.url,
+            areaServed: [
+              "Tupelo MS",
+              "Saltillo MS",
+              "Pontotoc MS",
+              "Amory MS",
+              "New Albany MS",
+              "Oxford MS",
+              "Mississippi",
+              "Tennessee",
+            ].map((name) => ({ "@type": "Place", name })),
+          }),
+        },
+      ],
+      links: [
+        {
+          rel: "stylesheet",
+          href: appCss,
+        },
+        { rel: "canonical", href: canonical },
+        { rel: "icon", href: logoPrimary, type: "image/png" },
+        { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+        },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

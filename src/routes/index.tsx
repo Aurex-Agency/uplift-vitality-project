@@ -45,6 +45,20 @@ export const Route = createFileRoute("/")({
         href: string;
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: Index,
 });
@@ -68,7 +82,7 @@ function Index() {
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
                 Personalized hormone therapy and peptide treatments designed to restore your energy,
-                confidence, and vitality &mdash; expert care without the hassle of insurance.
+                confidence, and vitality. Expert care without the hassle of insurance.
               </p>
 
               {/* Rating + social proof */}
@@ -202,8 +216,8 @@ function Index() {
               <span className="gold-rule mt-6" />
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-cream/85">
                 Access expert medical care from the comfort of home. Comprehensive telehealth across
-                Tennessee and Mississippi, supported by local lab draw stations &mdash; thorough,
-                seamless care without the long drive.
+                Tennessee and Mississippi, supported by local lab draw stations. Thorough, seamless
+                care without the long drive.
               </p>
               <div className="mt-8">
                 <CTAButton to="/book" variant="gold">
@@ -276,7 +290,7 @@ function Index() {
               <div className="overflow-hidden rounded-[28px] border border-white/15 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.75)]">
                 <img
                   src={teeImage}
-                  alt="Wearing the Uplift Medical 'Just Win' shirt — life, work, relationships"
+                  alt="Wearing the Uplift Medical 'Just Win' shirt: life, work, relationships"
                   className="h-[440px] w-full object-cover object-[50%_38%] sm:h-[520px] md:h-[600px]"
                   width={1200}
                   height={1800}
@@ -293,9 +307,9 @@ function Index() {
             </h2>
             <span className="gold-rule mt-6" />
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-cream/85">
-              Feeling your best is not vanity &mdash; it is how you show up for everything that
-              matters. Uplift Medical helps you reclaim the energy, strength, and confidence to win
-              in the gym, at work, and everywhere in between.
+              Feeling your best is not vanity. It is how you show up for everything that matters.
+              Uplift Medical helps you reclaim the energy, strength, and confidence to win in the
+              gym, at work, and everywhere in between.
             </p>
             <div className="mt-8">
               <CTAButton to="/qualify" variant="gold">
@@ -353,8 +367,8 @@ function Index() {
                 </h2>
                 <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground">
                   Fatigue, weight gain, brain fog, low libido, and mood swings can all point to a
-                  hormone imbalance. Take our free assessment and find out if you may be a candidate
-                  &mdash; no obligation.
+                  hormone imbalance. Take our free assessment and find out if you may be a
+                  candidate, with no obligation.
                 </p>
                 <div className="mt-9">
                   <CTAButton to="/qualify">
