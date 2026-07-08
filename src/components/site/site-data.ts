@@ -40,18 +40,6 @@ export const SERVICES = [
     short: "Support recovery, performance, and anti-aging at the cellular level.",
     icon: "Dna",
   },
-  {
-    slug: "iv-therapy",
-    title: "IV Therapy",
-    short: "Rehydrate and replenish with vitamins delivered straight to your bloodstream.",
-    icon: "Droplets",
-  },
-  {
-    slug: "weight-loss",
-    title: "Medical Weight Loss",
-    short: "Burn fat and boost metabolism with a science-backed, guided plan.",
-    icon: "Flame",
-  },
 ] as const;
 
 export const STATS = [
@@ -114,7 +102,7 @@ export const STEPS = [
 export const FAQS = [
   {
     q: "What services does Uplift Medical offer?",
-    a: "We specialize in hormone replacement therapy, medical weight loss, peptide therapy, and IV therapy to help you restore balance, increase energy, and improve overall well-being.",
+    a: "We specialize in hormone replacement therapy, progesterone and estrogen therapy, and peptide therapy to help you restore balance, increase energy, and improve overall well-being.",
   },
   {
     q: "How do I know if hormone therapy is right for me?",
@@ -123,10 +111,6 @@ export const FAQS = [
   {
     q: "Do you offer treatment for both men and women?",
     a: "Yes. We provide testosterone therapy for men and women, as well as progesterone and estrogen therapy for women experiencing hormonal imbalances.",
-  },
-  {
-    q: "What are the benefits of IV therapy?",
-    a: "IV therapy delivers essential vitamins, minerals, and hydration directly into your bloodstream, improving energy levels, immune function, and recovery from fatigue or dehydration.",
   },
   {
     q: "How long does it take to see results?",

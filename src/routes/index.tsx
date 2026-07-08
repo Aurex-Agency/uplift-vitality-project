@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Personalized hormone therapy, medical weight loss, peptide, and IV treatments in Tupelo, MS. In-person and telehealth across MS and TN.",
+          "Personalized hormone therapy and peptide treatments in Tupelo, MS. In-person and telehealth across MS and TN.",
       },
       { property: "og:title", content: "Uplift Medical | Concierge Hormone & Wellness Care" },
       {
@@ -67,9 +67,8 @@ function Index() {
                 Feel like the <span className="gradient-text">best version</span> of yourself again.
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Personalized hormone therapy, medical weight loss, peptide, and IV treatments
-                designed to restore your energy, confidence, and vitality &mdash; expert care
-                without the hassle of insurance.
+                Personalized hormone therapy and peptide treatments designed to restore your energy,
+                confidence, and vitality &mdash; expert care without the hassle of insurance.
               </p>
 
               {/* Rating + social proof */}
@@ -245,7 +244,7 @@ function Index() {
             <SectionHeading
               eyebrow="What We Do"
               title="Treatments built around your goals."
-              subhead="Six core services, each tailored to your labs, history, and lifestyle."
+              subhead="Concierge services, each tailored to your labs, history, and lifestyle."
             />
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

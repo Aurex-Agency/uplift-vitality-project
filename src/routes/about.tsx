@@ -15,7 +15,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Meet the team behind Uplift Medical. Personalized hormone, weight loss, and wellness care led by owner Kenneth Goolsby in Tupelo, MS.",
+          "Meet the team behind Uplift Medical. Personalized hormone therapy and wellness care led by owner Kenneth Goolsby in Tupelo, MS.",
       },
       { property: "og:title", content: "About Uplift Medical" },
       {

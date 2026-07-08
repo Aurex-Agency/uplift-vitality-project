@@ -17,10 +17,8 @@ import { Route as BookRouteImport } from './routes/book'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
-import { Route as ServicesWeightLossRouteImport } from './routes/services.weight-loss'
 import { Route as ServicesProgesteroneEstrogenRouteImport } from './routes/services.progesterone-estrogen'
 import { Route as ServicesPeptideTherapyRouteImport } from './routes/services.peptide-therapy'
-import { Route as ServicesIvTherapyRouteImport } from './routes/services.iv-therapy'
 import { Route as ServicesHormoneTherapyWomenRouteImport } from './routes/services.hormone-therapy-women'
 import { Route as ServicesHormoneTherapyMenRouteImport } from './routes/services.hormone-therapy-men'
 
@@ -64,11 +62,6 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesWeightLossRoute = ServicesWeightLossRouteImport.update({
-  id: '/services/weight-loss',
-  path: '/services/weight-loss',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesProgesteroneEstrogenRoute =
   ServicesProgesteroneEstrogenRouteImport.update({
     id: '/services/progesterone-estrogen',
@@ -78,11 +71,6 @@ const ServicesProgesteroneEstrogenRoute =
 const ServicesPeptideTherapyRoute = ServicesPeptideTherapyRouteImport.update({
   id: '/services/peptide-therapy',
   path: '/services/peptide-therapy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesIvTherapyRoute = ServicesIvTherapyRouteImport.update({
-  id: '/services/iv-therapy',
-  path: '/services/iv-therapy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesHormoneTherapyWomenRoute =
@@ -108,10 +96,8 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
-  '/services/iv-therapy': typeof ServicesIvTherapyRoute
   '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
   '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
-  '/services/weight-loss': typeof ServicesWeightLossRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -124,10 +110,8 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
-  '/services/iv-therapy': typeof ServicesIvTherapyRoute
   '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
   '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
-  '/services/weight-loss': typeof ServicesWeightLossRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -141,10 +125,8 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
-  '/services/iv-therapy': typeof ServicesIvTherapyRoute
   '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
   '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
-  '/services/weight-loss': typeof ServicesWeightLossRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -159,10 +141,8 @@ export interface FileRouteTypes {
     | '/terms'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
-    | '/services/iv-therapy'
     | '/services/peptide-therapy'
     | '/services/progesterone-estrogen'
-    | '/services/weight-loss'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -175,10 +155,8 @@ export interface FileRouteTypes {
     | '/terms'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
-    | '/services/iv-therapy'
     | '/services/peptide-therapy'
     | '/services/progesterone-estrogen'
-    | '/services/weight-loss'
     | '/services'
   id:
     | '__root__'
@@ -191,10 +169,8 @@ export interface FileRouteTypes {
     | '/terms'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
-    | '/services/iv-therapy'
     | '/services/peptide-therapy'
     | '/services/progesterone-estrogen'
-    | '/services/weight-loss'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -208,10 +184,8 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   ServicesHormoneTherapyMenRoute: typeof ServicesHormoneTherapyMenRoute
   ServicesHormoneTherapyWomenRoute: typeof ServicesHormoneTherapyWomenRoute
-  ServicesIvTherapyRoute: typeof ServicesIvTherapyRoute
   ServicesPeptideTherapyRoute: typeof ServicesPeptideTherapyRoute
   ServicesProgesteroneEstrogenRoute: typeof ServicesProgesteroneEstrogenRoute
-  ServicesWeightLossRoute: typeof ServicesWeightLossRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -273,13 +247,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/weight-loss': {
-      id: '/services/weight-loss'
-      path: '/services/weight-loss'
-      fullPath: '/services/weight-loss'
-      preLoaderRoute: typeof ServicesWeightLossRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services/progesterone-estrogen': {
       id: '/services/progesterone-estrogen'
       path: '/services/progesterone-estrogen'
@@ -292,13 +259,6 @@ declare module '@tanstack/react-router' {
       path: '/services/peptide-therapy'
       fullPath: '/services/peptide-therapy'
       preLoaderRoute: typeof ServicesPeptideTherapyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/iv-therapy': {
-      id: '/services/iv-therapy'
-      path: '/services/iv-therapy'
-      fullPath: '/services/iv-therapy'
-      preLoaderRoute: typeof ServicesIvTherapyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/hormone-therapy-women': {
@@ -328,10 +288,8 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   ServicesHormoneTherapyMenRoute: ServicesHormoneTherapyMenRoute,
   ServicesHormoneTherapyWomenRoute: ServicesHormoneTherapyWomenRoute,
-  ServicesIvTherapyRoute: ServicesIvTherapyRoute,
   ServicesPeptideTherapyRoute: ServicesPeptideTherapyRoute,
   ServicesProgesteroneEstrogenRoute: ServicesProgesteroneEstrogenRoute,
-  ServicesWeightLossRoute: ServicesWeightLossRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
