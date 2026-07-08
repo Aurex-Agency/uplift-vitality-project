@@ -119,13 +119,13 @@ function About() {
             />
           </Reveal>
           <Reveal delay={120}>
-            <div className="mt-14 overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)]">
+            <div className="mx-auto mt-14 max-w-lg overflow-hidden rounded-3xl border border-hairline shadow-[0_30px_60px_-30px_rgba(14,42,71,0.30)]">
               <img
                 src={teamPhoto}
-                alt="The Uplift Medical providers and staff together in the Tupelo office"
+                alt="Wearing the Uplift Medical tank top at the gym"
                 className="h-auto w-full object-cover"
-                width={1920}
-                height={960}
+                width={1170}
+                height={1458}
                 loading="lazy"
                 decoding="async"
               />
