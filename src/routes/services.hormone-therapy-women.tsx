@@ -52,6 +52,10 @@ export const Route = createFileRoute("/services/hormone-therapy-women")({
           },
         ],
         includeQualifyLink: true,
+        relatedGuides: [
+          { label: "Signs of low testosterone", to: "/resources/signs-of-low-testosterone" },
+          { label: "How to choose a hormone clinic", to: "/resources/how-to-choose-a-trt-clinic" },
+        ],
       }}
     />
   ),

@@ -1,9 +1,10 @@
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { CTAButton } from "./CTAButton";
 import { CTABand } from "./CTABand";
 import { HowItWorks } from "./HowItWorks";
-import { Check, Star } from "lucide-react";
+import { Check, Star, ArrowRight } from "lucide-react";
 
 export type ServiceContent = {
   eyebrow: string;
@@ -15,6 +16,7 @@ export type ServiceContent = {
   signs?: { title: string; items: string[] };
   benefits: { title: string; items: string[] }[];
   includeQualifyLink?: boolean;
+  relatedGuides?: { label: string; to: string }[];
 };
 
 export function ServicePageLayout({ content }: { content: ServiceContent }) {
@@ -145,6 +147,27 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
                 See If You Qualify
               </CTAButton>
             </div>
+          </div>
+        </section>
+      )}
+
+      {content.relatedGuides && content.relatedGuides.length > 0 && (
+        <section className="bg-white py-16 md:py-20">
+          <div className="mx-auto max-w-3xl px-6">
+            <span className="eyebrow">Related Reading</span>
+            <ul className="mt-5 divide-y divide-hairline border-y border-hairline">
+              {content.relatedGuides.map((r) => (
+                <li key={r.to}>
+                  <Link
+                    to={r.to}
+                    className="group flex items-center justify-between gap-4 py-4 text-primary transition hover:text-gold"
+                  >
+                    <span className="font-medium">{r.label}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

@@ -60,6 +60,7 @@ export function Navbar() {
             )}
           </div>
           <NavLink to="/about">About</NavLink>
+          <NavLink to="/resources">Resources</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </div>
 
@@ -121,6 +122,9 @@ export function Navbar() {
                 <div className="my-2 h-px w-full bg-hairline" />
                 <MobileLink to="/about" onClick={() => setOpen(false)}>
                   About
+                </MobileLink>
+                <MobileLink to="/resources" onClick={() => setOpen(false)}>
+                  Resources
                 </MobileLink>
                 <MobileLink to="/contact" onClick={() => setOpen(false)}>
                   Contact

@@ -56,6 +56,14 @@ export const Route = createFileRoute("/services/hormone-therapy-men")({
           },
         ],
         includeQualifyLink: true,
+        relatedGuides: [
+          {
+            label: "10 signs of low testosterone in men",
+            to: "/resources/signs-of-low-testosterone",
+          },
+          { label: "How much does TRT cost?", to: "/resources/how-much-does-trt-cost" },
+          { label: "How to choose a TRT clinic", to: "/resources/how-to-choose-a-trt-clinic" },
+        ],
       }}
     />
   ),
