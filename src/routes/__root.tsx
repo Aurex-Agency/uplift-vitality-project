@@ -15,6 +15,7 @@ import { SITE } from "@/components/site/site-data";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { MobileCTABar } from "@/components/site/MobileCTABar";
+import { Analytics } from "@/components/site/Analytics";
 import { Link as TLink } from "@tanstack/react-router";
 import logoPrimary from "@/assets/logo-primary.png";
 import heroImage from "@/assets/kenny-injection.jpg";
@@ -123,10 +124,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "theme-color", content: "#0e2a47" },
       ],
       scripts: [
-        // Google Analytics 4 (gtag.js)
+        // Google Analytics 4 (gtag.js). send_page_view is off here because the
+        // <Analytics /> component fires page_view on every route change (SPA),
+        // including the initial load, so pageviews are tracked explicitly.
         { src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`, async: true },
         {
-          children: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GA_ID}');`,
+          children: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GA_ID}', { send_page_view: false });`,
         },
         {
           type: "application/ld+json",
@@ -225,6 +228,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Analytics />
       <div className="flex min-h-screen flex-col bg-background">
         <TopUtilityBar />
         <Navbar />
