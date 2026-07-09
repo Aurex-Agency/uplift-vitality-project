@@ -120,7 +120,7 @@ export const STEPS = [
 export const FAQS = [
   {
     q: "What services does Uplift Medical offer?",
-    a: "We specialize in hormone replacement therapy, progesterone and estrogen therapy, and peptide therapy to help you restore balance, increase energy, and improve overall well-being.",
+    a: "We specialize in testosterone replacement therapy (TRT) for men and women, progesterone and estrogen therapy, peptide therapy, nutrition, personalized training, and supplementation protocols to restore balance, increase energy, and improve overall well-being.",
   },
   {
     q: "How do I know if hormone therapy is right for me?",

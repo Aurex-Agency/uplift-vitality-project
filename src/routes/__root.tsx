@@ -154,6 +154,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             sameAs: ["https://www.facebook.com/profile.php?id=61558283480368"],
             image: SITE.url + logoPrimary,
             url: SITE.url,
+            priceRange: "$$",
+            geo: { "@type": "GeoCoordinates", latitude: 34.2545, longitude: -88.7089 },
             areaServed: [
               "Tupelo MS",
               "Saltillo MS",

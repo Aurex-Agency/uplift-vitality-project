@@ -6,11 +6,11 @@ import heroImg from "@/assets/hero-hormone-women.jpg";
 export const Route = createFileRoute("/services/hormone-therapy-women")({
   head: () => ({
     meta: [
-      { title: "Testosterone Therapy for Women | Uplift Medical, Tupelo MS" },
+      { title: "Testosterone Therapy for Women in Tupelo, MS | Uplift Medical" },
       {
         name: "description",
         content:
-          "Testosterone therapy designed for women. Restore energy, mood, libido, and strength with concierge care in Tupelo, MS.",
+          "Hormone replacement therapy designed for women in Tupelo, MS. Testosterone therapy to restore energy, mood, libido, and strength. In person or by telehealth.",
       },
       { property: "og:title", content: "Testosterone Therapy for Women | Uplift Medical" },
       { property: "og:description", content: "Restore balance, energy, and confidence." },

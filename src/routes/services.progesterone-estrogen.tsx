@@ -6,11 +6,11 @@ import heroImg from "@/assets/hero-progesterone-estrogen.jpg";
 export const Route = createFileRoute("/services/progesterone-estrogen")({
   head: () => ({
     meta: [
-      { title: "Progesterone and Estrogen Therapy | Uplift Medical" },
+      { title: "Menopause & Perimenopause Treatment in Tupelo, MS | Progesterone & Estrogen" },
       {
         name: "description",
         content:
-          "Balance hormones and ease menopause or perimenopause symptoms with personalized therapy in Tupelo, MS.",
+          "Hormone replacement therapy for menopause and perimenopause in Tupelo, MS. Progesterone and estrogen plans to ease hot flashes, mood swings, and sleep problems.",
       },
       { property: "og:title", content: "Progesterone and Estrogen Therapy" },
       { property: "og:description", content: "Balance your hormones, restore your vitality." },

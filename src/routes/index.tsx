@@ -9,6 +9,7 @@ import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { StatStrip } from "@/components/site/StatStrip";
 import { SERVICES, TESTIMONIALS, FAQS, SITE } from "@/components/site/site-data";
+import { Link } from "@tanstack/react-router";
 import {
   Phone,
   ShieldCheck,
@@ -17,7 +18,9 @@ import {
   Star,
   ArrowRight,
   Check,
+  MapPin,
 } from "lucide-react";
+import { LOCATION_LIST } from "@/components/site/location-data";
 import heroImage from "@/assets/kenny-injection.jpg";
 import teeImage from "@/assets/uplift-tee-gym.jpg";
 
@@ -81,8 +84,9 @@ function Index() {
                 Feel like the <span className="gradient-text">best version</span> of yourself again.
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Personalized hormone therapy and peptide treatments designed to restore your energy,
-                confidence, and vitality. Expert care without the hassle of insurance.
+                Personalized hormone replacement therapy, TRT, and peptide treatments designed to
+                restore your energy, confidence, and vitality. Expert care without the hassle of
+                insurance.
               </p>
 
               {/* Rating + social proof */}
@@ -412,6 +416,31 @@ function Index() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* AREAS WE SERVE */}
+      <section className="bg-background py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <Reveal>
+            <span className="eyebrow">Areas We Serve</span>
+            <h2 className="mt-4 font-display text-3xl leading-tight text-primary md:text-4xl">
+              Serving North Mississippi, in person and by telehealth.
+            </h2>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              {LOCATION_LIST.map((loc) => (
+                <Link
+                  key={loc.slug}
+                  to="/locations/$city"
+                  params={{ city: loc.slug }}
+                  className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white px-5 py-2.5 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:border-gold/60 hover:text-primary"
+                >
+                  <MapPin className="h-3.5 w-3.5 text-gold" />
+                  {loc.name}, MS
+                </Link>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 

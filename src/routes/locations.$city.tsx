@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { MapPin, MonitorSmartphone, Check, Star } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -17,8 +17,8 @@ export const Route = createFileRoute("/locations/$city")({
   head: ({ params }) => {
     const loc = LOCATIONS[params.city];
     if (!loc) return { meta: [] };
-    const title = `Hormone Therapy in ${loc.name}, MS | Uplift Medical`;
-    const description = `Personalized hormone therapy, peptides, and wellness care for ${loc.name}, Mississippi. In-person at our Tupelo clinic or by telehealth. Call 662-584-4958.`;
+    const title = `TRT & Hormone Replacement Therapy in ${loc.name}, MS | Uplift Medical`;
+    const description = `Testosterone replacement therapy (TRT) for men and hormone therapy for women in ${loc.name}, MS. Personalized to your labs, in person or by telehealth. Call 662-584-4958.`;
     return {
       meta: [
         { title },
@@ -44,6 +44,34 @@ export const Route = createFileRoute("/locations/$city")({
               postalCode: "38801",
               addressCountry: "US",
             },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: loc.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: `${loc.name}, MS`,
+                item: `${SITE.url}/locations/${loc.slug}`,
+              },
+            ],
           }),
         },
       ],
@@ -128,6 +156,75 @@ function LocationPage() {
                 ))}
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* TRT + WOMEN'S HORMONES */}
+      <section className="bg-background py-20 md:py-28">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-2">
+          <Reveal>
+            <div className="lift-card h-full p-8 md:p-10">
+              <span className="eyebrow">For Men</span>
+              <h2 className="mt-3 font-display text-2xl leading-snug text-primary md:text-3xl">
+                Testosterone replacement therapy (TRT) in {loc.name}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-foreground">{loc.trtBlurb}</p>
+              <Link
+                to="/services/hormone-therapy-men"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold tracking-wide text-gold hover:underline"
+              >
+                Explore TRT for men
+              </Link>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="lift-card h-full p-8 md:p-10">
+              <span className="eyebrow">For Women</span>
+              <h2 className="mt-3 font-display text-2xl leading-snug text-primary md:text-3xl">
+                Hormone therapy for women in {loc.name}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-foreground">{loc.womenBlurb}</p>
+              <Link
+                to="/services/hormone-therapy-women"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold tracking-wide text-gold hover:underline"
+              >
+                Explore hormone therapy for women
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* THE UPLIFT DIFFERENCE */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <Reveal>
+            <SectionHeading
+              eyebrow="The Uplift Difference"
+              title="Not a franchise. A clinic that knows you."
+              subhead="What patients get here that big-box hormone chains do not."
+              align="center"
+            />
+          </Reveal>
+          <div className="mx-auto mt-14 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "Care for men and women, not men only",
+              "Plans built from your labs, not one standard protocol",
+              "The same provider at every visit",
+              "Telehealth visits with lab draws near you",
+              "Nutrition, training, and supplement guidance included",
+              "No insurance required and no surprise fees",
+            ].map((b, i) => (
+              <Reveal key={b} delay={i * 60}>
+                <div className="flex h-full items-start gap-4 rounded-2xl border border-hairline bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_20px_40px_-24px_rgba(14,42,71,0.18)]">
+                  <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
+                    <Check className="h-4 w-4" strokeWidth={2.5} />
+                  </span>
+                  <p className="font-display text-xl leading-snug text-primary">{b}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

@@ -6,6 +6,8 @@ export type LocationInfo = {
   sub: string;
   intro: string[];
   visitNote: string;
+  trtBlurb: string;
+  womenBlurb: string;
   faqs: { q: string; a: string }[];
 };
 
@@ -22,6 +24,10 @@ export const LOCATIONS: Record<string, LocationInfo> = {
     ],
     visitNote:
       "Visit us in person at 144 S Thomas St, Suite 102, or connect by telehealth from anywhere in Mississippi or Tennessee.",
+    trtBlurb:
+      "Looking for testosterone replacement therapy (TRT) in Tupelo? Unlike national chains that run every patient through the same protocol, we build your TRT plan from your own labs and adjust it visit by visit. You see the same provider every time, at a local clinic that knows your name.",
+    womenBlurb:
+      "Hormone therapy in Tupelo is not just for men. We treat women too, with testosterone, progesterone, and estrogen therapy for fatigue, mood swings, hot flashes, and the changes that come with perimenopause and menopause. One clinic for your whole household.",
     faqs: [
       {
         q: "Where is Uplift Medical located in Tupelo?",
@@ -45,6 +51,10 @@ export const LOCATIONS: Record<string, LocationInfo> = {
     ],
     visitNote:
       "About 15 minutes from Saltillo via US-45. Telehealth follow-ups available so you only drive when you want to.",
+    trtBlurb:
+      "Saltillo men searching for TRT near me do not have to settle for a franchise experience. Testosterone replacement therapy at Uplift Medical starts with a full lab panel and a plan built for your body, fifteen minutes from home, with telehealth follow-ups after that.",
+    womenBlurb:
+      "For Saltillo women, we offer testosterone, progesterone, and estrogen therapy for low energy, weight gain, poor sleep, and menopause symptoms. Most follow-up care happens by telehealth, so balanced hormones do not require a commute.",
     faqs: [
       {
         q: "How far is Uplift Medical from Saltillo?",
@@ -68,6 +78,10 @@ export const LOCATIONS: Record<string, LocationInfo> = {
     ],
     visitNote:
       "About 25 minutes from Pontotoc via MS-6. Telehealth visits and local lab draws keep travel to a minimum.",
+    trtBlurb:
+      "If you are in Pontotoc and dealing with low testosterone, fatigue, or lost drive, our TRT program is built around your labs, not a template. One short drive for your consultation, then telehealth handles most of the rest.",
+    womenBlurb:
+      "Pontotoc women choose Uplift Medical for hormone replacement therapy that actually listens: testosterone, progesterone, and estrogen plans for energy, mood, sleep, and menopause relief, managed mostly from home.",
     faqs: [
       {
         q: "How far is Uplift Medical from Pontotoc?",
@@ -91,6 +105,10 @@ export const LOCATIONS: Record<string, LocationInfo> = {
     ],
     visitNote:
       "About 30 minutes from Amory. In-person when you need it, telehealth when you do not.",
+    trtBlurb:
+      "Amory men do not need to drive to Memphis or settle for a one-size-fits-all franchise for testosterone replacement therapy. Our TRT plans are personalized to your labs and lifestyle, with most visits handled by telehealth after your first appointment.",
+    womenBlurb:
+      "We also serve Amory women with hormone therapy for perimenopause, menopause, low libido, and stubborn fatigue: testosterone, progesterone, and estrogen, dosed to your labs and adjusted as your body responds.",
     faqs: [
       {
         q: "How far is Uplift Medical from Amory?",
@@ -114,6 +132,10 @@ export const LOCATIONS: Record<string, LocationInfo> = {
     ],
     visitNote:
       "About 30 minutes from New Albany via I-22. Telehealth follow-ups keep your care convenient.",
+    trtBlurb:
+      "New Albany men looking for TRT get a different experience at Uplift Medical: a full lab workup, a testosterone replacement plan tailored to your results, and the same provider at every visit, thirty minutes down I-22 or on your screen.",
+    womenBlurb:
+      "For New Albany women, our hormone replacement therapy covers testosterone, progesterone, and estrogen for menopause symptoms, low energy, mood swings, and sleep problems, with telehealth keeping follow-ups simple.",
     faqs: [
       {
         q: "How far is Uplift Medical from New Albany?",
@@ -137,6 +159,10 @@ export const LOCATIONS: Record<string, LocationInfo> = {
     ],
     visitNote:
       "Full telehealth care with lab draws near Oxford, or visit our Tupelo clinic about an hour east on MS-6.",
+    trtBlurb:
+      "Oxford men searching for testosterone replacement therapy can skip the chain-clinic model entirely. Uplift Medical delivers physician-guided TRT by telehealth with lab draws right in Oxford, personalized to your bloodwork instead of a standard protocol.",
+    womenBlurb:
+      "Oxford women get the same concierge treatment: testosterone, progesterone, and estrogen therapy for menopause, perimenopause, energy, and mood, managed by telehealth so care fits around Lafayette County life.",
     faqs: [
       {
         q: "Do I have to drive to Tupelo from Oxford?",

@@ -6,13 +6,13 @@ import hero from "@/assets/hero-hormone-men.jpg";
 export const Route = createFileRoute("/services/hormone-therapy-men")({
   head: () => ({
     meta: [
-      { title: "Testosterone Therapy for Men | Uplift Medical, Tupelo MS" },
+      { title: "Testosterone Replacement Therapy (TRT) in Tupelo, MS | Uplift Medical" },
       {
         name: "description",
         content:
-          "Physician-guided TRT in Tupelo, MS. Restore energy, strength, focus, libido, and mood. In-person and telehealth.",
+          "Physician-guided testosterone replacement therapy (TRT) in Tupelo, MS. Personalized to your labs, not a one-size protocol. Restore energy, strength, focus, and libido. In-person or telehealth.",
       },
-      { property: "og:title", content: "Testosterone Therapy for Men | Uplift Medical" },
+      { property: "og:title", content: "Testosterone Replacement Therapy (TRT) | Uplift Medical" },
       {
         property: "og:description",
         content:
@@ -24,8 +24,8 @@ export const Route = createFileRoute("/services/hormone-therapy-men")({
   component: () => (
     <ServicePageLayout
       content={{
-        eyebrow: "Testosterone Therapy for Men",
-        headline: "Restore strength, energy, and vitality.",
+        eyebrow: "Testosterone Replacement Therapy (TRT)",
+        headline: "TRT that restores strength, energy, and vitality.",
         subhead: "Feel stronger. Think sharper. Live with more confidence.",
         heroImage: hero,
         heroAlt: "Competition-ready physique representing peak male vitality and strength",
