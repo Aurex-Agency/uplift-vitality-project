@@ -19,6 +19,9 @@ import { Link as TLink } from "@tanstack/react-router";
 import logoPrimary from "@/assets/logo-primary.png";
 import heroImage from "@/assets/kenny-injection.jpg";
 
+// Google Analytics 4 measurement ID.
+const GA_ID = "G-7X7981P4GK";
+
 function NotFoundComponent() {
   return (
     <main className="flex min-h-[70vh] items-center justify-center bg-background px-6 py-24">
@@ -120,6 +123,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "theme-color", content: "#0e2a47" },
       ],
       scripts: [
+        // Google Analytics 4 (gtag.js)
+        { src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`, async: true },
+        {
+          children: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GA_ID}');`,
+        },
         {
           type: "application/ld+json",
           children: JSON.stringify({
