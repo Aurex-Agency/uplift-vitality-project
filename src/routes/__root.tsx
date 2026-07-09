@@ -218,6 +218,11 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        {/* GoHighLevel page/form tracking, loaded before </body> on every page. */}
+        <script
+          src="https://link.msgsndr.com/js/external-tracking.js"
+          data-tracking-id="tk_7a98f0f2ae444d95aaa07eeeb67bb40b"
+        />
       </body>
     </html>
   );
