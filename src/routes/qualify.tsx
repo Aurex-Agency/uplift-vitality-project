@@ -7,6 +7,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
 import { submitLead } from "@/lib/leads";
+import { trackEvent } from "@/lib/analytics";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -232,6 +233,11 @@ function Qualify() {
     }
     setErrors({});
     await submitLead({ answers, contact });
+    trackEvent("quiz_complete", {
+      gender: gender ?? "",
+      symptom_count: symptomCount,
+      main_goal: typeof answers.goal === "string" ? answers.goal : "",
+    });
     next();
   }
 
