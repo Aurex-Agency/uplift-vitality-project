@@ -162,7 +162,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 closes: "16:00",
               },
             ],
-            sameAs: ["https://www.facebook.com/profile.php?id=61558283480368"],
+            sameAs: [
+              "https://www.facebook.com/profile.php?id=61558283480368",
+              "https://share.google/l5HfQ9LgMKd8lvvie",
+            ],
             image: SITE.url + logoPrimary,
             url: SITE.url,
             priceRange: "$$",
