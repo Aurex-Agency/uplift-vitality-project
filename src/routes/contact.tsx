@@ -5,6 +5,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
 import { submitContact } from "@/lib/leads";
+import { trackEvent } from "@/lib/analytics";
 import { MapPin, Phone, Clock, Facebook, type LucideIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -60,6 +61,7 @@ function Contact() {
     }
     setErrors({});
     await submitContact(parsed.data);
+    trackEvent("contact_form_submit", {});
     setSent(true);
   }
 

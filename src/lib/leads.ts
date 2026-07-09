@@ -63,6 +63,10 @@ export async function submitLead(payload: QuizPayload): Promise<void> {
   }
 }
 
+// GoHighLevel inbound webhook for contact-form messages.
+const CONTACT_WEBHOOK_URL =
+  "https://services.leadconnectorhq.com/hooks/TeOpti4qe6jxiicUI2Sy/webhook-trigger/422f7ecb-d501-4a9b-97da-fc04bcf768b5";
+
 export type ContactPayload = {
   name: string;
   email: string;
@@ -70,7 +74,30 @@ export type ContactPayload = {
   message: string;
 };
 
-// TODO: wire this to a GoHighLevel webhook for contact-form messages. For now, log only.
+// Failures are logged but never thrown, so the confirmation screen still shows
+// even if the webhook is momentarily unavailable.
 export async function submitContact(payload: ContactPayload): Promise<void> {
-  console.log("[submitContact]", payload);
+  const body = {
+    source: "contact-form",
+    page: typeof window !== "undefined" ? window.location.href : "",
+    submitted_at: new Date().toISOString(),
+    name: payload.name,
+    email: payload.email,
+    phone: payload.phone,
+    message: payload.message,
+  };
+
+  try {
+    const res = await fetch(CONTACT_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      keepalive: true,
+    });
+    if (!res.ok) {
+      console.error("[submitContact] webhook responded with", res.status);
+    }
+  } catch (err) {
+    console.error("[submitContact] webhook request failed", err);
+  }
 }
