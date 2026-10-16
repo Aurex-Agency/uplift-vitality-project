@@ -162,6 +162,19 @@ function About() {
         </div>
       </section>
 
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="font-display text-3xl text-primary">Know who is involved in your care</h2>
+          <p className="mt-4">
+            Before your consultation, ask the office which clinician you will see, their
+            professional credentials and who will review any testing. Confirm how you can ask
+            follow-up questions and whether another professional may be involved in your care.
+          </p>
+          <a href="/contact" className="mt-5 inline-block underline">
+            Ask the office about your appointment
+          </a>
+        </div>
+      </section>
       <CTABand />
     </>
   );

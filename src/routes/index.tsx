@@ -84,25 +84,9 @@ function Index() {
                 Feel like the <span className="gradient-text">best version</span> of yourself again.
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Personalized hormone replacement therapy, TRT, and peptide treatments designed to
-                restore your energy, confidence, and vitality. Expert care without the hassle of
-                insurance.
+                Hormone and wellness consultations in Tupelo. Discuss your history, questions, care
+                options and follow-up with the team.
               </p>
-
-              {/* Rating + social proof */}
-              <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2">
-                <div className="flex items-center gap-2">
-                  <div className="flex text-gold">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-sm font-semibold text-primary">5.0</span>
-                </div>
-                <span className="text-sm text-muted-foreground">
-                  Rated 5.0 by patients across Mississippi &amp; Tennessee
-                </span>
-              </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <CTAButton to="/book" variant="gold">
@@ -386,39 +370,6 @@ function Index() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-background py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-            <Reveal>
-              <SectionHeading eyebrow="Testimonials" title="What our patients are saying." />
-            </Reveal>
-            <Reveal delay={100}>
-              <div className="flex items-center gap-4 rounded-2xl border border-hairline bg-white px-5 py-4 shadow-[0_2px_24px_-12px_rgba(14,42,71,0.12)]">
-                <div className="font-display text-4xl text-primary">5.0</div>
-                <div>
-                  <div className="flex text-gold">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
-                    ))}
-                  </div>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Based on real patient reviews
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((t, i) => (
-              <Reveal key={t.name} delay={i * 80}>
-                <TestimonialCard quote={t.quote} name={t.name} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* AREAS WE SERVE */}
       <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-6 text-center">
@@ -469,6 +420,18 @@ function Index() {
         </div>
       </section>
 
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="font-display text-3xl text-primary">Prepare for a useful conversation</h2>
+          <p className="mt-4">
+            Explore our patient resources and bring your questions to a consultation. Ask about
+            evaluation, available choices and the follow-up plan before deciding on care.
+          </p>
+          <a href="/resources" className="mt-6 inline-block underline">
+            Browse hormone care resources
+          </a>
+        </div>
+      </section>
       <CTABand />
     </>
   );

@@ -1,0 +1,73 @@
+{
+  "slug": "questions-before-starting-trt",
+  "category": "Men's hormone care",
+  "title": "Questions to Ask Your Clinician Before Starting TRT",
+  "h1": "Questions to Ask Your Clinician Before Starting TRT",
+  "description": "A practical consultation checklist covering testosterone evaluation, fertility, alternatives, monitoring and the questions to ask before deciding.",
+  "summary": "A practical consultation checklist covering testosterone evaluation, fertility, alternatives, monitoring and the questions to ask before deciding.",
+  "readMinutes": 5,
+  "updated": "2026-10-16",
+  "intro": [
+    "Testosterone replacement therapy is a medical decision, not an automatic response to feeling tired or wanting better gym results. Start by asking the clinician what diagnosis is being considered and what evidence supports it. Symptoms can overlap with other concerns, so it is useful to understand why a particular evaluation is recommended instead of assuming that a single number supplies the whole answer."
+  ],
+  "sections": [
+    {
+      "heading": "Ask what the diagnosis is based on",
+      "body": [
+        "The Endocrine Society describes diagnosis in terms of compatible signs or symptoms together with repeated low testosterone measurements. Ask how that principle applies to your own results, including when samples were taken and whether another measurement is needed. Bring the original reports if you have them. This article does not provide a threshold for self-diagnosis or instructions for starting treatment."
+      ]
+    },
+    {
+      "heading": "Ask what else should be considered",
+      "body": [
+        "A useful question is, \u201cWhat other explanations or contributing factors should we discuss?\u201d Bring a medicine and supplement list and tell the clinician about major changes in your health or routine. Ask whether there is anything that should be investigated or addressed before a treatment decision. You do not need to arrive with a preferred diagnosis to have a productive visit.",
+        "Ask about the option of not starting TRT now. What information would help the clinician make a clearer recommendation? Would a different evaluation or referral be useful? Request an explanation in ordinary language and take notes. If you do not understand why a test or treatment is being proposed, asking for clarification is part of the consultation."
+      ]
+    },
+    {
+      "heading": "Make fertility and personal priorities explicit",
+      "body": [
+        "If having children now or later matters to you, say so before discussing a prescription. Testosterone treatment can reduce sperm production, and fertility plans can change the treatment conversation. Ask whether specialist input is appropriate for your situation. Do not assume that a treatment promoted for vitality will support fertility.",
+        "Describe the outcome that matters to your daily life and ask whether it is a reasonable treatment goal. Ask how improvement would be evaluated, what may not change, and when you would reconsider the plan. A clinician cannot promise the same result for every person. Avoid judging your expected response by another patient\u2019s testimonial or an image used in an advertisement."
+      ]
+    },
+    {
+      "heading": "Ask about product-specific risks and follow-up",
+      "body": [
+        "Ask which risks matter for the particular product under consideration and your personal history. Request current prescribing information and ask how the clinician will monitor potential problems. FDA testosterone information and product labeling can change; an older social media post is not a substitute for the current information about a proposed prescription.",
+        "Discuss follow-up before starting: who orders tests, who reviews them, how changes are communicated and whom to contact with a concern. Ask what would lead the clinician to pause or change treatment. You should not have to infer that plan from a generic dosing schedule online. Do not adjust someone else\u2019s prescription or use this guide to change your own medicine."
+      ]
+    },
+    {
+      "heading": "Understand the practical commitment",
+      "body": [
+        "Ask about the full cost and time involved in the proposed approach. Separate consultation costs from laboratory work, medication and ongoing appointments. Ask whether an in-person visit is required for any part of your evaluation and what remote follow-up, if available to you, can and cannot cover. Confirm details with the office rather than assuming a website description applies to every patient.",
+        "For an Uplift Medical appointment, start with the existing men\u2019s hormone service information and booking route. Bring this list as discussion prompts, not as a request for a guaranteed treatment. A good next step is a clear explanation of your evaluation and choices, even when that explanation leads to additional investigation or a different approach."
+      ]
+    }
+  ],
+  "faqs": [],
+  "related": [
+    {
+      "label": "Discuss care options",
+      "to": "/services/hormone-therapy-men"
+    },
+    {
+      "label": "Request an appointment",
+      "to": "/book"
+    }
+  ],
+  "reviewStatus": "pending",
+  "reviewer": "",
+  "reviewedAt": "",
+  "sources": [
+    {
+      "label": "Endocrine Society: hypogonadism in men",
+      "url": "https://www.endocrine.org/patient-engagement/endocrine-library/hypogonadism"
+    },
+    {
+      "label": "FDA: current testosterone information",
+      "url": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/testosterone-information"
+    }
+  ]
+}

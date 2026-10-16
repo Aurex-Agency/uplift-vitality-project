@@ -20,8 +20,7 @@ function str(v: unknown): string {
   return typeof v === "string" ? v : "";
 }
 
-// Failures are logged but never thrown: a webhook outage must not block
-// the thank-you screen after someone has already handed us their info.
+// Confirmation is shown only after confirmed delivery.
 export async function submitLead(payload: QuizPayload): Promise<void> {
   const { answers, contact } = payload;
   const symptoms = Array.isArray(answers.symptoms) ? (answers.symptoms as string[]) : [];
@@ -30,7 +29,7 @@ export async function submitLead(payload: QuizPayload): Promise<void> {
   // Flat field names so they are easy to map in the GoHighLevel workflow.
   const body = {
     source: "qualify-quiz",
-    page: typeof window !== "undefined" ? window.location.href : "",
+    page: typeof window !== "undefined" ? window.location.origin + window.location.pathname : "",
     submitted_at: new Date().toISOString(),
     name: contact.name,
     email: contact.email,
@@ -48,6 +47,8 @@ export async function submitLead(payload: QuizPayload): Promise<void> {
     age_range: str(answers.age),
   };
 
+  if (typeof window === "undefined" || window.location.hostname !== "upliftmedicalms.com")
+    throw new Error("Submission is disabled on preview sites.");
   try {
     const res = await fetch(QUIZ_WEBHOOK_URL, {
       method: "POST",
@@ -56,10 +57,10 @@ export async function submitLead(payload: QuizPayload): Promise<void> {
       keepalive: true,
     });
     if (!res.ok) {
-      console.error("[submitLead] webhook responded with", res.status);
+      throw new Error("Delivery was not confirmed. Please try again or call the office.");
     }
   } catch (err) {
-    console.error("[submitLead] webhook request failed", err);
+    throw new Error("Delivery was not confirmed. Please try again or call the office.");
   }
 }
 
@@ -74,12 +75,11 @@ export type ContactPayload = {
   message: string;
 };
 
-// Failures are logged but never thrown, so the confirmation screen still shows
-// even if the webhook is momentarily unavailable.
+// Confirmation is shown only after confirmed delivery.
 export async function submitContact(payload: ContactPayload): Promise<void> {
   const body = {
     source: "contact-form",
-    page: typeof window !== "undefined" ? window.location.href : "",
+    page: typeof window !== "undefined" ? window.location.origin + window.location.pathname : "",
     submitted_at: new Date().toISOString(),
     name: payload.name,
     email: payload.email,
@@ -87,6 +87,8 @@ export async function submitContact(payload: ContactPayload): Promise<void> {
     message: payload.message,
   };
 
+  if (typeof window === "undefined" || window.location.hostname !== "upliftmedicalms.com")
+    throw new Error("Submission is disabled on preview sites.");
   try {
     const res = await fetch(CONTACT_WEBHOOK_URL, {
       method: "POST",
@@ -95,9 +97,9 @@ export async function submitContact(payload: ContactPayload): Promise<void> {
       keepalive: true,
     });
     if (!res.ok) {
-      console.error("[submitContact] webhook responded with", res.status);
+      throw new Error("Delivery was not confirmed. Please try again or call the office.");
     }
   } catch (err) {
-    console.error("[submitContact] webhook request failed", err);
+    throw new Error("Delivery was not confirmed. Please try again or call the office.");
   }
 }

@@ -7,7 +7,6 @@ import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
 import { submitLead } from "@/lib/leads";
-import { trackEvent } from "@/lib/analytics";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -16,6 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 export const Route = createFileRoute("/qualify")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex,follow" },
       { title: "See If You Qualify | Uplift Medical" },
       {
         name: "description",
@@ -232,13 +232,14 @@ function Qualify() {
       return;
     }
     setErrors({});
-    await submitLead({ answers, contact });
-    trackEvent("quiz_complete", {
-      gender: gender ?? "",
-      symptom_count: symptomCount,
-      main_goal: typeof answers.goal === "string" ? answers.goal : "",
-    });
-    next();
+    try {
+      await submitLead({ answers, contact });
+      next();
+    } catch {
+      setErrors({
+        delivery: "Your request was not confirmed. Please try again or call the office.",
+      });
+    }
   }
 
   const symptomCount = Array.isArray(answers.symptoms)
@@ -252,6 +253,11 @@ function Qualify() {
   return (
     <section className="bg-background py-10 md:py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        {errors.delivery && (
+          <p role="alert" className="mb-4 text-destructive">
+            {errors.delivery}
+          </p>
+        )}
         {/* Progress */}
         {step > 0 && step <= total && (
           <div className="mb-8 md:mb-10">

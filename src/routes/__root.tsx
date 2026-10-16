@@ -1,3 +1,4 @@
+import { analyticsBootstrap } from "@/lib/analytics-bootstrap";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -15,6 +16,7 @@ import { SITE } from "@/components/site/site-data";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { MobileCTABar } from "@/components/site/MobileCTABar";
+import { isPublicMeasurementPath } from "@/lib/analytics";
 import { Analytics } from "@/components/site/Analytics";
 import { Link as TLink } from "@tanstack/react-router";
 import logoPrimary from "@/assets/logo-primary.png";
@@ -45,7 +47,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   const router = useRouter();
 
@@ -127,15 +129,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         // Google Analytics 4 (gtag.js). send_page_view is off here because the
         // <Analytics /> component fires page_view on every route change (SPA),
         // including the initial load, so pageviews are tracked explicitly.
-        { src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`, async: true },
-        {
-          children: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GA_ID}', { send_page_view: false });`,
-        },
+        ...(import.meta.env.PROD && isPublicMeasurementPath(path)
+          ? [{ children: `(${analyticsBootstrap.toString()})(${JSON.stringify(GA_ID)})` }]
+          : []),
         {
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalClinic",
+            "@id": SITE.url + "/#clinic",
             name: "Uplift Medical",
             description:
               "Concierge hormone therapy and peptide treatments in Tupelo, Mississippi. In-person and telehealth across MS and TN.",
@@ -221,11 +223,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
-        {/* GoHighLevel page/form tracking, loaded before </body> on every page. */}
-        <script
-          src="https://link.msgsndr.com/js/external-tracking.js"
-          data-tracking-id="tk_7a98f0f2ae444d95aaa07eeeb67bb40b"
-        />
+        {/* Automatic form capture is disabled pending privacy review. */}
       </body>
     </html>
   );

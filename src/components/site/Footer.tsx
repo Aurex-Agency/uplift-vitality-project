@@ -14,8 +14,8 @@ export function Footer() {
             <Logo tone="cream" />
           </div>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/75">
-            Concierge hormone and wellness care. Personalized treatment that restores energy,
-            confidence, and vitality.
+            Concierge hormone and wellness care in Tupelo. Ask about consultations, evaluation and
+            follow-up.
           </p>
           <a
             href={SITE.facebook}

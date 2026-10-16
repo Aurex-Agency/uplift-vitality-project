@@ -6,14 +6,18 @@ import heroImg from "@/assets/hero-progesterone-estrogen.jpg";
 export const Route = createFileRoute("/services/progesterone-estrogen")({
   head: () => ({
     meta: [
-      { title: "Menopause & Perimenopause Treatment in Tupelo, MS | Progesterone & Estrogen" },
+      { title: "Menopause Consultation in Tupelo, MS | Uplift Medical" },
       {
         name: "description",
         content:
-          "Hormone replacement therapy for menopause and perimenopause in Tupelo, MS. Progesterone and estrogen plans to ease hot flashes, mood swings, and sleep problems.",
+          "Explore a menopause consultation in Tupelo. Ask about progesterone and estrogen options, alternatives, personal risks and follow-up.",
       },
       { property: "og:title", content: "Progesterone and Estrogen Therapy" },
-      { property: "og:description", content: "Balance your hormones, restore your vitality." },
+      {
+        property: "og:description",
+        content:
+          "Explore a menopause consultation in Tupelo. Ask about progesterone and estrogen options, alternatives, personal risks and follow-up.",
+      },
       { property: "og:image", content: SITE.url + heroImg },
     ],
   }),
@@ -21,31 +25,22 @@ export const Route = createFileRoute("/services/progesterone-estrogen")({
     <ServicePageLayout
       content={{
         eyebrow: "Progesterone and Estrogen Therapy",
-        headline: "Balance your hormones, restore your vitality.",
-        subhead: "Feel like yourself again with personalized hormone therapy.",
+        headline: "Discuss menopause care and your choices.",
+        subhead: "Bring your questions. Discuss evaluation, alternatives and next steps.",
         heroImage: heroImg,
         heroAlt: "A person holding an Uplift Medical business card",
         intro:
-          "Hormonal imbalances can significantly impact a woman's well-being, causing fatigue, mood swings, weight gain, hot flashes, and sleep disturbances. Whether due to menopause, perimenopause, or other shifts, estrogen and progesterone play a crucial role in energy, mood, bone health, and vitality. Our therapy helps women restore balance and regain control of their health.",
+          "Your medical history and individual circumstances matter when considering care. Use a consultation to discuss the concerns affecting your daily life, the evaluation that may be appropriate and the choices available to you. No symptom checklist establishes eligibility or guarantees a particular treatment result.",
         benefits: [
           {
-            title: "Progesterone benefits",
+            title: "Questions for your consultation",
             items: [
-              "Menstrual cycle regulation.",
-              "Support during pregnancy.",
-              "Symptom relief during menopause such as hot flashes, night sweats, and mood swings.",
-              "Bone health.",
-              "Mood stability, reduced cramping, and better sleep.",
-            ],
-          },
-          {
-            title: "Estrogen benefits",
-            items: [
-              "Relief of menopausal symptoms.",
-              "Bone health and reduced osteoporosis risk.",
-              "Heart health benefits for younger women within ten years of menopause.",
-              "Improved skin and hair.",
-              "Support for cognitive function and memory.",
+              "What information is needed before a treatment decision?",
+              "What options and alternatives are appropriate to discuss?",
+              "What limitations and potential risks apply to my history?",
+              "How would progress and potential problems be monitored?",
+              "What follow-up is needed and what does it cost?",
+              "What would lead us to reconsider the plan?",
             ],
           },
         ],

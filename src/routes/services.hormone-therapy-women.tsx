@@ -6,14 +6,18 @@ import heroImg from "@/assets/hero-hormone-women.jpg";
 export const Route = createFileRoute("/services/hormone-therapy-women")({
   head: () => ({
     meta: [
-      { title: "Testosterone Therapy for Women in Tupelo, MS | Uplift Medical" },
+      { title: "Women’s Hormone Consultation in Tupelo, MS | Uplift Medical" },
       {
         name: "description",
         content:
-          "Hormone replacement therapy designed for women in Tupelo, MS. Testosterone therapy to restore energy, mood, libido, and strength. In person or by telehealth.",
+          "Prepare for an individual women’s hormone consultation in Tupelo. Discuss your history, concerns, treatment choices and follow-up.",
       },
       { property: "og:title", content: "Testosterone Therapy for Women | Uplift Medical" },
-      { property: "og:description", content: "Restore balance, energy, and confidence." },
+      {
+        property: "og:description",
+        content:
+          "Prepare for an individual women’s hormone consultation in Tupelo. Discuss your history, concerns, treatment choices and follow-up.",
+      },
       { property: "og:image", content: SITE.url + heroImg },
     ],
   }),
@@ -21,33 +25,22 @@ export const Route = createFileRoute("/services/hormone-therapy-women")({
     <ServicePageLayout
       content={{
         eyebrow: "Testosterone Therapy for Women",
-        headline: "Restore balance, energy, and confidence.",
-        subhead: "Feel stronger, sharper, and more in control of your health.",
+        headline: "A conversation about your hormone care options.",
+        subhead: "Bring your questions. Discuss evaluation, alternatives and next steps.",
         heroImage: heroImg,
         heroAlt: "Uplift Medical provider preparing an injection",
         intro:
-          "Testosterone is not just for men. Women need healthy testosterone levels to maintain energy, muscle tone, mood stability, and overall well-being. As women age, levels decline, leading to fatigue, brain fog, weight gain, low libido, and reduced strength. Our testosterone therapy for women is designed to restore hormonal balance so you feel revitalized and in control again.",
-        signs: {
-          title: "Signs you may be a candidate",
-          items: [
-            "Chronic fatigue and low energy.",
-            "Brain fog and poor concentration.",
-            "Decreased libido and sexual satisfaction.",
-            "Loss of muscle tone and increased fat.",
-            "Mood swings and irritability.",
-            "Thinning hair and weaker nails.",
-          ],
-        },
+          "Your medical history and individual circumstances matter when considering care. Use a consultation to discuss the concerns affecting your daily life, the evaluation that may be appropriate and the choices available to you. No symptom checklist establishes eligibility or guarantees a particular treatment result.",
         benefits: [
           {
-            title: "What it helps with",
+            title: "Questions for your consultation",
             items: [
-              "Increased energy and stamina.",
-              "Improved mental clarity and focus.",
-              "Restored libido and sexual health.",
-              "Stronger muscles and fat loss.",
-              "Better mood and emotional balance.",
-              "Thicker hair and healthier skin.",
+              "What information is needed before a treatment decision?",
+              "What options and alternatives are appropriate to discuss?",
+              "What limitations and potential risks apply to my history?",
+              "How would progress and potential problems be monitored?",
+              "What follow-up is needed and what does it cost?",
+              "What would lead us to reconsider the plan?",
             ],
           },
         ],

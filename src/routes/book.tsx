@@ -11,6 +11,7 @@ const BOOKING_SCRIPT_URL = "https://link.msgsndr.com/js/form_embed.js";
 export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex,follow" },
       { title: "Book an Appointment | Uplift Medical, Tupelo MS" },
       {
         name: "description",

@@ -1,0 +1,69 @@
+{
+  "slug": "prepare-menopause-consultation",
+  "category": "Women's health",
+  "title": "How to Prepare for a Menopause Consultation",
+  "h1": "How to Prepare for a Menopause Consultation",
+  "description": "Organize your history, concerns and questions before discussing menopause care and treatment choices with a clinician.",
+  "summary": "Organize your history, concerns and questions before discussing menopause care and treatment choices with a clinician.",
+  "readMinutes": 5,
+  "updated": "2026-10-16",
+  "intro": [
+    "A menopause consultation is easier to prepare for when you focus on the changes affecting your everyday life. Write down your two or three main concerns and a short description of their impact. You might want to discuss sleep, changes in your periods, discomfort or uncertainty about a treatment you have heard about. Your list does not need to sound medical to be useful."
+  ],
+  "sections": [
+    {
+      "heading": "Choose the concerns you most want to discuss",
+      "body": [
+        "Do not assume every new symptom is caused by menopause. The purpose of an appointment is to discuss your history and decide what deserves evaluation. A general online checklist cannot settle that question. If a change is worrying you, explain it directly rather than leaving it off the list because it does not match an article."
+      ]
+    },
+    {
+      "heading": "Bring a timeline instead of a perfect diary",
+      "body": [
+        "Note roughly when your concerns began and whether they follow a pattern. If relevant, record the dates of recent periods or changes in bleeding, but do not delay seeking advice because your record is incomplete. Explain which details you know and which you are estimating. A brief timeline gives the clinician a starting point for questions.",
+        "Bring your current medication and supplement list and relevant previous test reports. Include any hormone products you already use, how you obtained them and the instructions you were given. Ask the office how to share records privately before sending them. Your history belongs in an appropriate clinical channel, not in a public review or a comment on a social post."
+      ]
+    },
+    {
+      "heading": "Ask about choices without assuming one answer",
+      "body": [
+        "Ask which approaches may fit the concerns you have described and what information is needed before choosing one. ACOG describes hormonal and nonhormonal options for menopause symptoms. The right discussion depends on the symptom, medical history and individual preferences. Ask the clinician to explain the expected benefit, limitations and risks of each option that is relevant to you.",
+        "If hormone therapy is discussed, ask whether the proposed approach is local or systemic and why that distinction matters for your needs. Also ask what other options are available and what happens if you decide against treatment for now. This article does not recommend a product, dose or route and does not determine whether hormone therapy is suitable for you."
+      ]
+    },
+    {
+      "heading": "Make the safety conversation personal",
+      "body": [
+        "Tell the clinician about significant past conditions, operations and family history, including anything you are unsure may be relevant. Ask how those details affect your choices. Do not rely on another person\u2019s experience to predict what is appropriate for you. A treatment that suits a friend may not be the right choice in a different clinical situation.",
+        "Ask what symptoms or changes should prompt contact with the care team and how the plan would be reviewed. If bleeding or another concern is part of the reason for your visit, ask what evaluation is needed rather than assuming it is an expected stage of life. Seek personalized guidance instead of using an article to decide whether a concerning change can wait."
+      ]
+    },
+    {
+      "heading": "Confirm follow-up and the next appointment",
+      "body": [
+        "At the end of the visit, ask for the next step in plain language. Are you waiting for records, a test, a treatment discussion or a follow-up appointment? Confirm how results will reach you and how to ask a question after you leave. If you want time to think about a choice, say so and ask what information would help you decide.",
+        "Uplift Medical has existing information about progesterone and estrogen care and women\u2019s hormone services. Use those pages to identify questions for the team, then confirm which appointment is appropriate for your needs. Ask the office about current appointment formats and charges before booking. A request through the website does not itself confirm an appointment or establish treatment eligibility."
+      ]
+    }
+  ],
+  "faqs": [],
+  "related": [
+    {
+      "label": "Discuss care options",
+      "to": "/services/progesterone-estrogen"
+    },
+    {
+      "label": "Request an appointment",
+      "to": "/book"
+    }
+  ],
+  "reviewStatus": "pending",
+  "reviewer": "",
+  "reviewedAt": "",
+  "sources": [
+    {
+      "label": "ACOG: hormone therapy for menopause",
+      "url": "https://www.acog.org/womens-health/faqs/hormone-therapy-for-menopause"
+    }
+  ]
+}

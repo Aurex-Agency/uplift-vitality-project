@@ -1,7 +1,13 @@
+import { REVIEW_GUIDES } from "./review-guides.generated";
+
 export type GuideSection = { heading: string; body: string[] };
 export type GuideLink = { label: string; to: string };
 
 export type Guide = {
+  reviewStatus?: "pending" | "approved";
+  reviewer?: string;
+  reviewedAt?: string;
+  sources?: { label: string; url: string }[];
   slug: string;
   category: string;
   title: string; // <title> / H1-adjacent, keyword-led
@@ -187,6 +193,8 @@ export const GUIDES: Record<string, Guide> = {
     ],
   },
 };
+
+Object.assign(GUIDES, REVIEW_GUIDES);
 
 export const GUIDE_LIST = Object.values(GUIDES);
 export const GUIDE_DISCLAIMER = DISCLAIMER;

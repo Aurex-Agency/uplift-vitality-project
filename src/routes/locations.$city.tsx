@@ -17,8 +17,8 @@ export const Route = createFileRoute("/locations/$city")({
   head: ({ params }) => {
     const loc = LOCATIONS[params.city];
     if (!loc) return { meta: [] };
-    const title = `TRT & Hormone Replacement Therapy in ${loc.name}, MS | Uplift Medical`;
-    const description = `Testosterone replacement therapy (TRT) for men and hormone therapy for women in ${loc.name}, MS. Personalized to your labs, in person or by telehealth. Call 662-584-4958.`;
+    const title = `Hormone Care for ${loc.name}, MS | Uplift Medical in Tupelo`;
+    const description = `Explore access to Uplift Medical in Tupelo from ${loc.name}, MS. Confirm the appointment format and care options with the office. Call 662-584-4958.`;
     return {
       meta: [
         { title },
@@ -32,8 +32,9 @@ export const Route = createFileRoute("/locations/$city")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalClinic",
+            "@id": SITE.url + "/#clinic",
             name: "Uplift Medical",
-            url: `${SITE.url}/locations/${loc.slug}`,
+            url: SITE.url,
             telephone: "+1-662-584-4958",
             areaServed: { "@type": "City", name: `${loc.name}, MS` },
             address: {
@@ -103,6 +104,11 @@ function LocationPage() {
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               {loc.sub}
             </p>
+            <p className="mx-auto mt-4 max-w-2xl text-base">
+              Our office is in Tupelo. This page describes access from {loc.name}, not a separate
+              clinic location. Confirm whether your appointment requires an office visit or is
+              available remotely before making travel plans.
+            </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <CTAButton to="/book" variant="gold">
                 Book an Appointment
@@ -110,16 +116,6 @@ function LocationPage() {
               <CTAButton to="/qualify" variant="outline">
                 See If You Qualify
               </CTAButton>
-            </div>
-            <div className="mt-7 flex items-center justify-center gap-2">
-              <div className="flex text-gold">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <span className="text-sm text-muted-foreground">
-                Rated 5.0 by patients across MS &amp; TN
-              </span>
             </div>
           </Reveal>
         </div>

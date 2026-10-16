@@ -19,19 +19,19 @@ export const SERVICES = [
   {
     slug: "hormone-therapy-men",
     title: "Testosterone Therapy for Men",
-    short: "Restore energy, strength, focus, and drive with physician-guided TRT.",
+    short: "Discuss testosterone evaluation and treatment options with a clinician.",
     icon: "Dumbbell",
   },
   {
     slug: "hormone-therapy-women",
     title: "Testosterone Therapy for Women",
-    short: "Rebalance energy, mood, and libido with therapy designed for women.",
+    short: "Discuss your history, concerns and appropriate care options.",
     icon: "Flower2",
   },
   {
     slug: "progesterone-estrogen",
     title: "Progesterone and Estrogen Therapy",
-    short: "Ease menopause and perimenopause symptoms and restore balance.",
+    short: "Explore an individual consultation about menopause care options.",
     icon: "HeartPulse",
   },
   {
@@ -61,10 +61,10 @@ export const SERVICES = [
 ] as const;
 
 export const STATS = [
-  { value: "5.0★", label: "Google rating" },
-  { value: "500+", label: "Patients uplifted" },
-  { value: "MS & TN", label: "In-person + telehealth" },
-  { value: "Same week", label: "Appointments available" },
+  { value: "Tupelo", label: "Office location" },
+  { value: "Consultation", label: "Discuss your questions" },
+  { value: "Care options", label: "Individual evaluation" },
+  { value: "Follow-up", label: "Plan your next step" },
 ] as const;
 
 export const TRUST_POINTS = [

@@ -60,9 +60,15 @@ function Contact() {
       return;
     }
     setErrors({});
-    await submitContact(parsed.data);
-    trackEvent("contact_form_submit", {});
-    setSent(true);
+    try {
+      await submitContact(parsed.data);
+      trackEvent("contact_form_submit");
+      setSent(true);
+    } catch {
+      setErrors({
+        delivery: "Your message was not confirmed. Please try again or call the office.",
+      });
+    }
   }
 
   return (
@@ -84,6 +90,11 @@ function Contact() {
           <div className="md:col-span-7">
             <Reveal>
               <div className="rounded-3xl border border-hairline bg-white p-8 md:p-10">
+                {errors.delivery && (
+                  <p role="alert" className="mb-4 text-destructive">
+                    {errors.delivery}
+                  </p>
+                )}
                 {sent ? (
                   <div className="py-10 text-center">
                     <span className="eyebrow">Thank You</span>

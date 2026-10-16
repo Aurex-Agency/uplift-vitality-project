@@ -1,12 +1,20 @@
 type Gtag = (...args: unknown[]) => void;
-
-/**
- * Fire a Google Analytics 4 event. No-op on the server or before gtag loads
- * (calls still queue in the dataLayer, so nothing is lost).
- */
-export function trackEvent(name: string, params?: Record<string, unknown>) {
-  if (typeof window === "undefined") return;
+const safePaths = new Set(["/", "/about", "/services", "/resources"]);
+export const isPublicMeasurementPath = (path: string) =>
+  safePaths.has(path.replace(/\/$/, "") || "/") || /^\/locations\/[a-z-]+$/.test(path);
+const allowed = new Set(["call_click", "book_appointment_click"]);
+export function trackEvent(name: string, _params?: Record<string, unknown>) {
+  if (
+    !import.meta.env.PROD ||
+    typeof window === "undefined" ||
+    window.location.hostname !== "upliftmedicalms.com" ||
+    !isPublicMeasurementPath(window.location.pathname) ||
+    !allowed.has(name)
+  )
+    return;
   const w = window as unknown as { gtag?: Gtag };
-  if (typeof w.gtag !== "function") return;
-  w.gtag("event", name, params ?? {});
+  w.gtag?.("event", name, {
+    page_location: window.location.origin + window.location.pathname,
+    page_title: "Uplift Medical",
+  });
 }
