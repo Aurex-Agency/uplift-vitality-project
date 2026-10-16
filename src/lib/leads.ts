@@ -54,7 +54,7 @@ export async function submitLead(payload: QuizPayload): Promise<void> {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      keepalive: true,
+      signal: AbortSignal.timeout(15_000),
     });
     if (!res.ok) {
       throw new Error("Delivery was not confirmed. Please try again or call the office.");
@@ -94,7 +94,7 @@ export async function submitContact(payload: ContactPayload): Promise<void> {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      keepalive: true,
+      signal: AbortSignal.timeout(15_000),
     });
     if (!res.ok) {
       throw new Error("Delivery was not confirmed. Please try again or call the office.");

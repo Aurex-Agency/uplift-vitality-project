@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { z } from "zod";
 import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
@@ -39,10 +39,13 @@ const schema = z.object({
 
 function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const sending = useRef(false);
+  const [pending, setPending] = useState(false);
   const [sent, setSent] = useState(false);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (sending.current) return;
     const fd = new FormData(e.currentTarget);
     const data = {
       name: String(fd.get("name") ?? ""),
@@ -60,6 +63,8 @@ function Contact() {
       return;
     }
     setErrors({});
+    sending.current = true;
+    setPending(true);
     try {
       await submitContact(parsed.data);
       trackEvent("contact_form_submit");
@@ -68,6 +73,9 @@ function Contact() {
       setErrors({
         delivery: "Your message was not confirmed. Please try again or call the office.",
       });
+    } finally {
+      sending.current = false;
+      setPending(false);
     }
   }
 
@@ -136,9 +144,11 @@ function Contact() {
                     </div>
                     <button
                       type="submit"
+                      disabled={pending}
+                      aria-busy={pending}
                       className="gold-gradient gold-glow inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-0.5"
                     >
-                      Send Message
+                      {pending ? "Sending message..." : "Send Message"}
                     </button>
                   </form>
                 )}

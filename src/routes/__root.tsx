@@ -127,7 +127,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       ],
       scripts: [
         // Google Analytics 4 (gtag.js). send_page_view is off here because the
-        // <Analytics /> component fires page_view on every route change (SPA),
+        // <Analytics measurementId={GA_ID} /> component fires page_view on every route change (SPA),
         // including the initial load, so pageviews are tracked explicitly.
         ...(import.meta.env.PROD && isPublicMeasurementPath(path)
           ? [{ children: `(${analyticsBootstrap.toString()})(${JSON.stringify(GA_ID)})` }]
@@ -234,7 +234,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Analytics />
+      <Analytics measurementId={GA_ID} />
       <div className="flex min-h-screen flex-col bg-background">
         <TopUtilityBar />
         <Navbar />

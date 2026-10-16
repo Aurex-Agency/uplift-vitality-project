@@ -57,6 +57,7 @@ test("Lead delivery failure cannot report success; requests strip URL query and 
   let captured;
   const context = {
     exports: {},
+    AbortSignal,
     window: {
       location: {
         hostname: "upliftmedicalms.com",
@@ -67,6 +68,7 @@ test("Lead delivery failure cannot report success; requests strip URL query and 
     },
     fetch: async (_url, options) => {
       captured = JSON.parse(options.body);
+      assert.ok(options.signal instanceof AbortSignal);
       return { ok: false, status: 500 };
     },
   };

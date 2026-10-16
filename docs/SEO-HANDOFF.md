@@ -9,7 +9,7 @@ Prepared October 16, 2026. This branch is a reviewable implementation, not a dep
 - Base: origin/claude/hormone-therapy-quiz-txs5pq, 6eae4f6. This is newer than main and matches the public domain's phone 662-584-4958, resources, service routes, office details and visible content. The alternate uplift-connect repository has a different route architecture and is not this site's source.
 - Exact hosting deployment SHA and production branch setting remain unverified. Confirm hosting mapping before opening a merge against a target branch or deploying. Do not merge to old main without accounting for the newer source branch.
 - No production deployment, remote branch push, PR, account setting, profile edit or outreach was performed.
-- Original bun.lock retained unchanged; dependencies installed with Bun frozen lock. npm invokes scripts only; no npm lockfile migration. Local validation used Node 24.19.0; hosting package declares Node 22.x, so validate the hosting preview runtime before release.
+- Bun remains the package manager. The pre-merge review updated Bun lock within compatible ranges to fix inherited critical framework/serializer advisories; see PRE-MERGE-REVIEW.md. npm invokes scripts only; no npm lockfile migration. Local validation used Node 24.19.0; hosting package declares Node 22.x, so validate the hosting preview runtime before release.
 
 ## Four complete new articles
 
@@ -65,10 +65,10 @@ Call and booking clicks are intent events, not leads. Neither quiz completion no
 
 ## Verification and release checklist
 
-- Bun frozen-lockfile installation succeeded, original lock retained.
+- Bun installation succeeded; the pre-merge review security-updated the existing Bun lock.
 - TypeScript check passes against locked dependency versions.
 - Build passes and pending draft article content is excluded.
-- Eight automated SEO/privacy/delivery tests pass, including failed/successful mocked delivery, sanitized attribution, host gating and pre-navigation suppression.
+- Eight automated SEO/privacy/delivery tests and four production-server tests pass, including failed/successful mocked delivery, sanitized attribution, host gating and pre-navigation suppression.
 - ESLint passes with six pre-existing fast-refresh warnings in UI primitives, no errors.
 - Desktop and 390x844 mobile article previews inspected: body visible, no horizontal overflow, and no opacity-hidden paragraphs. The existing tall article Reveal wrapper was removed so reading does not depend on scroll animation.
 - No production lead submissions made. Do not test with real personal information or real webhooks.

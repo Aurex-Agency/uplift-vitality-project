@@ -1,8 +1,9 @@
+import { analyticsBootstrap } from "@/lib/analytics-bootstrap";
 import { useEffect } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import { trackEvent, isPublicMeasurementPath } from "@/lib/analytics";
 // No health-answer, query, fragment, form-value or treatment-page collection.
-export function Analytics() {
+export function Analytics({ measurementId }: { measurementId: string }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   useEffect(() => {
     if (
@@ -11,6 +12,7 @@ export function Analytics() {
       !isPublicMeasurementPath(pathname)
     )
       return;
+    analyticsBootstrap(measurementId);
     const w = window as unknown as {
       gtag?: (...args: unknown[]) => void;
       upliftSearchReferrer?: string;
@@ -21,7 +23,7 @@ export function Analytics() {
       page_title: "Uplift Medical",
       page_referrer: w.upliftSearchReferrer || "",
     });
-  }, [pathname]);
+  }, [pathname, measurementId]);
   useEffect(() => {
     function onClick(e: MouseEvent) {
       const link = (e.target as Element | null)?.closest?.("a")?.getAttribute("href") || "";

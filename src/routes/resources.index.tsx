@@ -31,6 +31,7 @@ function ResourcesIndex() {
         <div className="mx-auto max-w-7xl px-6">
           <Reveal>
             <SectionHeading
+              as="h1"
               eyebrow="Resources"
               title="Straight answers on hormones and TRT."
               subhead="Clear, no-nonsense guides from our team. No jargon, no hype, just what you need to make a good decision."
