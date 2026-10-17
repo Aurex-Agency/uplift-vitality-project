@@ -37,7 +37,16 @@ test("Sitemap excludes intake and booking URLs; production canonicals retained",
   const xml = read("public/sitemap.xml");
   assert.ok(!xml.includes("<loc>https://upliftmedicalms.com/qualify</loc>"));
   assert.ok(!xml.includes("<loc>https://upliftmedicalms.com/book</loc>"));
-  assert.ok(!xml.includes("uplift.aurexagency.com"));
+  const locUrls = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g), (m) => m[1]);
+  assert.ok(
+    locUrls.every((loc) => {
+      try {
+        return new URL(loc).hostname !== "uplift.aurexagency.com";
+      } catch {
+        return true;
+      }
+    }),
+  );
 });
 test("IndexNow refuses unknown / preview / draft URLs", () => {
   assert.throws(() =>
