@@ -4,7 +4,30 @@
   "installCommand": "bun install",
   "framework": null,
   "redirects": [
-    { "source": "/services/iv-therapy", "destination": "/services", "statusCode": 301 },
-    { "source": "/services/weight-loss", "destination": "/services", "statusCode": 301 }
+    {
+      "source": "/services/iv-therapy",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/weight-loss",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/peptidetherapy",
+      "destination": "/services/peptide-therapy",
+      "statusCode": 301
+    },
+    {
+      "source": "/progesteroneestrogen",
+      "destination": "/services/progesterone-estrogen",
+      "statusCode": 301
+    }
   ]
 }

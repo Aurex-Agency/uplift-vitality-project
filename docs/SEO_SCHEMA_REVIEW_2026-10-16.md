@@ -9,3 +9,5 @@ Validation: frozen Bun lockfile install; lint; typecheck; build; SEO tests; prod
 Remaining dependencies: Four pending editorial articles remain gated for qualified clinician approval. Historical IV/weight-loss query demand does not authorize restoring retired services.
 
 This PR is independently reviewable. After release, recrawl production and recheck Search Console; local validation does not guarantee Google indexing or rich-result display.
+
+Also redirect confirmed legacy /home, /peptidetherapy and /progesteroneestrogen 404s to the current homepage and matching service pages. The source URLs returned 404 in a live check on 2026-10-16; all replacement destinations returned 200.
