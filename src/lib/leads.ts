@@ -20,8 +20,7 @@ function str(v: unknown): string {
   return typeof v === "string" ? v : "";
 }
 
-// Failures are logged but never thrown: a webhook outage must not block
-// the thank-you screen after someone has already handed us their info.
+// Confirmation is shown only after confirmed delivery.
 export async function submitLead(payload: QuizPayload): Promise<void> {
   const { answers, contact } = payload;
   const symptoms = Array.isArray(answers.symptoms) ? (answers.symptoms as string[]) : [];
@@ -30,7 +29,7 @@ export async function submitLead(payload: QuizPayload): Promise<void> {
   // Flat field names so they are easy to map in the GoHighLevel workflow.
   const body = {
     source: "qualify-quiz",
-    page: typeof window !== "undefined" ? window.location.href : "",
+    page: typeof window !== "undefined" ? window.location.origin + window.location.pathname : "",
     submitted_at: new Date().toISOString(),
     name: contact.name,
     email: contact.email,
@@ -48,20 +47,26 @@ export async function submitLead(payload: QuizPayload): Promise<void> {
     age_range: str(answers.age),
   };
 
+  if (typeof window === "undefined" || window.location.hostname !== "upliftmedicalms.com")
+    throw new Error("Submission is disabled on preview sites.");
   try {
     const res = await fetch(QUIZ_WEBHOOK_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      keepalive: true,
+      signal: AbortSignal.timeout(15_000),
     });
     if (!res.ok) {
-      console.error("[submitLead] webhook responded with", res.status);
+      throw new Error("Delivery was not confirmed. Please try again or call the office.");
     }
   } catch (err) {
-    console.error("[submitLead] webhook request failed", err);
+    throw new Error("Delivery was not confirmed. Please try again or call the office.");
   }
 }
+
+// GoHighLevel inbound webhook for contact-form messages.
+const CONTACT_WEBHOOK_URL =
+  "https://services.leadconnectorhq.com/hooks/TeOpti4qe6jxiicUI2Sy/webhook-trigger/422f7ecb-d501-4a9b-97da-fc04bcf768b5";
 
 export type ContactPayload = {
   name: string;
@@ -70,7 +75,31 @@ export type ContactPayload = {
   message: string;
 };
 
-// TODO: wire this to a GoHighLevel webhook for contact-form messages. For now, log only.
+// Confirmation is shown only after confirmed delivery.
 export async function submitContact(payload: ContactPayload): Promise<void> {
-  console.log("[submitContact]", payload);
+  const body = {
+    source: "contact-form",
+    page: typeof window !== "undefined" ? window.location.origin + window.location.pathname : "",
+    submitted_at: new Date().toISOString(),
+    name: payload.name,
+    email: payload.email,
+    phone: payload.phone,
+    message: payload.message,
+  };
+
+  if (typeof window === "undefined" || window.location.hostname !== "upliftmedicalms.com")
+    throw new Error("Submission is disabled on preview sites.");
+  try {
+    const res = await fetch(CONTACT_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!res.ok) {
+      throw new Error("Delivery was not confirmed. Please try again or call the office.");
+    }
+  } catch (err) {
+    throw new Error("Delivery was not confirmed. Please try again or call the office.");
+  }
 }

@@ -1,0 +1,69 @@
+{
+  "slug": "telehealth-in-person-follow-up",
+  "category": "Care access",
+  "title": "Telehealth or In-Person Follow-Up: Planning an Uplift Appointment",
+  "h1": "Telehealth or In-Person Follow-Up: Planning an Uplift Appointment",
+  "description": "Questions to confirm appointment format, location, technology, records and follow-up with Uplift Medical before your visit.",
+  "summary": "Questions to confirm appointment format, location, technology, records and follow-up with Uplift Medical before your visit.",
+  "readMinutes": 5,
+  "updated": "2026-10-16",
+  "intro": [
+    "Choosing between a remote visit and an in-person appointment starts with the office and your clinician. Uplift Medical\u2019s public website describes a Tupelo office and telehealth care, but that description is not a promise that every service or appointment is available remotely. Ask which format applies to your request before arranging travel, time away from work or childcare."
+  ],
+  "sections": [
+    {
+      "heading": "Confirm the format before making plans",
+      "body": [
+        "Tell the office where you expect to be physically located during a remote appointment, especially if you will be traveling. Ask whether that location changes what the team can offer. Do not assume that booking online or being an existing patient establishes eligibility for a remote visit in every state. The team should confirm the arrangements for the specific appointment."
+      ]
+    },
+    {
+      "heading": "Ask what the visit needs to accomplish",
+      "body": [
+        "An appointment may be intended to discuss concerns, review information or plan a next step. Ask what the team needs from you in advance and whether any part of the evaluation requires an in-person visit. If laboratory work is discussed, confirm where it should be done, who supplies instructions and how the results will reach the clinician.",
+        "Avoid scheduling tests on your own based only on a general online description. The office can clarify which information is needed for your appointment and which services, if any, are billed separately. Ask whether you should keep an existing appointment if requested records have not arrived. These practical details can prevent unnecessary travel or repeated calls."
+      ]
+    },
+    {
+      "heading": "Prepare your space and connection for a remote visit",
+      "body": [
+        "For a video visit, test the device, sound and connection ahead of time using the instructions supplied by the practice. Choose a private place where you can hear and speak comfortably. Keep the office\u2019s contact number available in case the connection fails. HHS patient guidance recommends preparing both your technology and the information you want to discuss before a telehealth appointment.",
+        "Ask how you will receive the visit link and how to recognize the correct message. If a link does not arrive or looks unfamiliar, contact the office through its published number. Ask about accommodations or help you may need before the appointment. A companion may be useful for taking notes, but confirm how their participation should be handled and make sure you are comfortable sharing the conversation."
+      ]
+    },
+    {
+      "heading": "Prepare for a visit to Tupelo",
+      "body": [
+        "Use the address shown on Uplift\u2019s contact page and confirm the suite and arrival instructions with the office. Location pages describing access from nearby towns should not be interpreted as separate staffed offices. If you are coming from Pontotoc, New Albany or Oxford, check the appointment confirmation before planning your trip.",
+        "Bring a medication list, relevant records requested by the team and the questions you want answered. Ask whether any specific preparation applies to your appointment. Do not fast, stop medicines or change a dose unless your care team has instructed you to do so. Confirm the current charges and payment arrangements with the office rather than assuming that remote and in-person visits always have identical terms."
+      ]
+    },
+    {
+      "heading": "Know what happens after the appointment",
+      "body": [
+        "Before the visit ends, confirm whether another appointment is needed and how it will be arranged. Ask how to send a routine follow-up question and when to contact the office if expected information has not arrived. Save the instructions somewhere you can find them again. A calendar entry, a submitted request and a confirmed appointment are different things; make sure you know which one you have.",
+        "Use Uplift\u2019s booking or contact page to ask about the right appointment format. Keep detailed health information out of ordinary messages unless the practice has confirmed an appropriate secure channel. Remote care is not a substitute for emergency assistance. The aim of preparation is a clear, useful conversation and an agreed next step, whether that happens on screen or in the office."
+      ]
+    }
+  ],
+  "faqs": [],
+  "related": [
+    {
+      "label": "Discuss care options",
+      "to": "/contact"
+    },
+    {
+      "label": "Request an appointment",
+      "to": "/book"
+    }
+  ],
+  "reviewStatus": "pending",
+  "reviewer": "",
+  "reviewedAt": "",
+  "sources": [
+    {
+      "label": "HHS: preparing for telehealth",
+      "url": "https://telehealth.hhs.gov/patients/what-should-i-know-before-my-telehealth-visit"
+    }
+  ]
+}

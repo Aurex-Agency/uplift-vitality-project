@@ -134,8 +134,8 @@ function About() {
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-foreground">
               Whether you are chasing a personal record or just keeping up with a full life, Uplift
               Medical helps you show up with more energy, strength, and confidence. Personalized
-              care, built around your goals and the way you really live &mdash; not a
-              one-size-fits-all protocol.
+              care, built around your goals and the way you really live, not a one-size-fits-all
+              protocol.
             </p>
             <div className="mt-8">
               <CTAButton to="/qualify" variant="gold">
@@ -162,6 +162,19 @@ function About() {
         </div>
       </section>
 
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="font-display text-3xl text-primary">Know who is involved in your care</h2>
+          <p className="mt-4">
+            Before your consultation, ask the office which clinician you will see, their
+            professional credentials and who will review any testing. Confirm how you can ask
+            follow-up questions and whether another professional may be involved in your care.
+          </p>
+          <a href="/contact" className="mt-5 inline-block underline">
+            Ask the office about your appointment
+          </a>
+        </div>
+      </section>
       <CTABand />
     </>
   );

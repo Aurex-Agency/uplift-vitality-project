@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { z } from "zod";
 import { Reveal } from "@/components/site/Reveal";
 import { CTAButton } from "@/components/site/CTAButton";
 import { SITE } from "@/components/site/site-data";
 import { submitContact } from "@/lib/leads";
+import { trackEvent } from "@/lib/analytics";
 import { MapPin, Phone, Clock, Facebook, type LucideIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -38,10 +39,13 @@ const schema = z.object({
 
 function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const sending = useRef(false);
+  const [pending, setPending] = useState(false);
   const [sent, setSent] = useState(false);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (sending.current) return;
     const fd = new FormData(e.currentTarget);
     const data = {
       name: String(fd.get("name") ?? ""),
@@ -59,8 +63,20 @@ function Contact() {
       return;
     }
     setErrors({});
-    await submitContact(parsed.data);
-    setSent(true);
+    sending.current = true;
+    setPending(true);
+    try {
+      await submitContact(parsed.data);
+      trackEvent("contact_form_submit");
+      setSent(true);
+    } catch {
+      setErrors({
+        delivery: "Your message was not confirmed. Please try again or call the office.",
+      });
+    } finally {
+      sending.current = false;
+      setPending(false);
+    }
   }
 
   return (
@@ -82,6 +98,11 @@ function Contact() {
           <div className="md:col-span-7">
             <Reveal>
               <div className="rounded-3xl border border-hairline bg-white p-8 md:p-10">
+                {errors.delivery && (
+                  <p role="alert" className="mb-4 text-destructive">
+                    {errors.delivery}
+                  </p>
+                )}
                 {sent ? (
                   <div className="py-10 text-center">
                     <span className="eyebrow">Thank You</span>
@@ -123,9 +144,11 @@ function Contact() {
                     </div>
                     <button
                       type="submit"
+                      disabled={pending}
+                      aria-busy={pending}
                       className="gold-gradient gold-glow inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-0.5"
                     >
-                      Send Message
+                      {pending ? "Sending message..." : "Send Message"}
                     </button>
                   </form>
                 )}

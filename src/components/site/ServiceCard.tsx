@@ -1,14 +1,24 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { Dumbbell, Flower2, HeartPulse, Dna, Droplets, Flame, type LucideIcon } from "lucide-react";
+import {
+  Dumbbell,
+  Flower2,
+  HeartPulse,
+  Dna,
+  Salad,
+  TrendingUp,
+  Leaf,
+  type LucideIcon,
+} from "lucide-react";
 
 const ICONS: Record<string, LucideIcon> = {
   Dumbbell,
   Flower2,
   HeartPulse,
   Dna,
-  Droplets,
-  Flame,
+  Salad,
+  TrendingUp,
+  Leaf,
 };
 
 export function ServiceCard({

@@ -29,3 +29,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated editorial gate and local validation output
+src/components/site/review-guides.generated.ts
+artifacts/

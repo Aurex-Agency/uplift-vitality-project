@@ -17,10 +17,16 @@ import { Route as BookRouteImport } from './routes/book'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ServicesSupplementationRouteImport } from './routes/services.supplementation'
 import { Route as ServicesProgesteroneEstrogenRouteImport } from './routes/services.progesterone-estrogen'
+import { Route as ServicesPersonalizedTrainingRouteImport } from './routes/services.personalized-training'
 import { Route as ServicesPeptideTherapyRouteImport } from './routes/services.peptide-therapy'
+import { Route as ServicesNutritionRouteImport } from './routes/services.nutrition'
 import { Route as ServicesHormoneTherapyWomenRouteImport } from './routes/services.hormone-therapy-women'
 import { Route as ServicesHormoneTherapyMenRouteImport } from './routes/services.hormone-therapy-men'
+import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
+import { Route as LocationsCityRouteImport } from './routes/locations.$city'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -62,15 +68,36 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSupplementationRoute = ServicesSupplementationRouteImport.update({
+  id: '/services/supplementation',
+  path: '/services/supplementation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesProgesteroneEstrogenRoute =
   ServicesProgesteroneEstrogenRouteImport.update({
     id: '/services/progesterone-estrogen',
     path: '/services/progesterone-estrogen',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesPersonalizedTrainingRoute =
+  ServicesPersonalizedTrainingRouteImport.update({
+    id: '/services/personalized-training',
+    path: '/services/personalized-training',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesPeptideTherapyRoute = ServicesPeptideTherapyRouteImport.update({
   id: '/services/peptide-therapy',
   path: '/services/peptide-therapy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesNutritionRoute = ServicesNutritionRouteImport.update({
+  id: '/services/nutrition',
+  path: '/services/nutrition',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesHormoneTherapyWomenRoute =
@@ -85,6 +112,16 @@ const ServicesHormoneTherapyMenRoute =
     path: '/services/hormone-therapy-men',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
+  id: '/resources/$slug',
+  path: '/resources/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsCityRoute = LocationsCityRouteImport.update({
+  id: '/locations/$city',
+  path: '/locations/$city',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -94,10 +131,16 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
+  '/services/nutrition': typeof ServicesNutritionRoute
   '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
+  '/services/personalized-training': typeof ServicesPersonalizedTrainingRoute
   '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
+  '/services/supplementation': typeof ServicesSupplementationRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -108,10 +151,16 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
+  '/services/nutrition': typeof ServicesNutritionRoute
   '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
+  '/services/personalized-training': typeof ServicesPersonalizedTrainingRoute
   '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
+  '/services/supplementation': typeof ServicesSupplementationRoute
+  '/resources': typeof ResourcesIndexRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -123,10 +172,16 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/services/hormone-therapy-men': typeof ServicesHormoneTherapyMenRoute
   '/services/hormone-therapy-women': typeof ServicesHormoneTherapyWomenRoute
+  '/services/nutrition': typeof ServicesNutritionRoute
   '/services/peptide-therapy': typeof ServicesPeptideTherapyRoute
+  '/services/personalized-training': typeof ServicesPersonalizedTrainingRoute
   '/services/progesterone-estrogen': typeof ServicesProgesteroneEstrogenRoute
+  '/services/supplementation': typeof ServicesSupplementationRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -139,10 +194,16 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qualify'
     | '/terms'
+    | '/locations/$city'
+    | '/resources/$slug'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
+    | '/services/nutrition'
     | '/services/peptide-therapy'
+    | '/services/personalized-training'
     | '/services/progesterone-estrogen'
+    | '/services/supplementation'
+    | '/resources/'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -153,10 +214,16 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qualify'
     | '/terms'
+    | '/locations/$city'
+    | '/resources/$slug'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
+    | '/services/nutrition'
     | '/services/peptide-therapy'
+    | '/services/personalized-training'
     | '/services/progesterone-estrogen'
+    | '/services/supplementation'
+    | '/resources'
     | '/services'
   id:
     | '__root__'
@@ -167,10 +234,16 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/qualify'
     | '/terms'
+    | '/locations/$city'
+    | '/resources/$slug'
     | '/services/hormone-therapy-men'
     | '/services/hormone-therapy-women'
+    | '/services/nutrition'
     | '/services/peptide-therapy'
+    | '/services/personalized-training'
     | '/services/progesterone-estrogen'
+    | '/services/supplementation'
+    | '/resources/'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -182,10 +255,16 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   QualifyRoute: typeof QualifyRoute
   TermsRoute: typeof TermsRoute
+  LocationsCityRoute: typeof LocationsCityRoute
+  ResourcesSlugRoute: typeof ResourcesSlugRoute
   ServicesHormoneTherapyMenRoute: typeof ServicesHormoneTherapyMenRoute
   ServicesHormoneTherapyWomenRoute: typeof ServicesHormoneTherapyWomenRoute
+  ServicesNutritionRoute: typeof ServicesNutritionRoute
   ServicesPeptideTherapyRoute: typeof ServicesPeptideTherapyRoute
+  ServicesPersonalizedTrainingRoute: typeof ServicesPersonalizedTrainingRoute
   ServicesProgesteroneEstrogenRoute: typeof ServicesProgesteroneEstrogenRoute
+  ServicesSupplementationRoute: typeof ServicesSupplementationRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -247,6 +326,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/supplementation': {
+      id: '/services/supplementation'
+      path: '/services/supplementation'
+      fullPath: '/services/supplementation'
+      preLoaderRoute: typeof ServicesSupplementationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/progesterone-estrogen': {
       id: '/services/progesterone-estrogen'
       path: '/services/progesterone-estrogen'
@@ -254,11 +347,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesProgesteroneEstrogenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/personalized-training': {
+      id: '/services/personalized-training'
+      path: '/services/personalized-training'
+      fullPath: '/services/personalized-training'
+      preLoaderRoute: typeof ServicesPersonalizedTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/peptide-therapy': {
       id: '/services/peptide-therapy'
       path: '/services/peptide-therapy'
       fullPath: '/services/peptide-therapy'
       preLoaderRoute: typeof ServicesPeptideTherapyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/nutrition': {
+      id: '/services/nutrition'
+      path: '/services/nutrition'
+      fullPath: '/services/nutrition'
+      preLoaderRoute: typeof ServicesNutritionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/hormone-therapy-women': {
@@ -275,6 +382,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesHormoneTherapyMenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/$slug': {
+      id: '/resources/$slug'
+      path: '/resources/$slug'
+      fullPath: '/resources/$slug'
+      preLoaderRoute: typeof ResourcesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/$city': {
+      id: '/locations/$city'
+      path: '/locations/$city'
+      fullPath: '/locations/$city'
+      preLoaderRoute: typeof LocationsCityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -286,10 +407,16 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   QualifyRoute: QualifyRoute,
   TermsRoute: TermsRoute,
+  LocationsCityRoute: LocationsCityRoute,
+  ResourcesSlugRoute: ResourcesSlugRoute,
   ServicesHormoneTherapyMenRoute: ServicesHormoneTherapyMenRoute,
   ServicesHormoneTherapyWomenRoute: ServicesHormoneTherapyWomenRoute,
+  ServicesNutritionRoute: ServicesNutritionRoute,
   ServicesPeptideTherapyRoute: ServicesPeptideTherapyRoute,
+  ServicesPersonalizedTrainingRoute: ServicesPersonalizedTrainingRoute,
   ServicesProgesteroneEstrogenRoute: ServicesProgesteroneEstrogenRoute,
+  ServicesSupplementationRoute: ServicesSupplementationRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport

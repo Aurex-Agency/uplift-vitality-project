@@ -1,10 +1,10 @@
 export const SITE = {
   name: "Uplift Medical",
-  // Canonical site origin, no trailing slash. Used for og:image and structured data.
-  // TODO at launch: switch to https://upliftmedicalms.com (also update public/sitemap.xml).
-  url: "https://uplift.aurexagency.com",
-  phone: "662-491-1457",
-  phoneHref: "tel:16624911457",
+  // Canonical site origin, no trailing slash. Drives canonicals, og:url/og:image,
+  // and structured data. Keep in sync with public/sitemap.xml and robots.txt.
+  url: "https://upliftmedicalms.com",
+  phone: "662-584-4958",
+  phoneHref: "tel:16625844958",
   address: "144 S Thomas St, Suite 102, B, Tupelo, MS 38801",
   addressShort: "144 S Thomas St, Suite 102, Tupelo, MS",
   facebook: "https://www.facebook.com/profile.php?id=61558283480368",
@@ -19,19 +19,19 @@ export const SERVICES = [
   {
     slug: "hormone-therapy-men",
     title: "Testosterone Therapy for Men",
-    short: "Restore energy, strength, focus, and drive with physician-guided TRT.",
+    short: "Discuss testosterone evaluation and treatment options with a clinician.",
     icon: "Dumbbell",
   },
   {
     slug: "hormone-therapy-women",
     title: "Testosterone Therapy for Women",
-    short: "Rebalance energy, mood, and libido with therapy designed for women.",
+    short: "Discuss your history, concerns and appropriate care options.",
     icon: "Flower2",
   },
   {
     slug: "progesterone-estrogen",
     title: "Progesterone and Estrogen Therapy",
-    short: "Ease menopause and perimenopause symptoms and restore balance.",
+    short: "Explore an individual consultation about menopause care options.",
     icon: "HeartPulse",
   },
   {
@@ -40,13 +40,31 @@ export const SERVICES = [
     short: "Support recovery, performance, and anti-aging at the cellular level.",
     icon: "Dna",
   },
+  {
+    slug: "nutrition",
+    title: "Nutrition",
+    short: "A tailored nutrition plan built around your goals, lifestyle, and favorite foods.",
+    icon: "Salad",
+  },
+  {
+    slug: "personalized-training",
+    title: "Personalized Training",
+    short: "Custom workout programming for strength, muscle, fat loss, or toning up.",
+    icon: "TrendingUp",
+  },
+  {
+    slug: "supplementation",
+    title: "Vitamin & Supplementation",
+    short: "Holistic, provider-guided vitamin and supplement protocols for lasting health.",
+    icon: "Leaf",
+  },
 ] as const;
 
 export const STATS = [
-  { value: "5.0★", label: "Google rating" },
-  { value: "500+", label: "Patients uplifted" },
-  { value: "MS & TN", label: "In-person + telehealth" },
-  { value: "Same week", label: "Appointments available" },
+  { value: "Tupelo", label: "Office location" },
+  { value: "Consultation", label: "Discuss your questions" },
+  { value: "Care options", label: "Individual evaluation" },
+  { value: "Follow-up", label: "Plan your next step" },
 ] as const;
 
 export const TRUST_POINTS = [
@@ -102,7 +120,7 @@ export const STEPS = [
 export const FAQS = [
   {
     q: "What services does Uplift Medical offer?",
-    a: "We specialize in hormone replacement therapy, progesterone and estrogen therapy, and peptide therapy to help you restore balance, increase energy, and improve overall well-being.",
+    a: "We specialize in testosterone replacement therapy (TRT) for men and women, progesterone and estrogen therapy, peptide therapy, nutrition, personalized training, and supplementation protocols to restore balance, increase energy, and improve overall well-being.",
   },
   {
     q: "How do I know if hormone therapy is right for me?",
@@ -122,6 +140,6 @@ export const FAQS = [
   },
   {
     q: "How do I get started?",
-    a: "It is easy. Schedule a consultation, get your lab work done, and we will build a customized treatment plan for you. Call 662-491-1457 to book.",
+    a: "It is easy. Schedule a consultation, get your lab work done, and we will build a customized treatment plan for you. Call 662-584-4958 to book.",
   },
 ];

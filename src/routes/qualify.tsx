@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { z } from "zod";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, Lock, Phone } from "lucide-react";
 import { Link } from "@tanstack/react-router";
@@ -15,6 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 export const Route = createFileRoute("/qualify")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex,follow" },
       { title: "See If You Qualify | Uplift Medical" },
       {
         name: "description",
@@ -173,6 +174,8 @@ function Qualify() {
     marketingConsent: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const sending = useRef(false);
+  const [pending, setPending] = useState(false);
 
   const gender = typeof answers.gender === "string" ? answers.gender : undefined;
   const steps = useMemo(() => buildSteps(gender), [gender]);
@@ -221,6 +224,7 @@ function Qualify() {
   }
 
   async function submit() {
+    if (sending.current) return;
     const parsed = contactSchema.safeParse(contact);
     if (!parsed.success) {
       const errs: Record<string, string> = {};
@@ -231,8 +235,19 @@ function Qualify() {
       return;
     }
     setErrors({});
-    await submitLead({ answers, contact });
-    next();
+    sending.current = true;
+    setPending(true);
+    try {
+      await submitLead({ answers, contact });
+      next();
+    } catch {
+      setErrors({
+        delivery: "Your request was not confirmed. Please try again or call the office.",
+      });
+    } finally {
+      sending.current = false;
+      setPending(false);
+    }
   }
 
   const symptomCount = Array.isArray(answers.symptoms)
@@ -246,6 +261,11 @@ function Qualify() {
   return (
     <section className="bg-background py-10 md:py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        {errors.delivery && (
+          <p role="alert" className="mb-4 text-destructive">
+            {errors.delivery}
+          </p>
+        )}
         {/* Progress */}
         {step > 0 && step <= total && (
           <div className="mb-8 md:mb-10">
@@ -450,15 +470,18 @@ function Qualify() {
               <div className="mt-8 flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   onClick={back}
+                  disabled={pending}
                   className="inline-flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-primary sm:justify-start"
                 >
                   <ArrowLeft className="h-4 w-4" /> Back
                 </button>
                 <button
                   onClick={submit}
+                  disabled={pending}
+                  aria-busy={pending}
                   className="gold-gradient gold-glow inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-0.5"
                 >
-                  See My Results
+                  {pending ? "Sending request..." : "See My Results"}
                 </button>
               </div>
             </QuizCard>

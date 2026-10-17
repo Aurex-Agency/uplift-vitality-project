@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, MapPin, Phone, Clock } from "lucide-react";
 import { Logo } from "./Logo";
 import { SERVICES, SITE } from "./site-data";
+import { LOCATION_LIST } from "./location-data";
 
 export function Footer() {
   return (
@@ -13,8 +14,8 @@ export function Footer() {
             <Logo tone="cream" />
           </div>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/75">
-            Concierge hormone and wellness care. Personalized treatment that restores energy,
-            confidence, and vitality.
+            Concierge hormone and wellness care in Tupelo. Ask about consultations, evaluation and
+            follow-up.
           </p>
           <a
             href={SITE.facebook}
@@ -34,6 +35,7 @@ export function Footer() {
               { to: "/", label: "Home" },
               { to: "/about", label: "About" },
               { to: "/services", label: "Services" },
+              { to: "/resources", label: "Resources" },
               { to: "/qualify", label: "Qualify Quiz" },
               { to: "/contact", label: "Contact" },
               { to: "/book", label: "Book Appointment" },
@@ -88,6 +90,22 @@ export function Footer() {
               </div>
             </li>
           </ul>
+        </div>
+      </div>
+
+      <div className="relative border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-2 px-6 py-5 text-xs text-primary-foreground/60">
+          <span className="eyebrow text-[0.7rem]">Areas We Serve</span>
+          {LOCATION_LIST.map((loc) => (
+            <Link
+              key={loc.slug}
+              to="/locations/$city"
+              params={{ city: loc.slug }}
+              className="hover:text-gold"
+            >
+              {loc.name}, MS
+            </Link>
+          ))}
         </div>
       </div>
 

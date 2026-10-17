@@ -1,9 +1,10 @@
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { CTAButton } from "./CTAButton";
 import { CTABand } from "./CTABand";
 import { HowItWorks } from "./HowItWorks";
-import { Check, Star } from "lucide-react";
+import { Check, Star, ArrowRight } from "lucide-react";
 
 export type ServiceContent = {
   eyebrow: string;
@@ -15,6 +16,7 @@ export type ServiceContent = {
   signs?: { title: string; items: string[] };
   benefits: { title: string; items: string[] }[];
   includeQualifyLink?: boolean;
+  relatedGuides?: { label: string; to: string }[];
 };
 
 export function ServicePageLayout({ content }: { content: ServiceContent }) {
@@ -41,16 +43,6 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
               <CTAButton to="/qualify" variant="outline">
                 See If You Qualify
               </CTAButton>
-            </div>
-            <div className="mt-7 flex items-center gap-2">
-              <div className="flex text-gold">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <span className="text-sm text-muted-foreground">
-                Rated 5.0 by patients across MS &amp; TN
-              </span>
             </div>
           </Reveal>
           <Reveal delay={120}>
@@ -109,7 +101,7 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
           {content.benefits.map((group, gi) => (
             <div key={gi} className={gi > 0 ? "mt-20" : ""}>
               <Reveal>
-                <SectionHeading eyebrow="Benefits" title={group.title} />
+                <SectionHeading eyebrow="Care discussion" title={group.title} />
               </Reveal>
               <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {group.items.map((b, i) => (
@@ -128,6 +120,27 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
         </div>
       </section>
 
+      <section className="bg-background py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="font-display text-3xl text-primary">
+            Discuss your options before choosing treatment
+          </h2>
+          <p className="mt-5">
+            A consultation is an opportunity to review your history and questions. Symptoms or an
+            online questionnaire alone do not confirm a diagnosis or treatment eligibility. Ask your
+            clinician about evaluation, alternatives, potential risks, monitoring and what happens
+            if treatment is not appropriate.
+          </p>
+          <p className="mt-4">
+            Bring your medication list and any records the office requests. Confirm the appointment
+            format, costs and follow-up arrangements with the team. An appointment request is not a
+            confirmed booking or a prescription.
+          </p>
+          <a href="/resources" className="mt-6 inline-block underline">
+            Explore patient resources
+          </a>
+        </div>
+      </section>
       <HowItWorks />
 
       {content.includeQualifyLink && (
@@ -145,6 +158,27 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
                 See If You Qualify
               </CTAButton>
             </div>
+          </div>
+        </section>
+      )}
+
+      {content.relatedGuides && content.relatedGuides.length > 0 && (
+        <section className="bg-white py-16 md:py-20">
+          <div className="mx-auto max-w-3xl px-6">
+            <span className="eyebrow">Related Reading</span>
+            <ul className="mt-5 divide-y divide-hairline border-y border-hairline">
+              {content.relatedGuides.map((r) => (
+                <li key={r.to}>
+                  <Link
+                    to={r.to}
+                    className="group flex items-center justify-between gap-4 py-4 text-primary transition hover:text-gold"
+                  >
+                    <span className="font-medium">{r.label}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

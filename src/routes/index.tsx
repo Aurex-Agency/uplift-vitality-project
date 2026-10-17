@@ -9,6 +9,7 @@ import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { StatStrip } from "@/components/site/StatStrip";
 import { SERVICES, TESTIMONIALS, FAQS, SITE } from "@/components/site/site-data";
+import { Link } from "@tanstack/react-router";
 import {
   Phone,
   ShieldCheck,
@@ -17,7 +18,9 @@ import {
   Star,
   ArrowRight,
   Check,
+  MapPin,
 } from "lucide-react";
+import { LOCATION_LIST } from "@/components/site/location-data";
 import heroImage from "@/assets/kenny-injection.jpg";
 import teeImage from "@/assets/uplift-tee-gym.jpg";
 
@@ -45,6 +48,20 @@ export const Route = createFileRoute("/")({
         href: string;
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: Index,
 });
@@ -67,24 +84,9 @@ function Index() {
                 Feel like the <span className="gradient-text">best version</span> of yourself again.
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Personalized hormone therapy and peptide treatments designed to restore your energy,
-                confidence, and vitality &mdash; expert care without the hassle of insurance.
+                Hormone and wellness consultations in Tupelo. Discuss your history, questions, care
+                options and follow-up with the team.
               </p>
-
-              {/* Rating + social proof */}
-              <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2">
-                <div className="flex items-center gap-2">
-                  <div className="flex text-gold">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-sm font-semibold text-primary">5.0</span>
-                </div>
-                <span className="text-sm text-muted-foreground">
-                  Rated 5.0 by patients across Mississippi &amp; Tennessee
-                </span>
-              </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <CTAButton to="/book" variant="gold">
@@ -202,8 +204,8 @@ function Index() {
               <span className="gold-rule mt-6" />
               <p className="mt-7 max-w-lg text-lg leading-relaxed text-cream/85">
                 Access expert medical care from the comfort of home. Comprehensive telehealth across
-                Tennessee and Mississippi, supported by local lab draw stations &mdash; thorough,
-                seamless care without the long drive.
+                Tennessee and Mississippi, supported by local lab draw stations. Thorough, seamless
+                care without the long drive.
               </p>
               <div className="mt-8">
                 <CTAButton to="/book" variant="gold">
@@ -276,7 +278,7 @@ function Index() {
               <div className="overflow-hidden rounded-[28px] border border-white/15 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.75)]">
                 <img
                   src={teeImage}
-                  alt="Wearing the Uplift Medical 'Just Win' shirt — life, work, relationships"
+                  alt="Wearing the Uplift Medical 'Just Win' shirt: life, work, relationships"
                   className="h-[440px] w-full object-cover object-[50%_38%] sm:h-[520px] md:h-[600px]"
                   width={1200}
                   height={1800}
@@ -293,9 +295,9 @@ function Index() {
             </h2>
             <span className="gold-rule mt-6" />
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-cream/85">
-              Feeling your best is not vanity &mdash; it is how you show up for everything that
-              matters. Uplift Medical helps you reclaim the energy, strength, and confidence to win
-              in the gym, at work, and everywhere in between.
+              Feeling your best is not vanity. It is how you show up for everything that matters.
+              Uplift Medical helps you reclaim the energy, strength, and confidence to win in the
+              gym, at work, and everywhere in between.
             </p>
             <div className="mt-8">
               <CTAButton to="/qualify" variant="gold">
@@ -353,8 +355,8 @@ function Index() {
                 </h2>
                 <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground">
                   Fatigue, weight gain, brain fog, low libido, and mood swings can all point to a
-                  hormone imbalance. Take our free assessment and find out if you may be a candidate
-                  &mdash; no obligation.
+                  hormone imbalance. Take our free assessment and find out if you may be a
+                  candidate, with no obligation.
                 </p>
                 <div className="mt-9">
                   <CTAButton to="/qualify">
@@ -368,36 +370,28 @@ function Index() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-background py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-            <Reveal>
-              <SectionHeading eyebrow="Testimonials" title="What our patients are saying." />
-            </Reveal>
-            <Reveal delay={100}>
-              <div className="flex items-center gap-4 rounded-2xl border border-hairline bg-white px-5 py-4 shadow-[0_2px_24px_-12px_rgba(14,42,71,0.12)]">
-                <div className="font-display text-4xl text-primary">5.0</div>
-                <div>
-                  <div className="flex text-gold">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
-                    ))}
-                  </div>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Based on real patient reviews
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((t, i) => (
-              <Reveal key={t.name} delay={i * 80}>
-                <TestimonialCard quote={t.quote} name={t.name} />
-              </Reveal>
-            ))}
-          </div>
+      {/* AREAS WE SERVE */}
+      <section className="bg-background py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <Reveal>
+            <span className="eyebrow">Areas We Serve</span>
+            <h2 className="mt-4 font-display text-3xl leading-tight text-primary md:text-4xl">
+              Serving North Mississippi, in person and by telehealth.
+            </h2>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              {LOCATION_LIST.map((loc) => (
+                <Link
+                  key={loc.slug}
+                  to="/locations/$city"
+                  params={{ city: loc.slug }}
+                  className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white px-5 py-2.5 text-sm font-medium text-foreground transition hover:-translate-y-0.5 hover:border-gold/60 hover:text-primary"
+                >
+                  <MapPin className="h-3.5 w-3.5 text-gold" />
+                  {loc.name}, MS
+                </Link>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -426,6 +420,18 @@ function Index() {
         </div>
       </section>
 
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="font-display text-3xl text-primary">Prepare for a useful conversation</h2>
+          <p className="mt-4">
+            Explore our patient resources and bring your questions to a consultation. Ask about
+            evaluation, available choices and the follow-up plan before deciding on care.
+          </p>
+          <a href="/resources" className="mt-6 inline-block underline">
+            Browse hormone care resources
+          </a>
+        </div>
+      </section>
       <CTABand />
     </>
   );

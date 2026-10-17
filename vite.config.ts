@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
@@ -15,39 +16,45 @@ import viteReact from "@vitejs/plugin-react";
 //   - React
 // CSS uses Lightning CSS in dev and build so the dev preview matches the
 // built output (Vite otherwise uses PostCSS in dev, Lightning CSS at build).
-export default defineConfig(({ command }) => ({
-  css: { transformer: "lightningcss" },
-  resolve: {
-    alias: {
-      "@": `${process.cwd()}/src`,
-    },
-    dedupe: [
-      "react",
-      "react-dom",
-      "react/jsx-runtime",
-      "react/jsx-dev-runtime",
-      "@tanstack/react-query",
-      "@tanstack/query-core",
-    ],
-  },
-  server: {
-    port: 8080,
-  },
-  plugins: [
-    tailwindcss(),
-    tsConfigPaths({ projects: ["./tsconfig.json"] }),
-    tanstackStart({
-      importProtection: {
-        behavior: "error",
-        client: {
-          files: ["**/server/**"],
-          specifiers: ["server-only"],
-        },
+export default defineConfig(({ command }) => {
+  execFileSync(process.execPath, [
+    "scripts/prepare-editorial.mjs",
+    ...(command === "serve" ? ["--preview"] : []),
+  ]);
+  return {
+    css: { transformer: "lightningcss" },
+    resolve: {
+      alias: {
+        "@": `${process.cwd()}/src`,
       },
-      server: { entry: "server" },
-    }),
-    // Nitro is a build-time deploy plugin; it must not load into the dev server.
-    ...(command === "build" ? [nitro({ preset: "vercel" })] : []),
-    viteReact(),
-  ],
-}));
+      dedupe: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime",
+        "@tanstack/react-query",
+        "@tanstack/query-core",
+      ],
+    },
+    server: {
+      port: 8080,
+    },
+    plugins: [
+      tailwindcss(),
+      tsConfigPaths({ projects: ["./tsconfig.json"] }),
+      tanstackStart({
+        importProtection: {
+          behavior: "error",
+          client: {
+            files: ["**/server/**"],
+            specifiers: ["server-only"],
+          },
+        },
+        server: { entry: "server" },
+      }),
+      // Nitro is a build-time deploy plugin; it must not load into the dev server.
+      ...(command === "build" ? [nitro({ preset: "vercel" })] : []),
+      viteReact(),
+    ],
+  };
+});

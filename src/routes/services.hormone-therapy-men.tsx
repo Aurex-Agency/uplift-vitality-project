@@ -6,17 +6,17 @@ import hero from "@/assets/hero-hormone-men.jpg";
 export const Route = createFileRoute("/services/hormone-therapy-men")({
   head: () => ({
     meta: [
-      { title: "Testosterone Therapy for Men | Uplift Medical, Tupelo MS" },
+      { title: "Testosterone Evaluation & TRT in Tupelo, MS | Uplift Medical" },
       {
         name: "description",
         content:
-          "Physician-guided TRT in Tupelo, MS. Restore energy, strength, focus, libido, and mood. In-person and telehealth.",
+          "Explore a consultation about testosterone evaluation and treatment options in Tupelo. Ask about diagnosis, alternatives, risks and monitoring.",
       },
-      { property: "og:title", content: "Testosterone Therapy for Men | Uplift Medical" },
+      { property: "og:title", content: "Testosterone Replacement Therapy (TRT) | Uplift Medical" },
       {
         property: "og:description",
         content:
-          "Restore strength, energy, and vitality. Feel stronger. Think sharper. Live with more confidence.",
+          "Explore a consultation about testosterone evaluation and treatment options in Tupelo. Ask about diagnosis, alternatives, risks and monitoring.",
       },
       { property: "og:image", content: SITE.url + hero },
     ],
@@ -24,38 +24,35 @@ export const Route = createFileRoute("/services/hormone-therapy-men")({
   component: () => (
     <ServicePageLayout
       content={{
-        eyebrow: "Testosterone Therapy for Men",
-        headline: "Restore strength, energy, and vitality.",
-        subhead: "Feel stronger. Think sharper. Live with more confidence.",
+        eyebrow: "Testosterone Replacement Therapy (TRT)",
+        headline: "Discuss testosterone care with a clinician.",
+        subhead: "Bring your questions. Discuss evaluation, alternatives and next steps.",
         heroImage: hero,
         heroAlt: "Competition-ready physique representing peak male vitality and strength",
         intro:
-          "Testosterone plays a critical role in a man's overall health, affecting energy, muscle mass, libido, mood, and focus. As men age, testosterone naturally declines, leading to fatigue, weight gain, low motivation, and reduced performance. Our testosterone replacement therapy is designed to restore your levels so you feel like the best version of yourself again.",
-        signs: {
-          title: "Signs of Low T",
-          items: [
-            "Chronic fatigue even after a full night of sleep.",
-            "Loss of muscle mass and strength.",
-            "Weight gain and increased body fat, especially around the midsection.",
-            "Reduced sex drive and performance issues.",
-            "Mood swings and irritability.",
-            "Brain fog and difficulty concentrating.",
-          ],
-        },
+          "Your medical history and individual circumstances matter when considering care. Use a consultation to discuss the concerns affecting your daily life, the evaluation that may be appropriate and the choices available to you. No symptom checklist establishes eligibility or guarantees a particular treatment result.",
         benefits: [
           {
-            title: "What it helps with",
+            title: "Questions for your consultation",
             items: [
-              "Increased energy and stamina.",
-              "Stronger muscles and reduced body fat.",
-              "Enhanced sexual performance and drive.",
-              "Sharper focus and mental clarity.",
-              "Improved mood and motivation.",
-              "Better sleep and recovery.",
+              "What information is needed before a treatment decision?",
+              "What options and alternatives are appropriate to discuss?",
+              "What limitations and potential risks apply to my history?",
+              "How would progress and potential problems be monitored?",
+              "What follow-up is needed and what does it cost?",
+              "What would lead us to reconsider the plan?",
             ],
           },
         ],
         includeQualifyLink: true,
+        relatedGuides: [
+          {
+            label: "10 signs of low testosterone in men",
+            to: "/resources/signs-of-low-testosterone",
+          },
+          { label: "How much does TRT cost?", to: "/resources/how-much-does-trt-cost" },
+          { label: "How to choose a TRT clinic", to: "/resources/how-to-choose-a-trt-clinic" },
+        ],
       }}
     />
   ),

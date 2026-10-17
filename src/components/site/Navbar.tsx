@@ -21,8 +21,8 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-300 ${
         scrolled
-          ? "border-b border-hairline bg-background/90 shadow-[0_4px_24px_-12px_rgba(14,42,71,0.18)] backdrop-blur"
-          : "bg-background/60 backdrop-blur-sm"
+          ? "border-b border-hairline bg-background/95 shadow-[0_4px_24px_-12px_rgba(14,42,71,0.18)] backdrop-blur-sm"
+          : "bg-background/80 backdrop-blur-sm"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
@@ -60,6 +60,7 @@ export function Navbar() {
             )}
           </div>
           <NavLink to="/about">About</NavLink>
+          <NavLink to="/resources">Resources</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </div>
 
@@ -88,9 +89,12 @@ export function Navbar() {
                 <Menu className="h-5 w-5" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[88vw] max-w-sm bg-background p-0">
+            <SheetContent
+              side="right"
+              className="flex w-[88vw] max-w-sm flex-col bg-background p-0"
+            >
               <SheetTitle className="sr-only">Navigation</SheetTitle>
-              <div className="flex items-center justify-between border-b border-hairline px-6 py-4">
+              <div className="flex shrink-0 items-center justify-between border-b border-hairline px-6 py-4">
                 <Logo />
                 <button
                   aria-label="Close menu"
@@ -100,7 +104,7 @@ export function Navbar() {
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <div className="flex flex-col gap-1 px-6 py-6">
+              <div className="flex flex-1 flex-col gap-1 overflow-y-auto px-6 py-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
                 <MobileLink to="/" onClick={() => setOpen(false)}>
                   Home
                 </MobileLink>
@@ -118,6 +122,9 @@ export function Navbar() {
                 <div className="my-2 h-px w-full bg-hairline" />
                 <MobileLink to="/about" onClick={() => setOpen(false)}>
                   About
+                </MobileLink>
+                <MobileLink to="/resources" onClick={() => setOpen(false)}>
+                  Resources
                 </MobileLink>
                 <MobileLink to="/contact" onClick={() => setOpen(false)}>
                   Contact
