@@ -36,7 +36,7 @@ test("Built public routes have a single canonical, readable main content and val
     assert.ok(html.includes(`href="https://upliftmedicalms.com${path}"`), path);
     assert.ok(html.includes("<h1"), path);
     for (const match of html.matchAll(
-      /<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs,
+      /<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gis,
     ))
       assert.doesNotThrow(() => JSON.parse(match[1]));
   }
@@ -51,7 +51,7 @@ test("Built intake pages are noindex and do not load the analytics bootstrap", a
 });
 test("Serialized production analytics bootstrap executes without missing bundled helpers and refuses preview host", async () => {
   const { html } = await page("/");
-  const script = [...html.matchAll(/<script[^>]*>(.*?)<\/script>/gs)]
+  const script = [...html.matchAll(/<script[^>]*>(.*?)<\/script>/gis)]
     .map((m) => m[1])
     .find((s) => s.includes("upliftAnalyticsInitialized"));
   assert.ok(script);
