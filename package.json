@@ -16,7 +16,8 @@
     "typecheck": "tsc --noEmit",
     "test:seo": "node --test scripts/seo.test.mjs",
     "indexnow": "node scripts/indexnow.mjs",
-    "test:production": "node --test scripts/production.test.mjs"
+    "test:production": "node --test scripts/production.test.mjs",
+    "pretypecheck": "node scripts/prepare-editorial.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
