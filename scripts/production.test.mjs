@@ -2,7 +2,29 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import vm from "node:vm";
+import { parse } from "parse5";
 import app from "../.vercel/output/functions/__server.func/index.mjs";
+// Parse generated HTML structurally, including case and end-tag whitespace.
+function scriptElements(html) {
+  const scripts = [];
+  function visit(node) {
+    if (node.tagName === "script") {
+      scripts.push({
+        attributes: Object.fromEntries(node.attrs.map(({ name, value }) => [name, value])),
+        text: node.childNodes.map(child => child.value || "").join(""),
+      });
+    }
+    for (const child of node.childNodes || []) visit(child);
+  }
+  visit(parse(html));
+  return scripts;
+}
+test("HTML parsing handles mixed case, closing-tag whitespace and quoted attributes", () => {
+  const scripts = scriptElements(`<SCRIPT TYPE='application/ld+json' data-note=">">{"ok":true}</sCrIpT >`);
+  assert.equal(scripts.length, 1);
+  assert.equal(scripts[0].attributes.type, "application/ld+json");
+  assert.deepEqual(JSON.parse(scripts[0].text), { ok: true });
+});
 async function page(path) {
   const response = await app.fetch(new Request(`https://upliftmedicalms.com${path}`), {});
   return { response, html: await response.text() };
@@ -35,10 +57,9 @@ test("Built public routes have a single canonical, readable main content and val
     assert.equal((html.match(/rel="canonical"/g) || []).length, 1, path);
     assert.ok(html.includes(`href="https://upliftmedicalms.com${path}"`), path);
     assert.ok(html.includes("<h1"), path);
-    for (const match of html.matchAll(
-      /<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gis,
-    ))
-      assert.doesNotThrow(() => JSON.parse(match[1]));
+    const schemas = scriptElements(html).filter(script => script.attributes.type === "application/ld+json");
+    assert.ok(schemas.length > 0, `Missing structured data on ${path}`);
+    for (const schema of schemas) assert.doesNotThrow(() => JSON.parse(schema.text));
   }
 });
 test("Built intake pages are noindex and do not load the analytics bootstrap", async () => {
@@ -51,9 +72,9 @@ test("Built intake pages are noindex and do not load the analytics bootstrap", a
 });
 test("Serialized production analytics bootstrap executes without missing bundled helpers and refuses preview host", async () => {
   const { html } = await page("/");
-  const script = [...html.matchAll(/<script[^>]*>(.*?)<\/script>/gis)]
-    .map((m) => m[1])
-    .find((s) => s.includes("upliftAnalyticsInitialized"));
+  const script = scriptElements(html)
+    .map(element => element.text)
+    .find(text => text.includes("upliftAnalyticsInitialized"));
   assert.ok(script);
   let loads = 0;
   const window = { location: { hostname: "preview.example" } };
