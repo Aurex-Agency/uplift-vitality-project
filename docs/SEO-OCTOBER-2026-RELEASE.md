@@ -11,3 +11,7 @@ Validation: Node 22 lint, typecheck, nine SEO/intake/privacy tests, production b
 Run preview and production checks sequentially in separate processes: both prepare the ignored generated editorial module. A simultaneous preview startup changed that module during an initial build; the draft-exclusion production test correctly failed. The final production validation must run after stopping preview.
 
 Still outside this code release: clinician review/publication; secure booking-system confirmation and aggregate appointment reconciliation; Search Console URL-level review of historical 404s; office verification of hours/credentials; Google Business Profile and Bing account actions. Do not equate zero GA4 key events with zero appointments or add health details to analytics. Search ranking outcomes are not guaranteed.
+
+## Publication approval update
+
+On October 27, Kalob Adair explicitly confirmed review and authorized publication of the four new manuscripts. Their approval fields are now recorded, and production tests verify 200 responses, hub inclusion and sitemap inclusion for these four. This is editorial authorization, not a claim of licensed clinical review. The four older drafts remain pending. The publication gate remains in place for pending material.

@@ -143,7 +143,7 @@ function GuidePage() {
               </ul>
               <p className="mt-4 text-sm">
                 {g.reviewStatus === "approved"
-                  ? `Reviewed by ${g.reviewer} on ${g.reviewedAt}`
+                  ? `Approved for publication by ${g.reviewer} on ${g.reviewedAt}. No licensed clinical review is claimed.`
                   : "Draft prepared for Uplift Medical. No clinical review is claimed."}
               </p>
             </section>

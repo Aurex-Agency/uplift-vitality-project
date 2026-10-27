@@ -6,11 +6,11 @@ const read = (p) => readFileSync(p, "utf8");
 const posts = readdirSync("docs/editorial")
   .filter((f) => f.endsWith(".json"))
   .map((f) => JSON.parse(read(`docs/editorial/${f}`)));
-test("Eight complete distinct articles, review pending", () => {
+test("Eight complete distinct articles with explicit publication status", () => {
   assert.equal(posts.length, 8);
   assert.equal(new Set(posts.map((p) => p.slug)).size, 8);
   for (const post of posts) {
-    assert.equal(post.reviewStatus, "pending");
+    assert.ok(["approved", "pending"].includes(post.reviewStatus));
     assert.ok(JSON.stringify(post.sections).split(/\s+/).length > 450);
     assert.ok(post.related.some((l) => l.to === "/book"));
   }
@@ -22,8 +22,12 @@ test("Production compilation excludes unreviewed text; preview includes it", () 
   execFileSync(process.execPath, ["scripts/prepare-editorial.mjs"]);
   module = read("src/components/site/review-guides.generated.ts");
   for (const p of posts) {
-    assert.ok(!module.includes(p.slug));
-    assert.ok(!read("public/sitemap.xml").includes(`/resources/${p.slug}`));
+    const approved =
+      p.reviewStatus === "approved" &&
+      Boolean(p.reviewer.trim()) &&
+      /^\d{4}-\d{2}-\d{2}$/.test(p.reviewedAt);
+    assert.equal(module.includes(p.slug), approved);
+    assert.equal(read("public/sitemap.xml").includes(`/resources/${p.slug}`), approved);
   }
 });
 test("Analytics cannot send arbitrary health data or quiz outcomes", () => {

@@ -34,14 +34,18 @@ async function page(path) {
 const drafts = readdirSync("docs/editorial")
   .filter((f) => f.endsWith(".json"))
   .map((f) => JSON.parse(readFileSync(`docs/editorial/${f}`, "utf8")));
-test("Built server keeps all pending articles private and absent from resource hub", async () => {
+test("Built server publishes approved articles and excludes pending articles", async () => {
   const hub = await page("/resources");
   assert.equal(hub.response.status, 200);
   for (const draft of drafts) {
     const result = await page(`/resources/${draft.slug}`);
-    assert.equal(result.response.status, 404);
-    assert.ok(!result.html.includes(draft.intro[0]));
-    assert.ok(!hub.html.includes(draft.slug));
+    const approved = draft.reviewStatus === "approved";
+    assert.equal(result.response.status, approved ? 200 : 404);
+    assert.equal(hub.html.includes(draft.slug), approved);
+    if (approved) {
+      assert.ok(result.html.includes("No licensed clinical review is claimed"));
+      assert.ok(result.html.includes(draft.h1));
+    } else assert.ok(!result.html.includes(draft.intro[0]));
   }
 });
 test("Built public routes have a single canonical, readable main content and valid structured data", async () => {

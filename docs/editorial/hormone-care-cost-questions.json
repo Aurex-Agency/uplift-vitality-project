@@ -58,8 +58,8 @@
       "to": "/book"
     }
   ],
-  "reviewStatus": "pending",
-  "reviewer": "",
-  "reviewedAt": "",
+  "reviewStatus": "approved",
+  "reviewer": "Kalob Adair (editorial approval)",
+  "reviewedAt": "2026-10-27",
   "sources": []
 }
