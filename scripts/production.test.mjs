@@ -34,7 +34,7 @@ async function page(path) {
 const drafts = readdirSync("docs/editorial")
   .filter((f) => f.endsWith(".json"))
   .map((f) => JSON.parse(readFileSync(`docs/editorial/${f}`, "utf8")));
-test("Built server keeps all four pending articles private and absent from resource hub", async () => {
+test("Built server keeps all pending articles private and absent from resource hub", async () => {
   const hub = await page("/resources");
   assert.equal(hub.response.status, 200);
   for (const draft of drafts) {
@@ -48,6 +48,7 @@ test("Built public routes have a single canonical, readable main content and val
   for (const path of [
     "/",
     "/about",
+    "/services",
     "/resources",
     "/services/hormone-therapy-men",
     "/services/hormone-therapy-women",
