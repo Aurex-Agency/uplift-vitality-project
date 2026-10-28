@@ -1,0 +1,22 @@
+name: Site checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.3"
+      - run: bun install --frozen-lockfile
+      - run: bun audit
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test:seo
+      - run: npm run build
+      - run: npm run test:production

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useRef, useState } from "react";
-import { z } from "zod";
+import { intakeContactSchema as contactSchema } from "@/lib/intake-schema";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, Lock, Phone } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
@@ -151,15 +151,6 @@ function buildSteps(gender: string | undefined): StepDef[] {
     },
   ];
 }
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Required").max(100),
-  email: z.string().trim().email("Invalid email").max(200),
-  phone: z.string().trim().min(7, "Required").max(30),
-  notes: z.string().trim().max(1000).optional(),
-  smsConsent: z.literal(true, { errorMap: () => ({ message: "Required to proceed" }) }),
-  marketingConsent: z.boolean().optional(),
-});
 
 function Qualify() {
   // 0 = intro, 1..steps.length = questions, steps.length+1 = contact, +2 = thanks

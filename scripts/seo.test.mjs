@@ -6,11 +6,11 @@ const read = (p) => readFileSync(p, "utf8");
 const posts = readdirSync("docs/editorial")
   .filter((f) => f.endsWith(".json"))
   .map((f) => JSON.parse(read(`docs/editorial/${f}`)));
-test("Four complete distinct articles, review pending", () => {
-  assert.equal(posts.length, 4);
-  assert.equal(new Set(posts.map((p) => p.slug)).size, 4);
+test("Eight complete distinct articles with explicit publication status", () => {
+  assert.equal(posts.length, 8);
+  assert.equal(new Set(posts.map((p) => p.slug)).size, 8);
   for (const post of posts) {
-    assert.equal(post.reviewStatus, "pending");
+    assert.ok(["approved", "pending"].includes(post.reviewStatus));
     assert.ok(JSON.stringify(post.sections).split(/\s+/).length > 450);
     assert.ok(post.related.some((l) => l.to === "/book"));
   }
@@ -22,8 +22,12 @@ test("Production compilation excludes unreviewed text; preview includes it", () 
   execFileSync(process.execPath, ["scripts/prepare-editorial.mjs"]);
   module = read("src/components/site/review-guides.generated.ts");
   for (const p of posts) {
-    assert.ok(!module.includes(p.slug));
-    assert.ok(!read("public/sitemap.xml").includes(`/resources/${p.slug}`));
+    const approved =
+      p.reviewStatus === "approved" &&
+      Boolean(p.reviewer.trim()) &&
+      /^\d{4}-\d{2}-\d{2}$/.test(p.reviewedAt);
+    assert.equal(module.includes(p.slug), approved);
+    assert.equal(read("public/sitemap.xml").includes(`/resources/${p.slug}`), approved);
   }
 });
 test("Analytics cannot send arbitrary health data or quiz outcomes", () => {
@@ -166,4 +170,34 @@ test("Analytics loader is host-gated and blocks collection before sensitive SPA 
 
 test("Article body has no animation visibility gate", () => {
   assert.ok(!read("src/routes/resources.$slug.tsx").includes("<Reveal"));
+});
+
+// Exercise the schema used by the live intake form after the Zod major upgrade.
+test("Intake validation preserves consent, trimming and error messages", async () => {
+  const { default: ts } = await import("typescript");
+  const { default: vm } = await import("node:vm");
+  const zod = await import("zod");
+  const js = ts.transpileModule(read("src/lib/intake-schema.ts"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS },
+  }).outputText;
+  const context = { exports: {}, require: () => zod };
+  vm.runInNewContext(js, context);
+  const schema = context.exports.intakeContactSchema;
+  const input = {
+    name: " Test ",
+    email: " test@example.invalid ",
+    phone: " 5550000000 ",
+    smsConsent: true,
+    marketingConsent: false,
+  };
+  const valid = schema.safeParse(input);
+  assert.equal(valid.success, true);
+  assert.equal(valid.data.name, "Test");
+  assert.equal(valid.data.marketingConsent, false);
+  const declined = schema.safeParse({ ...input, smsConsent: false });
+  assert.equal(declined.success, false);
+  assert.equal(declined.error.issues[0].message, "Required to proceed");
+  assert.equal(schema.safeParse({ ...input, email: "invalid" }).success, false);
+  assert.equal(schema.safeParse({ ...input, name: " " }).success, false);
+  assert.equal(schema.safeParse({ ...input, notes: "x".repeat(1001) }).success, false);
 });

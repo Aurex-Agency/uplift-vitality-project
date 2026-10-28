@@ -143,7 +143,7 @@ function GuidePage() {
               </ul>
               <p className="mt-4 text-sm">
                 {g.reviewStatus === "approved"
-                  ? `Reviewed by ${g.reviewer} on ${g.reviewedAt}`
+                  ? `Approved for publication by ${g.reviewer} on ${g.reviewedAt}. No licensed clinical review is claimed.`
                   : "Draft prepared for Uplift Medical. No clinical review is claimed."}
               </p>
             </section>
@@ -152,17 +152,18 @@ function GuidePage() {
           <div>
             <div className="mt-12 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 to-transparent p-7 text-center">
               <p className="font-display text-2xl leading-snug text-primary">
-                Not sure where you stand?
+                Bring your questions to a consultation.
               </p>
               <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-                Take our free 60-second assessment, or book a consultation. No obligation.
+                Discuss your history, goals and questions with the care team. An article or
+                questionnaire cannot determine treatment eligibility.
               </p>
               <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <CTAButton to="/qualify" variant="gold">
-                  See If You Qualify
-                </CTAButton>
-                <CTAButton to="/book" variant="outline">
+                <CTAButton to="/book" variant="gold">
                   Book a Consultation
+                </CTAButton>
+                <CTAButton to="/services" variant="outline">
+                  Explore Services
                 </CTAButton>
               </div>
             </div>
