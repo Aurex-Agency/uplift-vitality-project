@@ -241,7 +241,10 @@ test("Cherry loads once with Uplift's slug, stays off intake pages, and mounts t
   assert.equal(method, "init");
   assert.equal(queued.variables.slug, "uplift-medical-llc");
   assert.deepEqual([...widgets], ["all", "floatingEstimator"]);
-  assert.ok(cherry.CHERRY_APPLY_URL.startsWith("https://pay.withcherry.com/uplift-medical-llc?"));
+  const apply = new URL(cherry.CHERRY_APPLY_URL);
+  assert.equal(apply.protocol, "https:");
+  assert.equal(apply.hostname, "pay.withcherry.com");
+  assert.equal(apply.pathname, "/uplift-medical-llc");
   // After Cherry's script replaces the queue, a return visit re-mounts the full page.
   const calls = [];
   window._hw = (...args) => calls.push(args);
@@ -253,8 +256,12 @@ test("Cherry loads once with Uplift's slug, stays off intake pages, and mounts t
 });
 
 test("Payment Plans page is in the sitemap and linked from the main navigation and footer", () => {
+  const locs = Array.from(
+    read("public/sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g),
+    (m) => new URL(m[1]),
+  );
   assert.ok(
-    read("public/sitemap.xml").includes("<loc>https://upliftmedicalms.com/payment-plans</loc>"),
+    locs.some((u) => u.hostname === "upliftmedicalms.com" && u.pathname === "/payment-plans"),
   );
   assert.ok(read("src/components/site/Navbar.tsx").includes('to="/payment-plans"'));
   assert.ok(read("src/components/site/Footer.tsx").includes('to: "/payment-plans"'));
