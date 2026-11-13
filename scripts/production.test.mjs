@@ -27,6 +27,22 @@ test("HTML parsing handles mixed case, closing-tag whitespace and quoted attribu
   assert.equal(scripts[0].attributes.type, "application/ld+json");
   assert.deepEqual(JSON.parse(scripts[0].text), { ok: true });
 });
+// Resolved <a href> and <script src> URLs, so tests compare real hostnames, not substrings.
+function linkedUrls(html) {
+  const urls = [];
+  function visit(node) {
+    for (const { name, value } of node.attrs || []) {
+      if (
+        (node.tagName === "a" && name === "href") ||
+        (node.tagName === "script" && name === "src")
+      )
+        urls.push({ tag: node.tagName, url: new URL(value, "https://upliftmedicalms.com") });
+    }
+    for (const child of node.childNodes || []) visit(child);
+  }
+  visit(parse(html));
+  return urls;
+}
 async function page(path) {
   const response = await app.fetch(new Request(`https://upliftmedicalms.com${path}`), {});
   return { response, html: await response.text() };
@@ -58,6 +74,7 @@ test("Built public routes have a single canonical, readable main content and val
     "/services/hormone-therapy-women",
     "/services/progesterone-estrogen",
     "/locations/pontotoc",
+    "/payment-plans",
   ]) {
     const { response, html } = await page(path);
     assert.equal(response.status, 200, path);
@@ -117,4 +134,48 @@ test("Serialized production analytics bootstrap executes without missing bundled
   assert.equal(loads, 1);
   assert.equal(window.upliftSearchReferrer, "https://www.bing.com/");
   assert.ok(!JSON.stringify(window.dataLayer).includes("private"));
+});
+test("Built Payment Plans page features Cherry and is reachable from every page's navigation", async () => {
+  const { response, html } = await page("/payment-plans");
+  assert.equal(response.status, 200);
+  assert.ok(html.includes('id="all"'));
+  const applyLinks = linkedUrls(html).filter(
+    ({ tag, url }) => tag === "a" && url.hostname === "pay.withcherry.com",
+  );
+  assert.ok(applyLinks.length > 0);
+  assert.ok(applyLinks.every(({ url }) => url.pathname === "/uplift-medical-llc"));
+  assert.ok(html.includes("Cherry is our primary financing option"));
+  const home = await page("/");
+  assert.ok(home.html.includes('href="/payment-plans"'));
+  // Cherry's script is injected client-side only, never into server HTML (including intake pages).
+  for (const path of ["/payment-plans", "/book", "/qualify"]) {
+    const result = await page(path);
+    const cherryScripts = linkedUrls(result.html).filter(
+      ({ tag, url }) => tag === "script" && url.hostname === "files.withcherry.com",
+    );
+    assert.equal(cherryScripts.length, 0, path);
+  }
+});
+test("Built privacy policy discloses the site's real data flows; forms link to it", async () => {
+  const { response, html } = await page("/privacy");
+  assert.equal(response.status, 200);
+  for (const text of [
+    "We do not sell your personal information",
+    "GoHighLevel (LeadConnector)",
+    "Google Analytics",
+    "Payment plans with Cherry",
+    "for their marketing or promotional purposes",
+    "Some of these answers relate to your health",
+  ]) {
+    assert.ok(html.includes(text), text);
+  }
+  assert.ok(!/placeholder|intentionally brief/i.test(html));
+  assert.ok(!html.includes("upliftAnalyticsInitialized"));
+  for (const path of ["/contact", "/qualify"]) {
+    assert.ok((await page(path)).html.includes('href="/privacy"'), path);
+  }
+});
+test("Built Payment Plans page loads the analytics bootstrap", async () => {
+  const { html } = await page("/payment-plans");
+  assert.ok(html.includes("upliftAnalyticsInitialized"));
 });

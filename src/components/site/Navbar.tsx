@@ -28,7 +28,7 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <Logo />
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-6 lg:flex xl:gap-8">
           <NavLink to="/" exact>
             Home
           </NavLink>
@@ -59,6 +59,7 @@ export function Navbar() {
               </div>
             )}
           </div>
+          <NavLink to="/payment-plans">Payment Plans</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/resources">Resources</NavLink>
           <NavLink to="/contact">Contact</NavLink>
@@ -67,13 +68,13 @@ export function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             to="/qualify"
-            className="text-sm font-medium text-primary underline-offset-4 transition hover:underline"
+            className="whitespace-nowrap text-sm font-medium text-primary underline-offset-4 transition hover:underline"
           >
             See If You Qualify
           </Link>
           <Link
             to="/book"
-            className="gold-gradient gold-glow inline-flex h-11 items-center justify-center rounded-full px-6 text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-0.5"
+            className="gold-gradient gold-glow inline-flex h-11 items-center justify-center whitespace-nowrap rounded-full px-6 text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-0.5"
           >
             Book Appointment
           </Link>
@@ -120,6 +121,9 @@ export function Navbar() {
                   </Link>
                 ))}
                 <div className="my-2 h-px w-full bg-hairline" />
+                <MobileLink to="/payment-plans" onClick={() => setOpen(false)}>
+                  Payment Plans
+                </MobileLink>
                 <MobileLink to="/about" onClick={() => setOpen(false)}>
                   About
                 </MobileLink>
@@ -166,7 +170,7 @@ function NavLink({
   return (
     <Link
       to={to}
-      className="text-sm font-medium text-foreground transition hover:text-primary"
+      className="whitespace-nowrap text-sm font-medium text-foreground transition hover:text-primary"
       activeProps={{ className: "text-primary" }}
       activeOptions={{ exact: !!exact }}
     >

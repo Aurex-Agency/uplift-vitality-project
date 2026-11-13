@@ -201,3 +201,127 @@ test("Intake validation preserves consent, trimming and error messages", async (
   assert.equal(schema.safeParse({ ...input, name: " " }).success, false);
   assert.equal(schema.safeParse({ ...input, notes: "x".repeat(1001) }).success, false);
 });
+
+test("Cherry loads once with Uplift's slug, stays off intake pages, and mounts the full page safely", async () => {
+  const { default: ts } = await import("typescript");
+  const { default: vm } = await import("node:vm");
+  const js = ts.transpileModule(read("src/lib/cherry.ts"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS },
+  }).outputText;
+  const appended = [];
+  const window = {};
+  const context = {
+    exports: {},
+    window,
+    document: {
+      createElement: () => ({}),
+      body: { appendChild: (s) => appended.push(s) },
+    },
+  };
+  vm.runInNewContext(js, context);
+  const cherry = context.exports;
+  for (const path of ["/book", "/qualify", "/qualify/"]) {
+    assert.equal(cherry.isCherryFloatingPath(path), false, path);
+  }
+  for (const path of ["/", "/payment-plans", "/services/hormone-therapy-men", "/contact"]) {
+    assert.equal(cherry.isCherryFloatingPath(path), true, path);
+  }
+  // Before the script arrives, mounting must not push a bare widget name into Cherry's queue.
+  cherry.mountCherryFullPage();
+  const config = cherry.cherryConfig("https://upliftmedicalms.com/assets/team.jpg");
+  cherry.loadCherry(config);
+  cherry.loadCherry(config);
+  assert.equal(appended.length, 1);
+  assert.equal(appended[0].id, "_hw");
+  assert.equal(appended[0].src, "https://files.withcherry.com/widgets/widget.js");
+  assert.equal(window._hw.q.length, 1);
+  cherry.mountCherryFullPage();
+  assert.equal(window._hw.q.length, 1);
+  const [method, queued, widgets] = window._hw.q[0];
+  assert.equal(method, "init");
+  assert.equal(queued.variables.slug, "uplift-medical-llc");
+  assert.deepEqual([...widgets], ["all", "floatingEstimator"]);
+  const apply = new URL(cherry.CHERRY_APPLY_URL);
+  assert.equal(apply.protocol, "https:");
+  assert.equal(apply.hostname, "pay.withcherry.com");
+  assert.equal(apply.pathname, "/uplift-medical-llc");
+  // After Cherry's script replaces the queue, a return visit re-mounts the full page.
+  const calls = [];
+  window._hw = (...args) => calls.push(args);
+  cherry.mountCherryFullPage();
+  assert.deepEqual(
+    calls.map((c) => [...c]),
+    [["all"]],
+  );
+});
+
+test("Payment Plans page is in the sitemap and linked from the main navigation and footer", () => {
+  const locs = Array.from(
+    read("public/sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g),
+    (m) => new URL(m[1]),
+  );
+  assert.ok(
+    locs.some((u) => u.hostname === "upliftmedicalms.com" && u.pathname === "/payment-plans"),
+  );
+  assert.ok(read("src/components/site/Navbar.tsx").includes('to="/payment-plans"'));
+  assert.ok(read("src/components/site/Footer.tsx").includes('to: "/payment-plans"'));
+});
+
+test("Payment Plans is measured in both analytics allowlists; treatment and intake pages stay excluded", async () => {
+  const listed = (code, pattern) =>
+    JSON.parse(code.match(pattern)[1].replace(/,\s*$/, "").replace(/^/, "[").concat("]"));
+  const fromRoute = listed(
+    read("src/lib/analytics.ts"),
+    /const safePaths = new Set\(\[([^\]]*)\]\)/,
+  );
+  const fromBootstrap = listed(read("src/lib/analytics-bootstrap.ts"), /\[([^\]]*)\]\.includes\(/);
+  assert.deepEqual([...fromRoute].sort(), [...fromBootstrap].sort());
+  assert.ok(fromRoute.includes("/payment-plans"));
+  assert.ok(read("src/lib/analytics.ts").includes('"cherry_apply_click"'));
+  assert.ok(read("src/components/site/Analytics.tsx").includes('trackEvent("cherry_apply_click")'));
+
+  const { default: ts } = await import("typescript");
+  const { default: vm } = await import("node:vm");
+  const js = ts.transpileModule(read("src/lib/analytics-bootstrap.ts"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS },
+  }).outputText;
+  const transitions = [];
+  const window = {
+    location: {
+      hostname: "upliftmedicalms.com",
+      origin: "https://upliftmedicalms.com",
+      pathname: "/payment-plans",
+      href: "https://upliftmedicalms.com/payment-plans",
+    },
+    history: {
+      pushState() {
+        transitions.push(window["ga-disable-G-test"]);
+      },
+      replaceState() {},
+    },
+    addEventListener() {},
+  };
+  const context = {
+    exports: {},
+    window,
+    URL,
+    document: {
+      referrer: "",
+      addEventListener() {},
+      createElement: () => ({}),
+      head: { appendChild() {} },
+    },
+  };
+  vm.runInNewContext(js, context);
+  context.exports.analyticsBootstrap("G-test");
+  assert.equal(window["ga-disable-G-test"], false);
+  for (const [path, disabled] of [
+    ["/services/hormone-therapy-men", true],
+    ["/payment-plans", false],
+    ["/qualify", true],
+    ["/resources/how-much-does-trt-cost", true],
+  ]) {
+    window.history.pushState({}, "", path);
+    assert.equal(transitions.at(-1), disabled, path);
+  }
+});

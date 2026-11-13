@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState, type FormEvent } from "react";
 import { z } from "zod";
 import { Reveal } from "@/components/site/Reveal";
@@ -142,6 +142,21 @@ function Contact() {
                         <p className="mt-1 text-xs text-destructive">{errors.message}</p>
                       )}
                     </div>
+                    <p className="text-xs leading-relaxed text-muted-foreground">
+                      Please do not include detailed medical history in your message. By submitting,
+                      you agree to our{" "}
+                      <Link
+                        to="/privacy"
+                        className="underline underline-offset-2 hover:text-primary"
+                      >
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link to="/terms" className="underline underline-offset-2 hover:text-primary">
+                        Terms of Service
+                      </Link>
+                      .
+                    </p>
                     <button
                       type="submit"
                       disabled={pending}

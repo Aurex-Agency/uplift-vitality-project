@@ -9,48 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as QualifyRouteImport } from './routes/qualify'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BookRouteImport } from './routes/book'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesIndexRouteImport } from './routes/services.index'
-import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
-import { Route as ServicesSupplementationRouteImport } from './routes/services.supplementation'
-import { Route as ServicesProgesteroneEstrogenRouteImport } from './routes/services.progesterone-estrogen'
-import { Route as ServicesPersonalizedTrainingRouteImport } from './routes/services.personalized-training'
-import { Route as ServicesPeptideTherapyRouteImport } from './routes/services.peptide-therapy'
-import { Route as ServicesNutritionRouteImport } from './routes/services.nutrition'
-import { Route as ServicesHormoneTherapyWomenRouteImport } from './routes/services.hormone-therapy-women'
-import { Route as ServicesHormoneTherapyMenRouteImport } from './routes/services.hormone-therapy-men'
-import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BookRouteImport } from './routes/book'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PaymentPlansRouteImport } from './routes/payment-plans'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as QualifyRouteImport } from './routes/qualify'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as LocationsCityRouteImport } from './routes/locations.$city'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesHormoneTherapyMenRouteImport } from './routes/services.hormone-therapy-men'
+import { Route as ServicesHormoneTherapyWomenRouteImport } from './routes/services.hormone-therapy-women'
+import { Route as ServicesNutritionRouteImport } from './routes/services.nutrition'
+import { Route as ServicesPeptideTherapyRouteImport } from './routes/services.peptide-therapy'
+import { Route as ServicesPersonalizedTrainingRouteImport } from './routes/services.personalized-training'
+import { Route as ServicesProgesteroneEstrogenRouteImport } from './routes/services.progesterone-estrogen'
+import { Route as ServicesSupplementationRouteImport } from './routes/services.supplementation'
 
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const QualifyRoute = QualifyRouteImport.update({
-  id: '/qualify',
-  path: '/qualify',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BookRoute = BookRouteImport.update({
-  id: '/book',
-  path: '/book',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -58,14 +39,39 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const BookRoute = BookRouteImport.update({
+  id: '/book',
+  path: '/book',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesIndexRoute = ServicesIndexRouteImport.update({
-  id: '/services/',
-  path: '/services/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentPlansRoute = PaymentPlansRouteImport.update({
+  id: '/payment-plans',
+  path: '/payment-plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QualifyRoute = QualifyRouteImport.update({
+  id: '/qualify',
+  path: '/qualify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsCityRoute = LocationsCityRouteImport.update({
+  id: '/locations/$city',
+  path: '/locations/$city',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
@@ -73,53 +79,53 @@ const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
   path: '/resources/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesSupplementationRoute = ServicesSupplementationRouteImport.update({
-  id: '/services/supplementation',
-  path: '/services/supplementation',
+const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
+  id: '/resources/$slug',
+  path: '/resources/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesProgesteroneEstrogenRoute =
-  ServicesProgesteroneEstrogenRouteImport.update({
-    id: '/services/progesterone-estrogen',
-    path: '/services/progesterone-estrogen',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ServicesPersonalizedTrainingRoute =
-  ServicesPersonalizedTrainingRouteImport.update({
-    id: '/services/personalized-training',
-    path: '/services/personalized-training',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ServicesPeptideTherapyRoute = ServicesPeptideTherapyRouteImport.update({
-  id: '/services/peptide-therapy',
-  path: '/services/peptide-therapy',
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesNutritionRoute = ServicesNutritionRouteImport.update({
-  id: '/services/nutrition',
-  path: '/services/nutrition',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesHormoneTherapyWomenRoute =
-  ServicesHormoneTherapyWomenRouteImport.update({
-    id: '/services/hormone-therapy-women',
-    path: '/services/hormone-therapy-women',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const ServicesHormoneTherapyMenRoute =
   ServicesHormoneTherapyMenRouteImport.update({
     id: '/services/hormone-therapy-men',
     path: '/services/hormone-therapy-men',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
-  id: '/resources/$slug',
-  path: '/resources/$slug',
+const ServicesHormoneTherapyWomenRoute =
+  ServicesHormoneTherapyWomenRouteImport.update({
+    id: '/services/hormone-therapy-women',
+    path: '/services/hormone-therapy-women',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesNutritionRoute = ServicesNutritionRouteImport.update({
+  id: '/services/nutrition',
+  path: '/services/nutrition',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LocationsCityRoute = LocationsCityRouteImport.update({
-  id: '/locations/$city',
-  path: '/locations/$city',
+const ServicesPeptideTherapyRoute = ServicesPeptideTherapyRouteImport.update({
+  id: '/services/peptide-therapy',
+  path: '/services/peptide-therapy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPersonalizedTrainingRoute =
+  ServicesPersonalizedTrainingRouteImport.update({
+    id: '/services/personalized-training',
+    path: '/services/personalized-training',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesProgesteroneEstrogenRoute =
+  ServicesProgesteroneEstrogenRouteImport.update({
+    id: '/services/progesterone-estrogen',
+    path: '/services/progesterone-estrogen',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesSupplementationRoute = ServicesSupplementationRouteImport.update({
+  id: '/services/supplementation',
+  path: '/services/supplementation',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/payment-plans': typeof PaymentPlansRoute
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
@@ -148,6 +155,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/payment-plans': typeof PaymentPlansRoute
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
@@ -169,6 +177,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/payment-plans': typeof PaymentPlansRoute
   '/privacy': typeof PrivacyRoute
   '/qualify': typeof QualifyRoute
   '/terms': typeof TermsRoute
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/book'
     | '/contact'
+    | '/payment-plans'
     | '/privacy'
     | '/qualify'
     | '/terms'
@@ -211,6 +221,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/book'
     | '/contact'
+    | '/payment-plans'
     | '/privacy'
     | '/qualify'
     | '/terms'
@@ -231,6 +242,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/book'
     | '/contact'
+    | '/payment-plans'
     | '/privacy'
     | '/qualify'
     | '/terms'
@@ -252,6 +264,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
+  PaymentPlansRoute: typeof PaymentPlansRoute
   PrivacyRoute: typeof PrivacyRoute
   QualifyRoute: typeof QualifyRoute
   TermsRoute: typeof TermsRoute
@@ -270,39 +283,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/qualify': {
-      id: '/qualify'
-      path: '/qualify'
-      fullPath: '/qualify'
-      preLoaderRoute: typeof QualifyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/book': {
-      id: '/book'
-      path: '/book'
-      fullPath: '/book'
-      preLoaderRoute: typeof BookRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -312,18 +297,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/book': {
+      id: '/book'
+      path: '/book'
+      fullPath: '/book'
+      preLoaderRoute: typeof BookRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/': {
-      id: '/services/'
-      path: '/services'
-      fullPath: '/services/'
-      preLoaderRoute: typeof ServicesIndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment-plans': {
+      id: '/payment-plans'
+      path: '/payment-plans'
+      fullPath: '/payment-plans'
+      preLoaderRoute: typeof PaymentPlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qualify': {
+      id: '/qualify'
+      path: '/qualify'
+      fullPath: '/qualify'
+      preLoaderRoute: typeof QualifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/$city': {
+      id: '/locations/$city'
+      path: '/locations/$city'
+      fullPath: '/locations/$city'
+      preLoaderRoute: typeof LocationsCityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources/': {
@@ -333,46 +353,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/supplementation': {
-      id: '/services/supplementation'
-      path: '/services/supplementation'
-      fullPath: '/services/supplementation'
-      preLoaderRoute: typeof ServicesSupplementationRouteImport
+    '/resources/$slug': {
+      id: '/resources/$slug'
+      path: '/resources/$slug'
+      fullPath: '/resources/$slug'
+      preLoaderRoute: typeof ResourcesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/progesterone-estrogen': {
-      id: '/services/progesterone-estrogen'
-      path: '/services/progesterone-estrogen'
-      fullPath: '/services/progesterone-estrogen'
-      preLoaderRoute: typeof ServicesProgesteroneEstrogenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/personalized-training': {
-      id: '/services/personalized-training'
-      path: '/services/personalized-training'
-      fullPath: '/services/personalized-training'
-      preLoaderRoute: typeof ServicesPersonalizedTrainingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/peptide-therapy': {
-      id: '/services/peptide-therapy'
-      path: '/services/peptide-therapy'
-      fullPath: '/services/peptide-therapy'
-      preLoaderRoute: typeof ServicesPeptideTherapyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/nutrition': {
-      id: '/services/nutrition'
-      path: '/services/nutrition'
-      fullPath: '/services/nutrition'
-      preLoaderRoute: typeof ServicesNutritionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/hormone-therapy-women': {
-      id: '/services/hormone-therapy-women'
-      path: '/services/hormone-therapy-women'
-      fullPath: '/services/hormone-therapy-women'
-      preLoaderRoute: typeof ServicesHormoneTherapyWomenRouteImport
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/hormone-therapy-men': {
@@ -382,18 +374,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesHormoneTherapyMenRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resources/$slug': {
-      id: '/resources/$slug'
-      path: '/resources/$slug'
-      fullPath: '/resources/$slug'
-      preLoaderRoute: typeof ResourcesSlugRouteImport
+    '/services/hormone-therapy-women': {
+      id: '/services/hormone-therapy-women'
+      path: '/services/hormone-therapy-women'
+      fullPath: '/services/hormone-therapy-women'
+      preLoaderRoute: typeof ServicesHormoneTherapyWomenRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/locations/$city': {
-      id: '/locations/$city'
-      path: '/locations/$city'
-      fullPath: '/locations/$city'
-      preLoaderRoute: typeof LocationsCityRouteImport
+    '/services/nutrition': {
+      id: '/services/nutrition'
+      path: '/services/nutrition'
+      fullPath: '/services/nutrition'
+      preLoaderRoute: typeof ServicesNutritionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/peptide-therapy': {
+      id: '/services/peptide-therapy'
+      path: '/services/peptide-therapy'
+      fullPath: '/services/peptide-therapy'
+      preLoaderRoute: typeof ServicesPeptideTherapyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/personalized-training': {
+      id: '/services/personalized-training'
+      path: '/services/personalized-training'
+      fullPath: '/services/personalized-training'
+      preLoaderRoute: typeof ServicesPersonalizedTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/progesterone-estrogen': {
+      id: '/services/progesterone-estrogen'
+      path: '/services/progesterone-estrogen'
+      fullPath: '/services/progesterone-estrogen'
+      preLoaderRoute: typeof ServicesProgesteroneEstrogenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/supplementation': {
+      id: '/services/supplementation'
+      path: '/services/supplementation'
+      fullPath: '/services/supplementation'
+      preLoaderRoute: typeof ServicesSupplementationRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -404,6 +424,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
+  PaymentPlansRoute: PaymentPlansRoute,
   PrivacyRoute: PrivacyRoute,
   QualifyRoute: QualifyRoute,
   TermsRoute: TermsRoute,

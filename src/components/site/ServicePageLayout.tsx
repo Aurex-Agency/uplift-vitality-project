@@ -4,6 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 import { CTAButton } from "./CTAButton";
 import { CTABand } from "./CTABand";
 import { HowItWorks } from "./HowItWorks";
+import { FinancingCallout } from "./CherryWidgets";
 import { Check, Star, ArrowRight } from "lucide-react";
 
 export type ServiceContent = {
@@ -183,6 +184,7 @@ export function ServicePageLayout({ content }: { content: ServiceContent }) {
         </section>
       )}
 
+      <FinancingCallout />
       <CTABand />
     </>
   );

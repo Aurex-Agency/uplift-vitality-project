@@ -35,6 +35,7 @@ export function Footer() {
               { to: "/", label: "Home" },
               { to: "/about", label: "About" },
               { to: "/services", label: "Services" },
+              { to: "/payment-plans", label: "Payment Plans" },
               { to: "/resources", label: "Resources" },
               { to: "/qualify", label: "Qualify Quiz" },
               { to: "/contact", label: "Contact" },

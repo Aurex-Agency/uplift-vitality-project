@@ -8,6 +8,7 @@ import { TestimonialCard } from "@/components/site/TestimonialCard";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { StatStrip } from "@/components/site/StatStrip";
+import { FinancingCallout } from "@/components/site/CherryWidgets";
 import { SERVICES, TESTIMONIALS, FAQS, SITE } from "@/components/site/site-data";
 import { Link } from "@tanstack/react-router";
 import {
@@ -339,6 +340,9 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* PAYMENT PLANS (Cherry, primary financing option) */}
+      <FinancingCallout />
 
       {/* QUALIFY TEASER */}
       <section className="relative overflow-hidden bg-background py-20 md:py-28">
