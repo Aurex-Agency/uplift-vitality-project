@@ -133,3 +133,26 @@ test("Built Payment Plans page features Cherry and is reachable from every page'
     assert.ok(!result.html.includes("files.withcherry.com"), path);
   }
 });
+test("Built privacy policy discloses the site's real data flows; forms link to it", async () => {
+  const { response, html } = await page("/privacy");
+  assert.equal(response.status, 200);
+  for (const text of [
+    "We do not sell your personal information",
+    "GoHighLevel (LeadConnector)",
+    "Google Analytics",
+    "Payment plans with Cherry",
+    "for their marketing or promotional purposes",
+    "Some of these answers relate to your health",
+  ]) {
+    assert.ok(html.includes(text), text);
+  }
+  assert.ok(!/placeholder|intentionally brief/i.test(html));
+  assert.ok(!html.includes("upliftAnalyticsInitialized"));
+  for (const path of ["/contact", "/qualify"]) {
+    assert.ok((await page(path)).html.includes('href="/privacy"'), path);
+  }
+});
+test("Built Payment Plans page loads the analytics bootstrap", async () => {
+  const { html } = await page("/payment-plans");
+  assert.ok(html.includes("upliftAnalyticsInitialized"));
+});

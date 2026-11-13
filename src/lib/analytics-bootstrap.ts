@@ -6,8 +6,9 @@ export function analyticsBootstrap(id: string) {
   state.upliftAnalyticsInitialized = true;
   function safe(path: string) {
     return (
-      ["/", "/about", "/services", "/resources"].includes(path.replace(/\/$/, "") || "/") ||
-      /^\/locations\/[a-z-]+$/.test(path)
+      ["/", "/about", "/services", "/resources", "/payment-plans"].includes(
+        path.replace(/\/$/, "") || "/",
+      ) || /^\/locations\/[a-z-]+$/.test(path)
     );
   }
   function update(url: string | URL | null | undefined = window.location.href) {

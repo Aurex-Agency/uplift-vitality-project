@@ -29,6 +29,9 @@ export function Analytics({ measurementId }: { measurementId: string }) {
       const link = (e.target as Element | null)?.closest?.("a")?.getAttribute("href") || "";
       if (link.startsWith("tel:")) trackEvent("call_click");
       else if (link === "/book") trackEvent("book_appointment_click");
+      // "Apply with Cherry" links (Payment Plans page). Clicks inside Cherry's own widget
+      // are not visible here; Cherry's partner portal reports applications.
+      else if (link.startsWith("https://pay.withcherry.com/")) trackEvent("cherry_apply_click");
     }
     document.addEventListener("click", onClick, true);
     return () => document.removeEventListener("click", onClick, true);
