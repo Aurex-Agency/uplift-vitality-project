@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { CTABand } from "@/components/site/CTABand";
 import { CTAButton } from "@/components/site/CTAButton";
+import { FinancingCallout } from "@/components/site/CherryWidgets";
 import { SERVICES } from "@/components/site/site-data";
 
 export const Route = createFileRoute("/services/")({
@@ -81,6 +82,7 @@ function ServicesIndex() {
           </div>
         </div>
       </section>
+      <FinancingCallout />
       <CTABand />
     </>
   );

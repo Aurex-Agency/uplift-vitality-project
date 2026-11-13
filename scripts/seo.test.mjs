@@ -201,3 +201,61 @@ test("Intake validation preserves consent, trimming and error messages", async (
   assert.equal(schema.safeParse({ ...input, name: " " }).success, false);
   assert.equal(schema.safeParse({ ...input, notes: "x".repeat(1001) }).success, false);
 });
+
+test("Cherry loads once with Uplift's slug, stays off intake pages, and mounts the full page safely", async () => {
+  const { default: ts } = await import("typescript");
+  const { default: vm } = await import("node:vm");
+  const js = ts.transpileModule(read("src/lib/cherry.ts"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS },
+  }).outputText;
+  const appended = [];
+  const window = {};
+  const context = {
+    exports: {},
+    window,
+    document: {
+      createElement: () => ({}),
+      body: { appendChild: (s) => appended.push(s) },
+    },
+  };
+  vm.runInNewContext(js, context);
+  const cherry = context.exports;
+  for (const path of ["/book", "/qualify", "/qualify/"]) {
+    assert.equal(cherry.isCherryFloatingPath(path), false, path);
+  }
+  for (const path of ["/", "/payment-plans", "/services/hormone-therapy-men", "/contact"]) {
+    assert.equal(cherry.isCherryFloatingPath(path), true, path);
+  }
+  // Before the script arrives, mounting must not push a bare widget name into Cherry's queue.
+  cherry.mountCherryFullPage();
+  const config = cherry.cherryConfig("https://upliftmedicalms.com/assets/team.jpg");
+  cherry.loadCherry(config);
+  cherry.loadCherry(config);
+  assert.equal(appended.length, 1);
+  assert.equal(appended[0].id, "_hw");
+  assert.equal(appended[0].src, "https://files.withcherry.com/widgets/widget.js");
+  assert.equal(window._hw.q.length, 1);
+  cherry.mountCherryFullPage();
+  assert.equal(window._hw.q.length, 1);
+  const [method, queued, widgets] = window._hw.q[0];
+  assert.equal(method, "init");
+  assert.equal(queued.variables.slug, "uplift-medical-llc");
+  assert.deepEqual([...widgets], ["all", "floatingEstimator"]);
+  assert.ok(cherry.CHERRY_APPLY_URL.startsWith("https://pay.withcherry.com/uplift-medical-llc?"));
+  // After Cherry's script replaces the queue, a return visit re-mounts the full page.
+  const calls = [];
+  window._hw = (...args) => calls.push(args);
+  cherry.mountCherryFullPage();
+  assert.deepEqual(
+    calls.map((c) => [...c]),
+    [["all"]],
+  );
+});
+
+test("Payment Plans page is in the sitemap and linked from the main navigation and footer", () => {
+  assert.ok(
+    read("public/sitemap.xml").includes("<loc>https://upliftmedicalms.com/payment-plans</loc>"),
+  );
+  assert.ok(read("src/components/site/Navbar.tsx").includes('to="/payment-plans"'));
+  assert.ok(read("src/components/site/Footer.tsx").includes('to: "/payment-plans"'));
+});

@@ -130,6 +130,7 @@ export const GUIDES: Record<string, Guide> = {
     ],
     related: [
       { label: "Book a consultation for exact pricing", to: "/book" },
+      { label: "Pay over time with Cherry payment plans", to: "/payment-plans" },
       {
         label: "Testosterone replacement therapy (TRT) for men",
         to: "/services/hormone-therapy-men",

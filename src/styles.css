@@ -350,3 +350,21 @@ html[data-js] .reveal {
     animation: none;
   }
 }
+
+/*
+ * Cherry payment plans (src/lib/cherry.ts).
+ * The floating estimate button reads its bottom offset from this variable, so on
+ * small screens it sits above the fixed mobile action bar (shown below lg).
+ */
+:root {
+  --uplift-cherry-offset-y: 0px;
+}
+@media (width < 64rem) {
+  :root {
+    --uplift-cherry-offset-y: calc(3.5rem + env(safe-area-inset-bottom));
+  }
+}
+/* Hidden on intake pages (booking and the quiz), like the mobile action bar. */
+html[data-cherry-floating="off"] #widget-floatingEstimator-mount {
+  display: none;
+}

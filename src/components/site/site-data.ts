@@ -139,6 +139,10 @@ export const FAQS = [
     a: "No. Uplift Medical is a concierge practice. You get high-quality, personalized care without insurance requirements.",
   },
   {
+    q: "Do you offer payment plans?",
+    a: "Yes. Cherry is our primary financing option. Cherry lets you split the cost of your care into monthly payments, subject to approval. Visit our Payment Plans page to see estimated payments and apply online, or call 662-584-4958 with questions.",
+  },
+  {
     q: "How do I get started?",
     a: "It is easy. Schedule a consultation, get your lab work done, and we will build a customized treatment plan for you. Call 662-584-4958 to book.",
   },

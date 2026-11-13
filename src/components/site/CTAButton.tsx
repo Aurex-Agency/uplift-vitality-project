@@ -8,6 +8,8 @@ type Props = {
   variant?: "primary" | "outline" | "gold";
   children: ReactNode;
   className?: string;
+  /** Opens `href` in a new tab without sending the page URL as referrer. */
+  external?: boolean;
 };
 
 const base =
@@ -20,11 +22,22 @@ const styles = {
   gold: "gold-gradient text-primary hover:-translate-y-0.5 gold-glow",
 };
 
-export function CTAButton({ to, href, variant = "primary", children, className = "" }: Props) {
+export function CTAButton({
+  to,
+  href,
+  variant = "primary",
+  children,
+  className = "",
+  external = false,
+}: Props) {
   const cls = cn(base, styles[variant], className);
   if (href) {
     return (
-      <a href={href} className={cls}>
+      <a
+        href={href}
+        className={cls}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
         {children}
       </a>
     );

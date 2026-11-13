@@ -18,6 +18,7 @@ import { Footer } from "@/components/site/Footer";
 import { MobileCTABar } from "@/components/site/MobileCTABar";
 import { isPublicMeasurementPath } from "@/lib/analytics";
 import { Analytics } from "@/components/site/Analytics";
+import { CherryLoader } from "@/components/site/CherryWidgets";
 import { Link as TLink } from "@tanstack/react-router";
 import logoPrimary from "@/assets/logo-primary.png";
 import heroImage from "@/assets/kenny-injection.jpg";
@@ -245,6 +246,7 @@ function RootComponent() {
           <Footer />
         </div>
         <MobileCTABar />
+        <CherryLoader />
       </div>
     </QueryClientProvider>
   );

@@ -58,6 +58,7 @@ test("Built public routes have a single canonical, readable main content and val
     "/services/hormone-therapy-women",
     "/services/progesterone-estrogen",
     "/locations/pontotoc",
+    "/payment-plans",
   ]) {
     const { response, html } = await page(path);
     assert.equal(response.status, 200, path);
@@ -117,4 +118,18 @@ test("Serialized production analytics bootstrap executes without missing bundled
   assert.equal(loads, 1);
   assert.equal(window.upliftSearchReferrer, "https://www.bing.com/");
   assert.ok(!JSON.stringify(window.dataLayer).includes("private"));
+});
+test("Built Payment Plans page features Cherry and is reachable from every page's navigation", async () => {
+  const { response, html } = await page("/payment-plans");
+  assert.equal(response.status, 200);
+  assert.ok(html.includes('id="all"'));
+  assert.ok(html.includes("https://pay.withcherry.com/uplift-medical-llc?"));
+  assert.ok(html.includes("Cherry is our primary financing option"));
+  const home = await page("/");
+  assert.ok(home.html.includes('href="/payment-plans"'));
+  // Cherry's script is injected client-side only, never into server HTML (including intake pages).
+  for (const path of ["/payment-plans", "/book", "/qualify"]) {
+    const result = await page(path);
+    assert.ok(!result.html.includes("files.withcherry.com"), path);
+  }
 });
